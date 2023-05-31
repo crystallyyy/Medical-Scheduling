@@ -5,12 +5,14 @@
                 <img src="../../img/logo.jpg" alt="company logo">
             </div>    
             <nav>
-                <ul>
-                  <li class="active" :class="{active: isActive}" @click="setActive">DASHBOARD</li>
-                  <li class="" :class="{active: isActive}" @click="setActive">MY PROFILE</li>
-                  <li class="" :class="{active: isActive}" @click="setActive">MY OFFICES</li>
-                </ul>
-            </nav>      
+     <b-collapse id="nav-collapse" is-nav>
+      <b-navbar-nav>
+        <b-nav-item :active="isActive === 0" @click="setActive(0)">DASHBOARD</b-nav-item>
+        <b-nav-item :active="isActive === 1" @click="setActive(1)">MY PROFILE</b-nav-item>
+        <b-nav-item :active="isActive === 2" @click="setActive(2)">MY OFFICES</b-nav-item>
+      </b-navbar-nav>
+    </b-collapse>            </nav>      
+            
             <button id="support">CONTACT SUPPORT</button>
         </aside>
         <div class="content">

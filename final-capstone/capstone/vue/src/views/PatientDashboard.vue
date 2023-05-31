@@ -10,6 +10,7 @@
                   <li class="" :class="{active: isActive}" @click="setActive">SCHEDULE AN APPOINTMENT</li>
                   <li class="" :class="{active: isActive}" @click="setActive">UPDATE INFO</li>
                   <li class="" :class="{active: isActive}" @click="setActive">VISIT HISTORY</li>
+                  <b-button variant="primary">Click me!</b-button>
                 </ul>
             </nav>      
             <button id="support">CONTACT SUPPORT</button>
