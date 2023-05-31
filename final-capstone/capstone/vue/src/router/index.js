@@ -4,6 +4,8 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
+import DoctorDashboard from '../views/DoctorDashboard.vue'
+import PatientDashboard from '../views/PatientDashboard.vue'
 import store from '../store/index'
 
 Vue.use(Router)
@@ -52,7 +54,18 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
+    },
+    {
+      path: "/doctordash",
+      name: "doctordash",
+      component: DoctorDashboard
+    },
+    {
+      path:"/patientdash",
+      name: "patientdash",
+      component: PatientDashboard
     }
+  
   ]
 })
 
