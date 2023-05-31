@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@PreAuthorize("isAuthenticated()")
+//@PreAuthorize("isAuthenticated()")
 public class DoctorController {
 
     @Autowired
@@ -19,22 +19,20 @@ public class DoctorController {
 
     @GetMapping(path = "/providers")
     public List<Doctor> listProviders(){
-        List<Doctor> allProviders = new ArrayList<>();
 
-        return allProviders;
+        return doctorDAO.getAllDoctors();
     }
 
     @PostMapping(path = "/providers")
     public Doctor newDoctor(@Valid @RequestBody Doctor doctor){
 
-        return doctor;
+        return doctorDAO.addDoctor(doctor);
     }
 
     @GetMapping(path = "/providers/{doctorId}")
     public Doctor getDoctorById(@PathVariable int doctorId){
-        Doctor doctor = null;
 
-        return doctor;
+        return doctorDAO.getDoctorById(doctorId);
     }
 
     //necessary?
@@ -45,15 +43,13 @@ public class DoctorController {
 
     @PutMapping(path = "providers/{doctorId}")
     public Doctor updateDoctorInfo(@PathVariable int doctorId,  @Valid @RequestBody Doctor doctorToUpdate){
-        Doctor doctor = null;
 
-        return doctor;
+        return doctorDAO.updateDoctor(doctorToUpdate);
     }
 
     @GetMapping(path = "/providers/offices/{officeId}")
     public List<Doctor> getDoctorsByOffice(@PathVariable int officeId){
-        List<Doctor> doctorsByOffice = new ArrayList<>();
 
-        return doctorsByOffice;
+        return doctorDAO.getDoctorsByOffice(officeId);
     }
 }

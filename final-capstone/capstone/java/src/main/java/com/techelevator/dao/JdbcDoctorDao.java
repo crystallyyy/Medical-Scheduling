@@ -52,17 +52,38 @@ public class JdbcDoctorDao implements DoctorDAO{
     @Override
     public Doctor addDoctor(Doctor doctor) {
 
-        return null;
+        String sql = "INSERT INTO doctor (user_id, first_name, last_name, time_slot_default, email) " +
+                "VALUES (?, ?, ?, ?, ?) RETURNING doctor_id";
+        int newId = jdbcTemplate.queryForObject(sql, int.class, doctor.getUserId(), doctor.getFirstName(), doctor.getLastName(),
+                doctor.getTimeSlotDefault(), doctor.getEmail());
+
+        return getDoctorById(newId);
     }
 
     @Override
-    public Doctor updateDoctor(int doctorId, Doctor doctor) {
-        return null;
+    public Doctor updateDoctor(Doctor doctor) {
+        String sql = "UPDATE doctor SET first_name = ?, last_name = ?, time_slot_default = ?, email = ? " +
+                "WHERE doctor_id = ?";
+        int doctorId = jdbcTemplate.update(sql, doctor.getFirstName(), doctor.getLastName(),
+                doctor.getTimeSlotDefault(), doctor.getEmail(), doctor.getDoctorId());
+
+        return getDoctorById(doctorId);
     }
 
     @Override
     public List<Doctor> getDoctorsByOffice(int officeId) {
-        return null;
+        List<Doctor> doctorsByOffice = new ArrayList<>();
+        String sql = "SELECT * FROM doctor AS d " +
+                "JOIN doctor_office AS d_o ON d.doctor_id = d_o.doctor_id " +
+                "JOIN office AS o ON d_o.office_id = o.office_id " +
+                "WHERE o.office_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, officeId);
+
+        while (results.next()){
+            Doctor doctor = mapRowToDoctor(results);
+            doctorsByOffice.add(doctor);
+        }
+        return doctorsByOffice;
     }
 
     private Doctor mapRowToDoctor(SqlRowSet row){

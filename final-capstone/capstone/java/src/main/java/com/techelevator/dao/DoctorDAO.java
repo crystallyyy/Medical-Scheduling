@@ -10,6 +10,6 @@ public interface DoctorDAO {
     List<Doctor> getAllDoctors();
     Doctor getDoctorById(int id);
     Doctor addDoctor(Doctor doctor);
-    Doctor updateDoctor(int id, Doctor doctor);
+    Doctor updateDoctor(Doctor doctor);
     List<Doctor> getDoctorsByOffice(int id);
 }
