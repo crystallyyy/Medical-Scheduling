@@ -7,4 +7,5 @@ import java.util.List;
 public interface PatientDAO {
 
     public List<Patient> getAllPatients();
+    Patient addPatient(Patient patient);
 }

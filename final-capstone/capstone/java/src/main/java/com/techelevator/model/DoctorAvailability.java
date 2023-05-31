@@ -3,7 +3,6 @@ package com.techelevator.model;
 import java.time.LocalTime;
 
 public class DoctorAvailability {
-    private int availabilityId;
     private int doctorId;
     private String dayOdWeek;
     private LocalTime startTime;
@@ -12,21 +11,13 @@ public class DoctorAvailability {
     public DoctorAvailability() {
     }
 
-    public DoctorAvailability(int availabilityId, int doctorId, String dayOdWeek, LocalTime startTime, LocalTime endTime) {
-        this.availabilityId = availabilityId;
+    public DoctorAvailability( int doctorId, String dayOdWeek, LocalTime startTime, LocalTime endTime) {
         this.doctorId = doctorId;
         this.dayOdWeek = dayOdWeek;
         this.startTime = startTime;
         this.endTime = endTime;
     }
 
-    public int getAvailabilityId() {
-        return availabilityId;
-    }
-
-    public void setAvailabilityId(int availabilityId) {
-        this.availabilityId = availabilityId;
-    }
 
     public int getDoctorId() {
         return doctorId;

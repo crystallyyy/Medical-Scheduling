@@ -1,5 +1,7 @@
 package com.techelevator.model;
 
+import java.util.List;
+
 public class Doctor {
     private int doctorId;
     private int userId;
@@ -7,6 +9,7 @@ public class Doctor {
     private String lastName;
     private int timeSlotDefault;
     private String email;
+    private List<DoctorAvailability> doctorAvailability;
 
     public Doctor() {
     }
@@ -66,5 +69,9 @@ public class Doctor {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public void setDoctorAvailability(List<DoctorAvailability> doctorAvailability){
+        this.doctorAvailability = doctorAvailability;
     }
 }

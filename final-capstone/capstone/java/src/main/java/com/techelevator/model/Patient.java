@@ -9,17 +9,19 @@ public class Patient {
     private String lastName;
     private LocalDate dateOfBirth;
     private String address;
+    private int phoneNumber;
 
     public Patient() {
     }
 
-    public Patient(int patientId, int userId, String firstName, String lastName, LocalDate dateOfBirth, String address) {
+    public Patient(int patientId, int userId, String firstName, String lastName, LocalDate dateOfBirth, String address, int phoneNumber) {
         this.patientId = patientId;
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
         this.address = address;
+        this.phoneNumber = phoneNumber;
     }
 
     public int getPatientId() {
@@ -68,5 +70,13 @@ public class Patient {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public int getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(int phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }
