@@ -22,7 +22,7 @@
         <label for="password">Password</label>
         <input type="password" id="password" v-model="user.password" required />
       </div>
-    <b-button variant="primary" type="submit">Sign In</b-button>
+    <button type="submit">Sign In</button>
       
     </form>
 
@@ -31,10 +31,10 @@
       <h2 >Create Account</h2> <br>
 
       <!-- as PATIENT -->        
-      <b-button variant="light"><router-link :to="{ name: 'patientRegister' }">Patient</router-link> </b-button><br>
+      <p><router-link :to="{ name: 'patientRegister' }">Patient</router-link> </p><br>
       
       <!-- as PROVIDER -->        
-      <b-button variant="light"><router-link :to="{ name: 'doctorRegister' }">Provider</router-link> </b-button>
+      <p><router-link :to="{ name: 'doctorRegister' }">Provider</router-link> </p>
 
     </form>
 
