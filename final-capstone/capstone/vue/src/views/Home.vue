@@ -5,6 +5,7 @@
       <h1>WELCOME TO THE MEDICAL SCHEDULING PORTAL</h1>
       <h2>GIT TEST </h2>
       <img src="image.jpg" alt="Fancy Portal Image">
+      <img src="image.jpg" alt="cool image">
     </div>
 
     <div class="router-link">
