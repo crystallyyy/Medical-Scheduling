@@ -1,7 +1,13 @@
 <template>
   <div id="login">
-    <form @submit.prevent="login">
-      <h1 >Please Sign In</h1>
+    <div class="fancy-border">
+      <h1>WELCOME TO THE MEDICAL SCHEDULING PORTAL</h1>
+      <img src="image.jpg" alt="Fancy Portal Image">
+    </div>
+    
+
+    <form class="fancy-border" @submit.prevent="login">
+      <h2 >Please Sign In</h2>
       <div role="alert" v-if="invalidCredentials">
         Invalid username and password!
       </div>
@@ -17,9 +23,21 @@
         <input type="password" id="password" v-model="user.password" required />
       </div>
       <button type="submit">Sign in</button>
-      <p>
-      <router-link :to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
     </form>
+
+
+    <form class="fancy-border">
+      <h2 >Create Account</h2> <br>
+
+      <!-- as PATIENT -->        
+      <p><router-link :to="{ name: 'register' }">Patient</router-link></p> <br>
+      
+      <!-- as PROVIDER -->        
+      <p><router-link :to="{ name: 'register' }">Provider</router-link></p>
+
+    </form>
+
+
   </div>
 </template>
 
@@ -68,4 +86,30 @@ export default {
 label {
   margin-right: 0.5rem;
 }
+
+
+
+.fancy-border {
+  border: 2px solid #3F51B5; /* Dark blue border */
+  border-radius: 10px; /* Rounded corners */
+  padding: 20px;
+  background-color: #F5F5F5; /* Light gray background */
+}
+
+.fancy-border h2 {
+  margin: 0 0 10px;
+}
+
+.fancy-border p {
+  margin: 0;
+}
+
+.form{
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%; /* Adjust the width as needed */
+
+  text-align: center;
+}
+
 </style>
