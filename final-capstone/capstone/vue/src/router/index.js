@@ -57,7 +57,7 @@ const router = new Router({
     },
     {
       path: "/patientregister",
-      name: "register",
+      name: "patientRegister",
       component: PatientRegistration,
       meta: {
         requiresAuth: false
@@ -65,7 +65,7 @@ const router = new Router({
     },
     {
       path: "/doctorregister",
-      name: "register",
+      name: "doctorRegister",
       component: DoctorRegistration,
       meta: {
         requiresAuth: false

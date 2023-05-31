@@ -30,10 +30,10 @@
       <h2 >Create Account</h2> <br>
 
       <!-- as PATIENT -->        
-      <p><router-link :to="{ name: 'register' }">Patient</router-link></p> <br>
+      <p><router-link :to="{ name: 'patientRegister' }">Patient</router-link></p> <br>
       
       <!-- as PROVIDER -->        
-      <p><router-link :to="{ name: 'register' }">Provider</router-link></p>
+      <p><router-link :to="{ name: 'doctorRegister' }">Provider</router-link></p>
 
     </form>
 
