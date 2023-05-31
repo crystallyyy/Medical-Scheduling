@@ -1,7 +1,7 @@
 <template>
   <div id="register" class="text-center">
     <form @submit.prevent="register">
-      <h1>Create Account</h1>
+      <h1>Create Provider Account</h1>
       <div role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
@@ -16,6 +16,10 @@
       <div class="form-input-group">
         <label for="confirmPassword">Confirm Password</label>
         <input type="password" id="confirmPassword" v-model="user.confirmPassword" required />
+      </div>
+      <div class="form-input-group">
+        <label for="Provider">Enter Provider Code</label>
+        <input type="password" id="confirmPassword" v-model="enteredCode" required />
       </div>
       <button type="submit">Create Account</button>
       <p><router-link :to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
@@ -34,15 +38,17 @@ export default {
         username: '',
         password: '',
         confirmPassword: '',
-        role: 'user',
+        role: 'admin',
       },
       registrationErrors: false,
       registrationErrorMsg: 'There were problems registering this user.',
+      secretCode: 1234,
+      enteredCode: '',
     };
   },
   methods: {
     register() {
-      if (this.user.password != this.user.confirmPassword) {
+      if (this.user.password != this.user.confirmPassword || this.enteredCode!=this.secretCode) {
         this.registrationErrors = true;
         this.registrationErrorMsg = 'Password & Confirm Password do not match.';
       } else {
@@ -80,60 +86,4 @@ export default {
 label {
   margin-right: 0.5rem;
 }
-
-
-
-body {
-  background-color: #FFFFFF; /* White background */
-  color: #000000; /* Black text */
-}
-
-h1, h2, h3, h4, h5, h6 {
-  color: #000000; /* Black headings */
-}
-
-a {
-  color: #00BFFF; /* Sky-blue links */
-}
-
-a:hover {
-  color: #1E90FF; /* Darker sky-blue on hover */
-}
-
-/* Example of a sky-blue button */
-.button {
-  background-color: #00BFFF;
-  color: #FFFFFF;
-  border: none;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-/* Example of a sky-blue border */
-.border {
-  border: 2px solid #00BFFF;
-}
-
-/* Example of sky-blue background with white text */
-.skyblue-background {
-  background-color: #00BFFF;
-  color: #FFFFFF;
-}
-
-/* Example of sky-blue text on white background */
-.skyblue-text {
-  color: #00BFFF;
-  background-color: #FFFFFF;
-}
-
-
-
-
 </style>
-
-
-
