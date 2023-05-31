@@ -1,6 +1,6 @@
 BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS users, patient, doctor, office, office_hours, doctor_availability, appointment, reviews, doctor_office;
+DROP TABLE users, patient, doctor, office, office_hours, doctor_availability, appointment, reviews, doctor_office;
 
 
 CREATE TABLE users (
@@ -36,12 +36,11 @@ CREATE TABLE doctor (
 );
 
 CREATE TABLE doctor_availability (
-	availability_id serial,
 	doctor_id int NOT NULL,
 	day_of_week varchar(20) NOT NULL,
-	start_time timestamp NOT NULL,
-	end_time timestamp NOT NULL,
-	CONSTRAINT PK_availability PRIMARY KEY (availability_id),
+	start_time time NOT NULL,
+	end_time time NOT NULL,
+	CONSTRAINT PK_availability PRIMARY KEY (doctor_id, day_of_week),
 	CONSTRAINT FK_doctor_availability FOREIGN KEY (doctor_id) REFERENCES doctor(doctor_id)
 );
 
@@ -58,8 +57,8 @@ CREATE TABLE office_hours (
 	office_hours_id serial,
 	office_id int NOT NULL,
 	day_of_week varchar(20) NOT NULL,
-	start_time timestamp NOT NULL,
-	end_time timestamp NOT NULL,
+	start_time time NOT NULL,
+	end_time time NOT NULL,
 	CONSTRAINT PK_office_hours PRIMARY KEY (office_hours_id),
 	CONSTRAINT FK_office_hours FOREIGN KEY (office_id) REFERENCES office(office_id)
 );
@@ -85,12 +84,13 @@ CREATE TABLE appointment (
 	appointment_id serial,
 	doctor_id int NOT NULL,
 	appt_date date NOT NULL,
-	start_time timestamp NOT NULL,
+	start_time time NOT NULL,
 	duration int NOT NULL,
 	patient_id int,
 	office_id int NOT NULL,
 	CONSTRAINT PK_appointment PRIMARY KEY (appointment_id),
-	CONSTRAINT FK_appointment_doctor FOREIGN KEY (doctor_id) REFERENCES doctor(doctor_id)
+	CONSTRAINT FK_appointment_doctor FOREIGN KEY (doctor_id) REFERENCES doctor(doctor_id),
+	CONSTRAINT UQ_appointment UNIQUE (doctor_id, appt_date, start_time)
 );
 
 COMMIT TRANSACTION;
