@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  name: "schedule-appointment",
+  name: "ScheduleAppointment",
 };
 </script>
 
