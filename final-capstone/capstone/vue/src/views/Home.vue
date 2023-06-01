@@ -8,8 +8,8 @@
       <img src="image.jpg" alt="cool image">
     </div>
 
-    <div class="router-link">
-      <router-link class="fancy-border" v-bind:to="{name: 'add'}">Add New Patient</router-link>
+    <div >
+      <!-- <router-link class="fancy-border" >Add New Patient</router-link> -->
     </div>
     <!-- <p>You must be authenticated to see this</p> -->
     <div>
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import service from '../services/ServerService.js';
+import serverService from '../services/serverService.js';
 
 export default {
   name: "home",
@@ -30,7 +30,7 @@ export default {
   },
 
   created() {
-    service.getAllPatients().then(
+    serverService.getAllPatients().then(
       // anonymous function
       (response) => {
         this.patientList = response.data;
@@ -122,7 +122,7 @@ body {
 .router-link {
   margin-left: auto;
   margin-right: auto;
-  width: 50%; /* Adjust the width as needed */
+  width: 50%; 
 
   text-align: center;
 

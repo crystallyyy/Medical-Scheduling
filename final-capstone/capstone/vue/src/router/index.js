@@ -1,19 +1,11 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Home from '../views/Home.vue'
-import Login from '../views/Login.vue'
-import Logout from '../views/Logout.vue'
-import Register from '../views/Register.vue'
-import PatientRegistration from '../views/PatientRegistration.vue'
-import DoctorRegistration from '../views/DoctorRegistration.vue'
-import DoctorDashboard from '../views/DoctorDashboard.vue'
-import PatientDashboard from '../views/PatientDashboard.vue'
-import store from '../store/index'
-import ScheduleAppointment from '../views/ScheduleAppointment.vue'
-import Providers from '../views/Providers.vue'
-import Offices from '../views/Offices.vue'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import Home from '../views/Home.vue';
+import DoctorDashboard from '../views/DoctorDashboard.vue';
+import PatientDashboard from '../views/PatientDashboard.vue';
 
-Vue.use(Router)
+
+Vue.use(VueRouter);
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -24,112 +16,32 @@ Vue.use(Router)
  * If they have (or don't need to) they're allowed to go about their way.
  */
 
-const router = new Router({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes: [
-    {
+const routes = [{
+  
       path: '/',
       name: 'home',
-      component: Home,
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
-      path: "/login",
-      name: "login",
-      component: Login,
-      meta: {
-        requiresAuth: false
-      }
-    },
-    {
-      path: "/logout",
-      name: "logout",
-      component: Logout,
-      meta: {
-        requiresAuth: false
-      }
-    },
-    {
-      path: "/register",
-      name: "register",
-      component: Register,
-      meta: {
-        requiresAuth: false
-      }
-    },
-    {
-      path: "/patientregister",
-      name: "patientRegister",
-      component: PatientRegistration,
-      meta: {
-        requiresAuth: false
-      }
-    },
-    {
-      path: "/doctorregister",
-      name: "doctorRegister",
-      component: DoctorRegistration,
-      meta: {
-        requiresAuth: false
-      }
-    },
-    {
-      path: "/scheduleAppointment",
-      name: "schedule-appointment",
-      component: ScheduleAppointment,
-      meta: {
-        requiresAuth: false
-      }
-    },
-    {
-      path: "/providers",
-      name: "Providers",
-      component: Providers,
-      meta: {
-        requiresAuth: false
-      }
-    },
-    {
-      path: "/offices",
-      name: "Offices",
-      component: Offices,
-      meta: {
-        requiresAuth: false
-      }
+      component: Home
     },
     {
       path: '/doctorDash',
       name: 'doctordash',
-      component: DoctorDashboard,
-      meta: {
-        requiresAuth: false
-      }
+      component: DoctorDashboard
+      
     },
     {
       path: '/patientDash',
       name: 'patientdash',
-      component: PatientDashboard,
-      meta: {
-        requiresAuth: false
-      }
-    },
-  ]
-})
+      component: PatientDashboard
+      
+    }
+  ];
 
-router.beforeEach((to, from, next) => {
-  // Determine if the route requires Authentication
-  const requiresAuth = to.matched.some(x => x.meta.requiresAuth);
+  const router = new VueRouter({
+    mode: 'history',
+    routes
+  });
+  
 
-  // If it does and they are not logged in, send the user to "/login"
-  if (requiresAuth && store.state.token === '') {
-    next("/login");
-  } else {
-    // Else let them go to their next destination
-    next();
-  }
-});
+
 
 export default router;

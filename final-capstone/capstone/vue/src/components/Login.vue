@@ -31,10 +31,10 @@
       <h2 >Create Account</h2> <br>
 
       <!-- as PATIENT -->        
-      <p><router-link :to="{ name: 'patientRegister' }">Patient</router-link> </p><br>
+      <!-- <p><router-link :to="{ name: 'patientRegister' }">Patient</router-link> </p><br> -->
       
       <!-- as PROVIDER -->        
-      <p><router-link :to="{ name: 'doctorRegister' }">Provider</router-link> </p>
+      <!-- <p><router-link :to="{ name: 'doctorRegister' }">Provider</router-link> </p> -->
 
     </form>
 
@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import authService from "../services/AuthService";
+import authService from "../services/authService";
 
 export default {
   name: "login",

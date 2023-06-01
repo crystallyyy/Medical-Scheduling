@@ -2,15 +2,15 @@
     <div class="main">
         <aside class="sidenav">
             <div class="imgdiv">
-                <!-- <img src="../img/logo.jpg" alt="company logo"> -->
+                <img src="../../img/logo.jpg" alt="company logo">
             </div>    
             <nav>
                 <ul>
-                  <li class="active" :class="{active: isActive}" @click="setActive">DASHBOARD</li>
-                  <li class="" :class="{active: isActive}" @click="setActive"> <router-link :to="{name: 'schedule-appointment'}">SCHEDULE AN APPOINTMENT</router-link> </li>
-                  <li class="" :class="{active: isActive}" @click="setActive">UPDATE INFO</li>
-                  <li class="" :class="{active: isActive}" @click="setActive">VISIT HISTORY</li>
-                  <b-button variant="primary">Click me!</b-button>
+                  <li class="active" >DASHBOARD</li>
+                  <li class="" > SCHEDULE AN APPOINTMENT</li>
+                  <li class="" >UPDATE INFO</li>
+                  <li class="" >VISIT HISTORY</li>
+                 
                 </ul>
             </nav>      
             <button id="support">CONTACT SUPPORT</button>
@@ -27,19 +27,14 @@
 
 <script>
 export default {
-  name: "PatientDashboard",
+  name: "patient-dash",
   data() {
     return {
 
     isActive: false,
     methods:{
-          setActive(){
-        //set isActive to false for all other li elements
-        //set isActive to true for clicked li element
-    
-         this.isActive = true;
-        }
-     } 
+          
+           } 
     }
   }
 }
@@ -49,7 +44,7 @@ export default {
 .main{
     display: grid;
     grid-template-columns: 25% 75%;
-    grid-template-areas: "sidenav" "content";
+    grid-template-areas: "sidenav content";
     
 
 }

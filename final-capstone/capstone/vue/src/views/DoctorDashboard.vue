@@ -2,21 +2,21 @@
     <div class="main">
         <aside class="sidenav">
             <div class="imgdiv">
-                <!-- <img src="../../img/logo.jpg" alt="company logo"> -->
+                <img src="../../img/logo.jpg" alt="company logo">
             </div>    
             <nav>
-     <b-collapse id="nav-collapse" is-nav>
-      <b-navbar-nav>
-        <b-nav-item :active="isActive === 0" @click="setActive(0)">DASHBOARD</b-nav-item>
-        <b-nav-item :active="isActive === 1" @click="setActive(1)">MY PROFILE</b-nav-item>
-        <b-nav-item :active="isActive === 2" @click="setActive(2)">MY OFFICES</b-nav-item>
-      </b-navbar-nav>
-    </b-collapse>            </nav>      
-            
+                <ul>
+                  <li>DASHBOARD</li>
+                  <li> SCHEDULE AN APPOINTMENT</li>
+                  <li>UPDATE INFO</li>
+                  <li>VISIT HISTORY</li>
+                 
+                </ul>
+            </nav>      
             <button id="support">CONTACT SUPPORT</button>
         </aside>
         <div class="content">
-            
+        
             <div class="dashboard"></div>
             <div class="profile"></div>
             <div class="offices"></div>
@@ -27,18 +27,13 @@
 
 <script>
 export default {
-  name: "DoctorDashboard",
+  name: "doctor-dash",
   data() {
     return {
 
     isActive: false,
     methods:{
-          setActive(){
-        //set isActive to false for all other li elements
-        //set isActive to true for clicked li element
-    
-         this.isActive = true;
-        }
+
      } 
     }
   }
@@ -49,7 +44,7 @@ export default {
 .main{
     display: grid;
     grid-template-columns: 25% 75%;
-    grid-template-areas: "sidenav" "content";
+    grid-template-areas: "sidenav content";
     
 
 }
@@ -59,7 +54,7 @@ export default {
     height: 100vh;
     display:flex;
     flex-direction: column;
-    align-content: stretch;
+    align-content: center;
     
     
     
