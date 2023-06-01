@@ -26,7 +26,7 @@
 
 <script>
 export default {
-  name: "DoctorDashboard",
+  name: "PatientDashboard",
   data() {
     return {
 

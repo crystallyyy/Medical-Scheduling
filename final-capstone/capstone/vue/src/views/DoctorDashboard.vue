@@ -14,11 +14,11 @@
             <button id="support">CONTACT SUPPORT</button>
         </aside>
         <div class="content">
-            
-            <div class="dashboard"></div>
+        <p> hello there </p>
+            <!-- <div class="dashboard"></div>
             <div class="profile"></div>
             <div class="offices"></div>
-            <div class="contact"></div>
+            <div class="contact"></div> -->
         </div>
     </div>
 </template>
@@ -46,8 +46,8 @@ export default {
 <style>
 .main{
     display: grid;
-    grid-template-columns: 25% 75%;
-    grid-template-areas: "sidenav" "content";
+    grid-template-columns: 1fr 3fr;
+    grid-template-areas: "sidenav content";
     
 
 }
