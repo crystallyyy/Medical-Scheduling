@@ -11,7 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@PreAuthorize("permitAll()")
+//@PreAuthorize("permitAll()")
+@CrossOrigin
 public class DoctorController {
 
     @Autowired

@@ -1,5 +1,7 @@
 package com.techelevator.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 public class Doctor {
@@ -7,6 +9,7 @@ public class Doctor {
     private int userId;
     private String firstName;
     private String lastName;
+    @JsonIgnore
     private int timeSlotDefault;
     private String email;
     private List<DoctorAvailability> doctorAvailability;
