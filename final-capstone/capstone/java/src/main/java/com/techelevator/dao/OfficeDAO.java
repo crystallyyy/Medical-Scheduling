@@ -9,4 +9,5 @@ public interface OfficeDAO {
     public List<Office> listAllOffices();
     public boolean create();
     public boolean updateOffice(Office office);
+    List<Office> getOfficesByDoctor(int id);
 }
