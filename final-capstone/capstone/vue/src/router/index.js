@@ -4,9 +4,15 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
+import PatientRegistration from '../views/PatientRegistration.vue'
+import DoctorRegistration from '../views/DoctorRegistration.vue'
 import DoctorDashboard from '../views/DoctorDashboard.vue'
 import PatientDashboard from '../views/PatientDashboard.vue'
 import store from '../store/index'
+import ScheduleAppointment from '../views/ScheduleAppointment.vue'
+import Providers from '../views/Providers.vue'
+import Offices from '../views/Offices.vue'
+
 
 Vue.use(Router)
 
@@ -56,16 +62,61 @@ const router = new Router({
       }
     },
     {
-      path: "/doctordash",
-      name: "doctordash",
-      component: DoctorDashboard
+      path: "/patientregister",
+      name: "patientRegister",
+      component: PatientRegistration,
+      meta: {
+        requiresAuth: false
+      }
     },
     {
-      path:"/patientdash",
-      name: "patientdash",
-      component: PatientDashboard
-    }
-  
+      path: "/doctorregister",
+      name: "doctorRegister",
+      component: DoctorRegistration,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/scheduleAppointment",
+      name: "schedule-appointment",
+      component: ScheduleAppointment,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/providers",
+      name: "Providers",
+      component: Providers,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/offices",
+      name: "Offices",
+      component: Offices,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/doctorDash',
+      name: 'doctor-dash',
+      component: DoctorDashboard,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/patientDash',
+      name: 'patient-dash',
+      component: PatientDashboard,
+      meta: {
+        requiresAuth: false
+      }
+    },
   ]
 })
 
