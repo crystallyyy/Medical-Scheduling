@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import serverService from '../services/serverService.js';
+import serverService from '../services/ServerService.js';
 
 export default {
   name: "home",

@@ -5,12 +5,12 @@
                 <img src="../../img/logo.jpg" alt="company logo">
             </div>    
             <nav>
-                <ul>
-                  <li class="active" >DASHBOARD</li>
-                  <li class="" > SCHEDULE AN APPOINTMENT</li>
-                  <li class="" >UPDATE INFO</li>
-                  <li class="" >VISIT HISTORY</li>
-                 
+                <ul> 
+                  <li  >DASHBOARD</li>
+                  <li > <router-link :to="{name: 'schedule-appointment'}">SCHEDULE AN APPOINTMENT</router-link> </li>
+                  <li >UPDATE INFO</li>
+                  <li >VISIT HISTORY</li>
+                  <b-button variant="primary">Click me!</b-button>
                 </ul>
             </nav>      
             <button id="support">CONTACT SUPPORT</button>
@@ -33,8 +33,8 @@ export default {
 
     isActive: false,
     methods:{
-          
-           } 
+         
+     } 
     }
   }
 }
