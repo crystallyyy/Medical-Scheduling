@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import ProviderList from "./ProviderList.vue"
+import ProviderList from "../components/ProviderList.vue"
 export default {
     components: {
         ProviderList

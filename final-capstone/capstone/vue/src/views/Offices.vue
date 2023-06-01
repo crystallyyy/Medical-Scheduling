@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import OfficeList from './OfficeList.vue'
+import OfficeList from '../components/OfficeList.vue'
 export default {
     components: {OfficeList}
 }
