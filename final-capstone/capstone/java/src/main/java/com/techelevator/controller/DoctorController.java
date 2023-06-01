@@ -21,7 +21,6 @@ public class DoctorController {
     public List<Doctor> listProviders(){
 
         return doctorDAO.getAllDoctors();
-
     }
 
     @PostMapping(path = "/providers")
