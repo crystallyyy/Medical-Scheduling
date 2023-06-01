@@ -6,10 +6,10 @@
             </div>    
             <nav>
                 <ul>
-                  <li class="active" :class="{active: isActive}" @click="setActive">DASHBOARD</li>
-                  <li class="" :class="{active: isActive}" @click="setActive"> <router-link :to="{name: 'schedule-appointment'}">SCHEDULE AN APPOINTMENT</router-link> </li>
-                  <li class="" :class="{active: isActive}" @click="setActive">UPDATE INFO</li>
-                  <li class="" :class="{active: isActive}" @click="setActive">VISIT HISTORY</li>
+                  <li  >DASHBOARD</li>
+                  <li > <router-link :to="{name: 'schedule-appointment'}">SCHEDULE AN APPOINTMENT</router-link> </li>
+                  <li >UPDATE INFO</li>
+                  <li >VISIT HISTORY</li>
                   <b-button variant="primary">Click me!</b-button>
                 </ul>
             </nav>      
@@ -34,12 +34,7 @@ export default {
 
     isActive: false,
     methods:{
-          setActive(){
-        //set isActive to false for all other li elements
-        //set isActive to true for clicked li element
-    
-         this.isActive = true;
-        }
+         
      } 
     }
   }

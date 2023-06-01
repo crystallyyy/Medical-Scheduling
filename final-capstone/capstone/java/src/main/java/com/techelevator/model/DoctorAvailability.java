@@ -4,16 +4,16 @@ import java.time.LocalTime;
 
 public class DoctorAvailability {
     private int doctorId;
-    private String dayOdWeek;
+    private String dayOfWeek;
     private LocalTime startTime;
     private LocalTime endTime;
 
     public DoctorAvailability() {
     }
 
-    public DoctorAvailability( int doctorId, String dayOdWeek, LocalTime startTime, LocalTime endTime) {
+    public DoctorAvailability( int doctorId, String dayOfWeek, LocalTime startTime, LocalTime endTime) {
         this.doctorId = doctorId;
-        this.dayOdWeek = dayOdWeek;
+        this.dayOfWeek = dayOfWeek;
         this.startTime = startTime;
         this.endTime = endTime;
     }
@@ -28,11 +28,11 @@ public class DoctorAvailability {
     }
 
     public String getDayOdWeek() {
-        return dayOdWeek;
+        return dayOfWeek;
     }
 
     public void setDayOdWeek(String dayOdWeek) {
-        this.dayOdWeek = dayOdWeek;
+        this.dayOfWeek = dayOdWeek;
     }
 
     public LocalTime getStartTime() {
