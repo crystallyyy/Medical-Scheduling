@@ -27,4 +27,9 @@ public class OfficeController {
     public void updateOffice(@Valid @RequestBody Office office){
         officeDAO.updateOffice(office);
     }
+
+    @GetMapping(path = "/offices/doctors/{doctorId}")
+    public List<Office> getOfficesByDoctor(@PathVariable int doctorId){
+       return officeDAO.getOfficesByDoctor(doctorId);
+    }
 }

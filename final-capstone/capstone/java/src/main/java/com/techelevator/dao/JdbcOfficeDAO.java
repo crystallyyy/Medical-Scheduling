@@ -67,6 +67,21 @@ public class JdbcOfficeDAO implements OfficeDAO {
         return suc;
     }
 
+    @Override
+    public List<Office> getOfficesByDoctor(int doctorId) {
+        List<Office> offices = new ArrayList<>();
+        String sql = "SELECT * FROM office AS o " +
+                "JOIN doctor_office AS d_o ON o.office_id = d_o.office_id " +
+                "JOIN doctor AS d ON d_o.doctor_id = d.doctor_id " +
+                "WHERE d.doctor_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, doctorId);
+        while (results.next()){
+            Office office = mapRowToOffice(results);
+            offices.add(office);
+        }
+        return offices;
+    }
+
     private Office mapRowToOffice(SqlRowSet rs) {
         Office office = new Office();
         office.setOfficeId(rs.getInt("office_id"));
