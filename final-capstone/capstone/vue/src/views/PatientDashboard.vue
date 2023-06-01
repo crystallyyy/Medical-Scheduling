@@ -2,12 +2,12 @@
     <div class="main">
         <aside class="sidenav">
             <div class="imgdiv">
-                <img src="../../img/logo.jpg" alt="company logo">
+                <!-- <img src="../img/logo.jpg" alt="company logo"> -->
             </div>    
             <nav>
                 <ul>
                   <li class="active" :class="{active: isActive}" @click="setActive">DASHBOARD</li>
-                  <li class="" :class="{active: isActive}" @click="setActive">SCHEDULE AN APPOINTMENT</li>
+                  <li class="" :class="{active: isActive}" @click="setActive"> <router-link :to="{name: 'schedule-appointment'}">SCHEDULE AN APPOINTMENT</router-link> </li>
                   <li class="" :class="{active: isActive}" @click="setActive">UPDATE INFO</li>
                   <li class="" :class="{active: isActive}" @click="setActive">VISIT HISTORY</li>
                   <b-button variant="primary">Click me!</b-button>
@@ -26,8 +26,9 @@
 </template>
 
 <script>
+
 export default {
-  name: "DoctorDashboard",
+  name: "PatientDashboard",
   data() {
     return {
 

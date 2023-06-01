@@ -2,7 +2,7 @@
     <div class="main">
         <aside class="sidenav">
             <div class="imgdiv">
-                <img src="../../img/logo.jpg" alt="company logo">
+                <!-- <img src="../../img/logo.jpg" alt="company logo"> -->
             </div>    
             <nav>
      <b-collapse id="nav-collapse" is-nav>

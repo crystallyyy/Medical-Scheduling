@@ -1,6 +1,6 @@
 BEGIN TRANSACTION;
 
-DROP TABLE users, patient, doctor, office, office_hours, doctor_availability, appointment, reviews, doctor_office;
+DROP TABLE IF EXISTS users, patient, doctor, office, office_hours, doctor_availability, appointment, reviews, doctor_office;
 
 
 CREATE TABLE users (

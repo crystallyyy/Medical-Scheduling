@@ -6,6 +6,7 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+
 @Component
 public class JdbcPatientDao implements PatientDAO{
 
