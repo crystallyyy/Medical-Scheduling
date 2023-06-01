@@ -2,7 +2,10 @@ package com.techelevator.dao;
 
 import com.techelevator.model.Office;
 import com.techelevator.model.User;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.BadSqlGrammarException;
+import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -34,7 +37,7 @@ public class JdbcOfficeDAO implements OfficeDAO {
     }
 
     @Override
-    public List<Office> findAllOffices() {
+    public List<Office> listAllOffices() {
         List<Office> offices = new ArrayList<>();
         String sql = "select * from office";
 
@@ -51,8 +54,25 @@ public class JdbcOfficeDAO implements OfficeDAO {
         return false;
     }
 
+    @Override
+    public boolean updateOffice(Office office) {
+        String sql = "UPDATE office SET office_name = ? , address = ? , phone_number = ? WHERE office_id = ? ;";
+        boolean suc = false;
+        try {
+            jdbcTemplate.update(sql, office.getOfficeName(), office.getAddress(), office.getPhoneNumber(), office.getOfficeId());
+            suc = true;
+        } catch (CannotGetJdbcConnectionException | BadSqlGrammarException | DataIntegrityViolationException e) {
+            return false;
+        }
+        return suc;
+    }
+
     private Office mapRowToOffice(SqlRowSet rs) {
         Office office = new Office();
+        office.setOfficeId(rs.getInt("office_id"));
+        office.setOfficeName(rs.getString("office_name"));
+        office.setAddress(rs.getString("address"));
+        office.setPhoneNumber(rs.getString("phone_number"));
         return office;
     }
 }
