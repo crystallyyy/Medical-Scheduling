@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface OfficeDAO {
     public Office getOfficeByID(int officeId);
-    public List<Office> findAllOffices();
+    public List<Office> listAllOffices();
     public boolean create();
+    public boolean updateOffice(Office office);
 }

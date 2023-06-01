@@ -4,12 +4,12 @@ public class Office {
     private int officeId;
     private String officeName;
     private String address;
-    private int phoneNumber;
+    private String phoneNumber;
 
     public Office() {
     }
 
-    public Office(int officeId, String officeName, String address, int phoneNumber) {
+    public Office(int officeId, String officeName, String address, String phoneNumber) {
         this.officeId = officeId;
         this.officeName = officeName;
         this.address = address;
@@ -40,11 +40,11 @@ public class Office {
         this.address = address;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 }
