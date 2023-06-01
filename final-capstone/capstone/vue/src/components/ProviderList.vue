@@ -16,7 +16,7 @@
             </li>
           </ul>
        
-     <b-button v-b-b-toggle>Book A Time</b-button>
+     <button v-b-b-toggle>Book A Time</button>
      <div>
       <form  action="POST">
         <label for="appt-date">Date: </label>
@@ -35,6 +35,7 @@
 </template>
 
 <script>
+
 export default {
   name: "provider-list",
   data() {
@@ -50,8 +51,7 @@ export default {
         officeId: ""
       },
       appointments : [],
-      doctors: [
-        {
+      doctors: [{
           doctorId: 1,
           userId: 1,
           firstName: "crys",
@@ -83,7 +83,7 @@ export default {
           timeSlot: 20,
           email: "no@email.com",
         },
-      ],
+],
       availabilities: [
         {
           doctorId: 1,
@@ -129,7 +129,8 @@ export default {
     //   this.newAppointment.doctorId = doctor.doctorId;
     //   this.newAppointment.duration = doctor.timeSlot;
     //   // this.appointments.push(this.newAppointment); or commit to $store
-    // }
+    // },
+
   },
 
 };

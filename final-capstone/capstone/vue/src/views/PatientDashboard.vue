@@ -10,7 +10,7 @@
                   <li > <router-link :to="{name: 'schedule-appointment'}">SCHEDULE AN APPOINTMENT</router-link> </li>
                   <li >UPDATE INFO</li>
                   <li >VISIT HISTORY</li>
-                  <b-button variant="primary">Click me!</b-button>
+              
                 </ul>
             </nav>      
             <button id="support">CONTACT SUPPORT</button>
