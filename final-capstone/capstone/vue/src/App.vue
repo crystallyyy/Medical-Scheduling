@@ -5,6 +5,8 @@
         <li><router-link v-bind:to="{name: 'home'}">Home</router-link></li>&nbsp;&nbsp;
         <li><router-link v-bind:to="{ name: 'doctordash' }">Doctor Dashboard</router-link></li>&nbsp;&nbsp;
         <li><router-link v-bind:to="{ name: 'patientdash' }">Patient Dashboard</router-link></li>&nbsp;&nbsp;
+        <!-- <li><router-link v-bind:to="{ name: 'logout' }">Log Out</router-link></li>&nbsp;&nbsp; -->
+
       </ul>
     </div>
     <router-view />
