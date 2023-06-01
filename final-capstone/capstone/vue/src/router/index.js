@@ -13,7 +13,6 @@ import ScheduleAppointment from '../views/ScheduleAppointment.vue'
 import Providers from '../views/Providers.vue'
 import Offices from '../views/Offices.vue'
 
-
 Vue.use(Router)
 
 /**
@@ -103,7 +102,7 @@ const router = new Router({
     },
     {
       path: '/doctorDash',
-      name: 'doctor-dash',
+      name: 'doctordash',
       component: DoctorDashboard,
       meta: {
         requiresAuth: false
@@ -111,7 +110,7 @@ const router = new Router({
     },
     {
       path: '/patientDash',
-      name: 'patient-dash',
+      name: 'patientdash',
       component: PatientDashboard,
       meta: {
         requiresAuth: false

@@ -1,5 +1,6 @@
 package com.techelevator.controller;
 
+import com.techelevator.dao.JdbcPatientDao;
 import com.techelevator.dao.PatientDAO;
 import com.techelevator.model.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ import javax.validation.Valid;
 @PreAuthorize("isAuthenticated()")
 public class PatientController {
     @Autowired
-    PatientDAO patientDAO;
+    JdbcPatientDao patientDAO;
 
     @PostMapping(path = "/patients")
     public Patient newPatient(@Valid @RequestBody Patient patient){
