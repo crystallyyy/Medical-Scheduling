@@ -1,15 +1,15 @@
 package com.techelevator.model;
 
-public class Reviews {
+public class Review {
     private int reviewId;
     private int officeId;
     private String description;
     private int rating;
 
-    public Reviews() {
+    public Review() {
     }
 
-    public Reviews(int reviewId, int officeId, String description, int rating) {
+    public Review(int reviewId, int officeId, String description, int rating) {
         this.reviewId = reviewId;
         this.officeId = officeId;
         this.description = description;
