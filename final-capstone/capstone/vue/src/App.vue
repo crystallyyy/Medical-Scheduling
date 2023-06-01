@@ -3,10 +3,10 @@
     <div id="nav">
       <ul>
         <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
-        <li><router-link v-bind:to="{name: 'login'}">Login</router-link></li>&nbsp;&nbsp;
+        <li><router-link v-bind:to="{name: 'login'}" v-show="$store.state.token === ''">Login</router-link></li>&nbsp;&nbsp;
         <li><router-link v-bind:to="{ name: 'doctordash' }">Doctor Dashboard</router-link></li>&nbsp;&nbsp;
         <li><router-link v-bind:to="{ name: 'patientdash' }">Patient Dashboard</router-link></li>&nbsp;&nbsp;
-        <li> <router-link :to="{name: 'logout'}" v-if="$store.state.token != ''"> Logout</router-link> </li>&nbsp;&nbsp;
+        <li> <router-link :to="{name: 'logout'}" v-show="$store.state.token != ''"> Logout</router-link> </li>&nbsp;&nbsp;
         <li> <router-link :to="{name: 'register'}">Register</router-link> </li>
       </ul>
     </div>
