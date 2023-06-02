@@ -3,7 +3,7 @@
     <thead>
       <tr>
         <th>ID</th>
-        <th>Reviews</th>
+        <th>Review</th>
         <!-- <th>Number of Reviews</th> -->
         <th>Rating</th>
         <th>Patient</th>
@@ -14,7 +14,7 @@
          <!--  COMMENT   -->
          <!-- need to swap out "product" to something like "office" -->
       <tr v-for="review in reviews" v-bind:key="review.id">
-        <td>{{ review.id }}</td>
+        <td>{{ review.reviewId }}</td>
         <td>
           <!-- <router-link
             v-bind:to="{ name: 'product-detail', params: { id: product.id }}"}></router-link> -->

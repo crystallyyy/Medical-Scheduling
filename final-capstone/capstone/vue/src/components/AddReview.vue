@@ -2,11 +2,8 @@
   <form v-on:submit.prevent="addNewReview">
     <div class="form-element">
       <label for="reviewer">Name:</label>
-      <input id="reviewer" type="text" v-model="newReview.reviewer" />
-    </div>
-    <div class="form-element">
-      <label for="title">Title:</label>
-      <input id="title" type="text" v-model="newReview.title" />
+      <!-- use method to get patient id from name // orrr change table to accept patient name -->
+      <input id="reviewer" type="text" v-model="newReview.patientId" />
     </div>
     <div class="form-element">
       <label for="rating">Rating:</label>

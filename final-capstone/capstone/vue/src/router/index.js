@@ -15,6 +15,7 @@ import store from '../store/index'
 import Home from '../views/Home.vue'
 import ReviewsOnPD from '../views/ReviewsOnPD.vue'
 import ReviewsOnDD from '../views/ReviewsOnDD.vue'
+import AddReview from '../views/AddReview.vue'
 
 Vue.use(VueRouter);
 
@@ -128,6 +129,14 @@ Vue.use(VueRouter);
       path: '/reviews/:officeId',
       name: 'reviewsDD',
       component: ReviewsOnDD,
+      meta: {
+        requiresAuth: false
+      },
+    },
+    {
+      path: '/reviews/:officeId/addReview',
+      name: 'add-review',
+      component: AddReview,
       meta: {
         requiresAuth: false
       },
