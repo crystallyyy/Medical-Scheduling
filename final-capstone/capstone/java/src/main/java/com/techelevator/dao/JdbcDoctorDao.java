@@ -48,7 +48,16 @@ public class JdbcDoctorDao implements DoctorDAO{
         }
         return doctor;
     }
-
+    @Override
+    public Doctor getDoctorByUserId(int userId) {
+        Doctor doctor = null;
+        String sql = "SELECT * FROM doctor WHERE user_id = ?";
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sql,userId);
+        if(result.next()){
+            doctor = mapRowToDoctor(result);
+        }
+        return doctor;
+    }
     @Override
     public Doctor addDoctor(Doctor doctor) {
 

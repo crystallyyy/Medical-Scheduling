@@ -147,9 +147,9 @@ Vue.use(VueRouter);
       name: 'DoctorAccountCreationPage',
       component: DoctorAccountRegistration,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       },
-      props: true
+      
     }
   ]
 

@@ -9,9 +9,9 @@ public class Doctor {
     private int userId;
     private String firstName;
     private String lastName;
-    @JsonIgnore
     private int timeSlotDefault;
     private String email;
+    @JsonIgnore
     private List<DoctorAvailability> doctorAvailability;
 
     public Doctor() {
