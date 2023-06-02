@@ -2,11 +2,11 @@
   <div id="login">
     <div class="fancy-border">
       <h1>WELCOME TO THE MEDICAL SCHEDULING PORTAL</h1>
-      <img src="../../img/logo.jpg" alt="company logo">
+      <img src="../../img/logo2.jpeg" alt="company logo">
     </div>
     
 
-    <form class="fancy-border" @submit.prevent="login">
+    <form class="credentials" @submit.prevent="login">
       <h2 >Sign In</h2>
       <div role="alert" v-if="invalidCredentials">
         Invalid username and password!
@@ -91,10 +91,14 @@ label {
 
 
 .fancy-border {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
   border: 2px solid #3F51B5; /* Dark blue border */
   border-radius: 10px; /* Rounded corners */
-  padding: 20px;
-  background-color: #F5F5F5; /* Light gray background */
+  padding: 10px;
+  background-color: white; /* Light gray background */
 
 }
 
@@ -110,8 +114,11 @@ label {
   margin-left: auto;
   margin-right: auto;
   width: 50%; /* Adjust the width as needed */
-
+  
   text-align: center;
 }
-
+ 
+ img {
+   max-width: 10%;
+ }
 </style>

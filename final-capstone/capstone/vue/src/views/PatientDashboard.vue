@@ -4,7 +4,7 @@
     <div id="nav">
 <ul class="nav flex-column">
 
-    <li class="nav-item"> <img id="img" src="../../img/logo.jpg" alt="company logo">
+    <li class="nav-item"> <img id="img" src="../../img/logo2.jpeg" alt="company logo">
         
 </li>
   <li class="nav-item">

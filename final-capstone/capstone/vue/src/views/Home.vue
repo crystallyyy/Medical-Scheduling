@@ -6,7 +6,7 @@
           <!-- Image and text -->
           <b-navbar variant="faded" type="light" class="nav">
             <b-navbar-brand class="name">
-              <img src="https://placekitten.com/g/30/30" class="d-inline-block align-top" alt="LOGO HERE">
+              <img src="../../img/logo2.jpeg" class="d-inline-block align-top" alt="LOGO HERE">
               GENESIS COMPLETE CARE
             </b-navbar-brand>
         
@@ -18,7 +18,7 @@
           </b-navbar>
         </div>
 
-       <p> still need a lot of edits  -  login botton works, uncomment the router links in app.vue to see hidden nav links</p>
+       <p> </p>
     </div>
     <div class="video">
       <div class="video-container">
@@ -75,6 +75,7 @@
 .home{
   display: grid;
   height: 100vh;
+  padding: 30px 30px;
   grid-template-columns: 1fr;
   grid-template-rows: 30% 70%;
   grid-template-areas: 
@@ -87,8 +88,8 @@
 .header{
   
   grid-area:header;
-  margin: 20px;
-
+  margin: 30px;
+  padding-top: 20px;
 }
 .video{
   grid-area: video;
@@ -122,12 +123,12 @@
   display:flex;
   justify-content: space-between;
   align-content: center;
-  padding: 20px;
+  padding: 20px 0px;
   background-color: white;
-  border: 3px solid;
-  border-color: #192841 transparent transparent;
-  border-top-left-radius: 20px;
-  border-top-right-radius:20px;
+  border-bottom: 1px solid;
+  border-top: 1px solid;
+  border-color:#aaaaaa;
+  
 }
 
 .links{
@@ -136,19 +137,21 @@
   font: 20px bold; 
   color:black;
   border-radius: 20px;
+  
+  
 
 
 }
 .name{
-  color:teal;
-  font: 40px  bold; 
+  color:#203354;
+  font: 40px bold; 
  
 }
 p{
   font-size: 40px;
   padding:30px;
 }
-/* img{
-  height: 80%;
-} */
+img{
+  height: 50px;
+}
 </style>
