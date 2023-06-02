@@ -1,10 +1,10 @@
 <template>
   <div class="reviews">
-    <h1>Reviews</h1>
+    <h3>REVIEWS</h3>
 
     <div class="actions">
       <router-link v-bind:to="{ name: 'Offices' }">
-        Back to Offices
+        Return to Offices
       </router-link>
       <span style="paddingleft: 8px; paddingright: 8px">|</span>
       <router-link
@@ -35,3 +35,15 @@ export default {
   },
 };
 </script>
+
+<style>
+.reviews {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 50%; 
+  text-align: center;
+}
+
+</style>
