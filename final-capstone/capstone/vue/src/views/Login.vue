@@ -2,12 +2,12 @@
   <div id="login">
     <div class="fancy-border">
       <h1>WELCOME TO THE MEDICAL SCHEDULING PORTAL</h1>
-      <img src="image.jpg" alt="Fancy Portal Image">
+      <img src="../../img/logo.jpg" alt="company logo">
     </div>
     
 
     <form class="fancy-border" @submit.prevent="login">
-      <h2 >Please Sign In</h2>
+      <h2 >Sign In</h2>
       <div role="alert" v-if="invalidCredentials">
         Invalid username and password!
       </div>
@@ -52,7 +52,7 @@ export default {
     return {
       user: {
         username: "",
-        password: ""
+        password: "",
       },
       invalidCredentials: false
     };
@@ -80,7 +80,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .form-input-group {
   margin-bottom: 1rem;
 }
@@ -95,6 +95,7 @@ label {
   border-radius: 10px; /* Rounded corners */
   padding: 20px;
   background-color: #F5F5F5; /* Light gray background */
+
 }
 
 .fancy-border h2 {
