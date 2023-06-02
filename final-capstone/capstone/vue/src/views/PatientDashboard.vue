@@ -1,39 +1,58 @@
+          
 <template>
-    <div class="main">
-        <aside class="sidenav">
-            <div class="imgdiv">
-                <img src="../../img/logo.jpg" alt="company logo">
-            </div>    
-            <nav>
-                <ul> 
-                  <li  >DASHBOARD</li>
-                  <li > <router-link :to="{name: 'schedule-appointment'}">SCHEDULE AN APPOINTMENT</router-link> </li>
-                  <li >UPDATE INFO</li>
-                  <li >VISIT HISTORY</li>
-              
-                </ul>
-            </nav>      
-            <button id="support">CONTACT SUPPORT</button>
-        </aside>
-        <div class="content">
+<div id='main'>
+    <div id="nav">
+<ul class="nav flex-column">
+
+    <li class="nav-item"> <img id="img" src="../../img/logo.jpg" alt="company logo">
         
-            <div class="dashboard"></div>
-            <div class="profile"></div>
-            <div class="offices"></div>
-            <div class="contact"></div>
-        </div>
+</li>
+  <li class="nav-item">
+    <button type="button" class="btn btn-info" @click="activeCard = 1">Dashboard</button>
+
+  </li>
+  <li class="nav-item">
+     <button type="button" class="btn btn-info " @click="activeCard = 2">Schedule an appointment</button>
+  </li>
+  <li class="nav-item">
+     <button type="button" class="btn btn-info" @click="activeCard = 3">Update info</button>
+  </li>
+  <li class="nav-item">
+    <button type="button" class="btn btn-info" @click="activeCard = 4">Past visits</button>
+  </li>
+
+</ul>
     </div>
+
+<div id="content"> 
+    <div class="card card-body" v-show="activeCard === 1">
+          Content for show dashboard
+    </div>
+    <div class="card card-body" v-show="activeCard === 2">
+          Content for my profile
+    </div>  
+    <div class="card card-body" v-show="activeCard === 3">
+          Content for manage location
+    </div>
+    <div class="card card-body" v-show="activeCard === 4">
+          Content for change availability
+    </div> 
+</div>
+</div>
+    
+  <!-- include contact support -->
+  
 </template>
 
 <script>
 export default {
-  name: "patient-dash",
+  name: "doctor-dash",
   data() {
     return {
 
-    isActive: false,
+    activeCard: null,
     methods:{
-         
+
      } 
     }
   }
@@ -41,72 +60,25 @@ export default {
 </script>
 
 <style>
-.main{
-    display: grid;
-    grid-template-columns: 25% 75%;
-    grid-template-areas: "sidenav content";
-    
-
-}
-.sidenav {
-    grid-area: sidenav;
-    background-color: grey;
-    height: 100vh;
-    display:flex;
-    flex-direction: column;
-    align-content: center;
-    
-    
-    
-}
-.content{
-    grid-area: content;
-    background-color: white;
-}
-
-
-.imgdiv {
-    flex-basis: 25%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    
-}
-nav {
-    flex-basis: 60%;
-    display: flex;
-    background-color: grey;
-    align-content: center;
-    justify-content: center;
-}
-nav ul{
-    flex-grow: 1;
-   list-style-type: none;
-   margin: 0;
-   padding:0;
-   justify-content: center;
-   
- 
-}
-nav ul li{
-    padding: 40px 0px;
-    background-color: turquoise;
-    border-block: 1px solid black;
-    text-align: center;
-}
-
-.active {
-    background-color: white;
-}
-#support {
-    flex-basis: 15%;
-    border: 0px;
-    
-}
-img{
-    height: 50%;
-    border-radius: 50%;
-    
-}
+    .navbar {
+      height: 100vh;
+    }
+    .nav-item {
+      margin-bottom: 10px;
+    }
+    #img {
+      max-width: 100px;
+      margin-bottom: 20px;
+    }
+    #main{
+        display: grid;
+        grid-template-columns: 25% 75%;
+        grid-template-areas: "nav content";
+    }
+    #nav{
+        display:flex;
+    }
+    #content{
+        display: flex;
+    }
 </style>
