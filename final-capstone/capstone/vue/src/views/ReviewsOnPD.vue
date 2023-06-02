@@ -1,16 +1,16 @@
 <template>
   <div class="reviews">
     <h1>Reviews</h1>
-    <doctor-review-list />
+    <ReviewListPD />
   </div>
 </template>
 
 <script>
-import DoctorReviewList from '../components/DoctorReviewList.vue';
+import ReviewListPD from '../components/ReviewListPD.vue';
 
 export default {
   components: {
-    DoctorReviewList
+    ReviewListPD
   }
 };
 </script>

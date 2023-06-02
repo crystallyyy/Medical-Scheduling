@@ -13,6 +13,8 @@ import DoctorUserRegistration from '../views/DoctorUserRegistration.vue'
 import DoctorAccountRegistration from '../views/DoctorAccountRegistration.vue'
 import store from '../store/index'
 import Home from '../views/Home.vue'
+import ReviewsOnPD from '../views/ReviewsOnPD.vue'
+import ReviewsOnDD from '../views/ReviewsOnDD.vue'
 
 Vue.use(VueRouter);
 
@@ -115,13 +117,29 @@ Vue.use(VueRouter);
       }
     },
     {
+      path: '/reviews/:officeId',
+      name: 'reviewsPD',
+      component: ReviewsOnPD,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/reviews/:officeId',
+      name: 'reviewsDD',
+      component: ReviewsOnDD,
+      meta: {
+        requiresAuth: false
+      },
+    },
+    {
       path: '/doctor-account-creation',
       name: 'DoctorAccountCreationPage',
       component: DoctorAccountRegistration,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       },
-      props: true
+      
     }
   ]
 

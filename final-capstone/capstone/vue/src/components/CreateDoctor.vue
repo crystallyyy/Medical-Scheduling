@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h2>Create Doctor Table</h2>
     <form @submit.prevent="submitForm">
+        
       <div class="form-group">
         <label for="first_name">First Name:</label>
         <input type="text" class="form-control" v-model="firstName" required>
@@ -23,25 +23,53 @@
       </div>
       
       <button type="submit" class="btn btn-primary">Submit</button>
+      
     </form>
+    
   </div>
 </template>
 
 <script>
+import providerService from "../services/providerService.js";
 export default {
+    props :{
+        userName: String
+    },
   data() {
     return {
       firstName: '',
       lastName: '',
       timeSlotDefault: '',
-      email: ''
+      email: '',
+      userId: 0,
+      doctor: {},
     };
   },
   methods: {
-    submitForm() {
-      // Handle form submission here
-      // You can access the form values using the data properties (e.g., this.doctorId, this.userId, etc.)
-      // Execute appropriate logic to create the table and insert the data into the database
+    async submitForm() { 
+          try {
+    const res1 = await providerService.getDoctorUserIdByUsername(this.userName);
+    this.userId = res1.data;
+    const res2 = await providerService.getDoctorByUserId(this.userId);
+    this.doctor = res2.data;
+    this.doctor.firstName = this.firstName;
+    this.doctor.lastName = this.lastName;
+    this.doctor.email = this.email;
+    this.doctor.timeSlotDefault = this.timeSlotDefault;
+    providerService.updateDoctorInformation(this.doctor).then(res=>{
+      if(res.status==200){
+        this.$router.push("/doctorDash")
+      }
+    })
+       } catch (error) {
+    // Handle any errors that occur during the async calls
+    console.error(error);
+  }
+   
+    },
+    created(){
+      
+   
     }
   }
 };

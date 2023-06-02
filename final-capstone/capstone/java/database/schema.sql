@@ -66,7 +66,7 @@ CREATE TABLE office_hours (
 CREATE TABLE doctor_office (
 	doctor_id int NOT NULL,
 	office_id int NOT NULL,
-	CONSTRAINT PK_doctor_office PRIMARY KEY (doctor_id),
+	CONSTRAINT PK_doctor_office PRIMARY KEY (doctor_id, office_id),
 	CONSTRAINT FK_doctor_office_doctor FOREIGN KEY (doctor_id) REFERENCES doctor(doctor_id),
 	CONSTRAINT FK_doctor_office_office FOREIGN KEY (office_id) REFERENCES office(office_id)
 );
@@ -76,6 +76,7 @@ CREATE TABLE reviews (
 	office_id int NOT NULL,
 	description varchar(1000),
 	rating int NOT NULL,
+	patient_id int NOT NULL,
 	CONSTRAINT PK_review PRIMARY KEY (review_id),
 	CONSTRAINT FK_reviews_office FOREIGN KEY (office_id) REFERENCES office(office_id)
 );
