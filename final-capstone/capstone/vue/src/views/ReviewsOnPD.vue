@@ -2,13 +2,18 @@
   <div class="reviews">
     <h3>REVIEWS</h3>
 
-     <div class='actions'>
+    <div class="actions">
       <router-link v-bind:to="{ name: 'Offices' }">
         Return to Offices
       </router-link>
-      <span style="paddingLeft: 8px; paddingRight: 8px;">|</span>
-      <router-link v-bind:to="{ name: 'add-review', params: {officeId: officeId} }">
-        Add Review
+      <span style="paddingleft: 8px; paddingright: 8px">|</span>
+      <router-link
+        v-bind:to="{
+          name: 'add-review',
+          params: { officeId: currentOfficeId },
+        }"
+      >
+        Add reivew
       </router-link>
     </div>
 
@@ -17,12 +22,17 @@
 </template>
 
 <script>
-import ReviewListPD from '../components/ReviewListPD.vue';
+import ReviewListPD from "../components/ReviewListPD.vue";
 
 export default {
+  data() {
+    return {
+      currentOfficeId: this.$route.params.officeId,
+    };
+  },
   components: {
-    ReviewListPD
-  }
+    ReviewListPD,
+  },
 };
 </script>
 

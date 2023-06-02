@@ -4,6 +4,7 @@ package com.techelevator.controller;
 import com.techelevator.dao.ReviewDAO;
 import com.techelevator.model.Review;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -22,6 +23,7 @@ public class ReviewController {
         return reviewDAO.getAllReviews();
    }
 
+   @ResponseStatus(HttpStatus.CREATED)
    @PostMapping(path = "/submitReview")
     public Review newReview(@Valid @RequestBody Review review){
         return reviewDAO.addReview(review);

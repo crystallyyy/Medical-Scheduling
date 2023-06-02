@@ -8,7 +8,7 @@ import Offices from '../views/Offices.vue'
 import Providers from '../views/Providers.vue'
 import Register from '../views/Register.vue'
 import ScheduleAppointment from '../views/ScheduleAppointment.vue'
-import PatientRegistration from '../views/PatientRegistration.vue'
+import PatientUserRegistration from '../views/PatientUserRegistration.vue'
 import DoctorUserRegistration from '../views/DoctorUserRegistration.vue'
 import DoctorAccountRegistration from '../views/DoctorAccountRegistration.vue'
 import store from '../store/index'
@@ -16,6 +16,8 @@ import Home from '../views/Home.vue'
 import ReviewsOnPD from '../views/ReviewsOnPD.vue'
 import ReviewsOnDD from '../views/ReviewsOnDD.vue'
 import AddReview from '../views/AddReview.vue'
+import PatientAccountRegistration from '../views/PatientAccountRegistration.vue'
+
 
 Vue.use(VueRouter);
 
@@ -28,96 +30,96 @@ Vue.use(VueRouter);
  * If they have (or don't need to) they're allowed to go about their way.
  */
 
- const router = new VueRouter({
-  mode: 'history',
+const router = new VueRouter({
+  mode: "history",
   routes: [
     {
-      path: '/',
-      name: 'home',
+      path: "/",
+      name: "home",
       component: Home,
       // meta: {
       //   requiresAuth: true
       // }
     },
     {
-      path: '/doctorDash',
-      name: 'doctordash',
+      path: "/doctorDash",
+      name: "doctordash",
       component: DoctorDashboard,
       meta: {
-        requiresAuth: false
-      }
+        requiresAuth: false,
+      },
     },
     {
-      path: '/patientDash',
-      name: 'patientdash',
+      path: "/patientDash",
+      name: "patientdash",
       component: PatientDashboard,
       meta: {
-        requiresAuth: false
-      }
+        requiresAuth: false,
+      },
     },
     {
-      path: '/login',
-      name: 'login',
-      component: Login
-      
+      path: "/login",
+      name: "login",
+      component: Login,
     },
     {
-      path: '/patientRegistration',
-      name: 'patientRegister',
-      component: PatientRegistration,
+      path: "/patientRegistration",
+      name: "patientRegister",
+      component: PatientUserRegistration,
       meta: {
-        requiresAuth: false
-      }
+        requiresAuth: false,
+      },
     },
     {
-      path: '/doctorRegistration',
-      name: 'doctorRegister',
+      path: "/doctorRegistration",
+      name: "doctorRegister",
       component: DoctorUserRegistration,
       meta: {
-        requiresAuth: false
-      }
+        requiresAuth: false,
+      },
     },
     {
-      path: '/scheduleAppointment',
-      name: 'schedule-appointment',
+      path: "/scheduleAppointment",
+      name: "schedule-appointment",
       component: ScheduleAppointment,
       meta: {
-        requiresAuth: false
-      }
+        requiresAuth: false,
+      },
     },
     {
-      path: '/providers',
-      name: 'Providers',
+      path: "/providers",
+      name: "Providers",
       component: Providers,
       meta: {
-        requiresAuth: false
-      }
+        requiresAuth: false,
+      },
     },
     {
-      path: '/offices',
-      name: 'Offices',
+      path: "/offices",
+      name: "Offices",
       component: Offices,
       meta: {
-        requiresAuth: false
-      }
+        requiresAuth: false,
+      },
     },
     {
-      path: '/logout',
-      name: 'logout',
+      path: "/logout",
+      name: "logout",
       component: Logout,
       meta: {
-        requiresAuth: false
-      }
+        requiresAuth: false,
+      },
     },
     {
-      path: '/register',
-      name: 'register',
+      path: "/register",
+      name: "register",
       component: Register,
       meta: {
-        requiresAuth: false
-      }
+        requiresAuth: false,
+      },
     },
     {
+    
       path: '/reviews/:officeId',
       name: 'reviewsPD',
       component: ReviewsOnPD,
@@ -141,32 +143,36 @@ Vue.use(VueRouter);
         requiresAuth: false
       },
     },
+  
     {
-
       path: '/doctor-account-creation',
       name: 'DoctorAccountCreationPage',
-      component: DoctorAccountRegistration,
+       component: DoctorAccountRegistration,
       meta: {
-        requiresAuth: true
+        requiresAuth: true,
       },
-      
-    }
-  ]
+    },
+    {
+      path: "/patient-account-creation/",
+      name: "PatientAccountCreationPage",
+      component: PatientAccountRegistration,
+      meta: {
+        requiresAuth: false,
+      },
+    },
+  ],
+});
+router.beforeEach((to, from, next) => {
+  // Determine if the route requires Authentication
+  const requiresAuth = to.matched.some((x) => x.meta.requiresAuth);
 
-  });
-  router.beforeEach((to, from, next) => {
-    // Determine if the route requires Authentication
-    const requiresAuth = to.matched.some(x => x.meta.requiresAuth);
-  
-    // If it does and they are not logged in, send the user to "/login"
-    if (requiresAuth && store.state.token === '') {
-      next("/login");
-    } else {
-      // Else let them go to their next destination
-      next();
-    }
-  });
-
-
+  // If it does and they are not logged in, send the user to "/login"
+  if (requiresAuth && store.state.token === "") {
+    next("/login");
+  } else {
+    // Else let them go to their next destination
+    next();
+  }
+});
 
 export default router;
