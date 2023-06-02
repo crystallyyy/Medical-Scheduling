@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h2>Create Doctor Table</h2>
     <form @submit.prevent="submitForm">
       <div class="form-group">
         <label for="first_name">First Name:</label>
@@ -23,12 +22,17 @@
       </div>
       
       <button type="submit" class="btn btn-primary">Submit</button>
+      
     </form>
+    
   </div>
 </template>
 
 <script>
 export default {
+  props : {
+      user: Object 
+  },
   data() {
     return {
       firstName: '',
@@ -39,9 +43,7 @@ export default {
   },
   methods: {
     submitForm() {
-      // Handle form submission here
-      // You can access the form values using the data properties (e.g., this.doctorId, this.userId, etc.)
-      // Execute appropriate logic to create the table and insert the data into the database
+  
     }
   }
 };
