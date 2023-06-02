@@ -50,25 +50,19 @@
 </template>
 
 <script>
-// import serverService from '../services/ServerService.js';
 
-// export default {
-//   name: "home",
-//   data() {
-//     return {
-//       patientList : []
-//     }
-//   },
 
-//   created() {
-//     serverService.getAllPatients().then(
-//       // anonymous function
-//       (response) => {
-//         this.patientList = response.data;
-//       }
-//     );
-//   }
-// };
+export default {
+  name: "home",
+  data() {
+    return {}
+
+  },
+  methods: {
+    
+  }
+ 
+};
 </script>
 
 <style scoped>

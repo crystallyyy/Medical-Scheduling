@@ -6,7 +6,7 @@
     </div>
     
   
-    <!-- <div id="nav">
+    <div id="nav">
       <ul>
         
         <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
@@ -16,15 +16,17 @@
         <li> <router-link :to="{name: 'logout'}" v-show="$store.state.token != ''"> Logout</router-link> </li>&nbsp;&nbsp;
         <li> <router-link :to="{name: 'login'}" v-show="false">Register</router-link> </li>
       </ul>
-    </div> -->
-
+    </div>
+  
     
     <router-view />
   </div>
 </template>
 <script>
 
+
 export default {
+  
   name: 'app'
 }
 </script>

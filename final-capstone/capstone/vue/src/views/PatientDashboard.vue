@@ -76,9 +76,11 @@ export default {
         grid-template-areas: "nav content";
     }
     #nav{
+        grid-area: nav;
         display:flex;
     }
     #content{
+        grid-area: content;
         display: flex;
     }
 </style>
