@@ -37,6 +37,11 @@ public class DoctorController {
         return doctorDAO.getDoctorById(doctorId);
     }
 
+    @GetMapping(path = "/pid/{userId}")
+    public Doctor getDoctorByUserId(@PathVariable int userId){
+        return doctorDAO.getDoctorByUserId(userId);
+    }
+
     //necessary?
     @DeleteMapping(path = "/providers/{doctorId}")
     public void deleteDoctor(@PathVariable int doctorId){

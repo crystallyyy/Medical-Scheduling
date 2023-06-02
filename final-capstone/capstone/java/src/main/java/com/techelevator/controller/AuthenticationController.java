@@ -60,5 +60,16 @@ public class AuthenticationController {
         }
     }
 
+    @GetMapping(path = "/{username}")
+    public int getUserId(@PathVariable String username){
+        int userId;
+        try{
+          userId   = userDao.findIdByUsername(username);
+        } catch (UsernameNotFoundException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"User not found");
+        }
+        return userId;
+    }
+
 }
 

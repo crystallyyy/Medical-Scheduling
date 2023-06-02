@@ -1,12 +1,23 @@
 <template>
-  <create-doctor :user="user"/>
+   <div> 
+        <h1>Welcome, Doctor Please Create An Account!</h1>
+        <create-doctor :userName="username"/>
+    </div>
 </template>
 
 <script>
 import CreateDoctor from '../components/CreateDoctor.vue'
 export default {
   components: { CreateDoctor },
-  props: ['user'],
+data() {
+    return {
+      username: ''
+    };
+  },
+  created() {
+    this.username = this.$route.query.username;
+  }
+  
 
 }
 </script>

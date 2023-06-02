@@ -40,6 +40,10 @@ export default {
         confirmPassword: '',
         role: 'admin',
       },
+      loginUser : {
+        username: '',
+        password: ''
+      },
       registrationErrors: false,
       registrationErrorMsg: 'There were problems registering this user.',
       secretCode: 1234,
@@ -54,13 +58,23 @@ export default {
       } else {
         authService
           .register(this.user)
-          .then((response) => {
-            if (response.status == 201) {
-              this.$router.push({
-                path: '/doctor-account-creation',
-                query: { registration: 'success' },
-                params: { user: this.user }
+            .then((response) => {
+               if (response.status == 201) {
+                this.loginUser.username = this.user.username;
+                this.loginUser.password = this.user.password;
+                   authService.login(this.loginUser).then(res=>{
+                      if(res.status==200){
+                    this.$store.commit("SET_AUTH_TOKEN", res.data.token);
+                      this.$store.commit("SET_USER", res.data.user);
+                    this.$router.push({
+                      path: '/doctor-account-creation',
+                       query: { registration: 'success',
+                       username: this.user.username },
+               
               });
+                  }
+              })
+            
             }
           })
           .catch((error) => {
