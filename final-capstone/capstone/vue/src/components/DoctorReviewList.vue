@@ -4,13 +4,13 @@
       <tr>
         <th>ID</th>
         <th>Name</th>
-        <th># Reviews</th>
+        <th>Number of Reviews</th>
       </tr>
     </thead>
     <tbody>
 
          <!--  COMMENT   -->
-         <!-- need to swap out "product" to something like "doctorId" -->
+         <!-- need to swap out "product" to something like "office" -->
       <tr v-for="product in $store.state.products" v-bind:key="product.id">
         <td>{{ product.id }}</td>
         <td>
