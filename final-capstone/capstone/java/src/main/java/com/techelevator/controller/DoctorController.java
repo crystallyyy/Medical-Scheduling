@@ -39,7 +39,7 @@ public class DoctorController {
 
     @GetMapping(path = "/pid/{userId}")
     public Doctor getDoctorByUserId(@PathVariable int userId){
-        return doctorDAO.getDoctorByUserId(userId);
+         return doctorDAO.getDoctorByUserId(userId);
     }
 
     //necessary?
