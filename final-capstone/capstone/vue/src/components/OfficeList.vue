@@ -2,10 +2,10 @@
   <div>
     <ul>
       <li v-for="office in offices" v-bind:key="office.officeId">
-        <h2>Dr. {{ office.officeName }} </h2>
+        <h2>{{ office.officeName }} </h2>
         <h3>{{ office.address }}</h3>
         <h3> {{office.phoneNumber}}</h3>
-        <button> <router-link :to="{name: 'reviewsPD'}">See reviews for this office</router-link> </button>
+        <button> <router-link :to="{name: 'reviewsPD', params: {officeId: office.officeId}}">See reviews for this office</router-link> </button>
       </li>
     </ul>
   </div>
