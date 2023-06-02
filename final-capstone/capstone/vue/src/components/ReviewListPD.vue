@@ -11,7 +11,7 @@
 
          <!--  COMMENT   -->
          <!-- need to swap out "product" to something like "office" -->
-      <tr v-for="product in $store.state.products" v-bind:key="product.id">
+      <tr v-for="review in $store.state.reviews" v-bind:key="review.id">
         <td>{{ product.id }}</td>
         <td>
           <router-link
@@ -26,7 +26,7 @@
 
 <script>
 export default {
-  name: "products-list"
+  name: "review-list-pd"
 };
 </script>
 

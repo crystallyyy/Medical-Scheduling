@@ -12,6 +12,8 @@ import PatientRegistration from '../views/PatientRegistration.vue'
 import DoctorRegistration from '../views/DoctorRegistration.vue'
 import store from '../store/index'
 import Home from '../views/Home.vue'
+import ReviewsOnPD from '../views/ReviewsOnPD.vue'
+import ReviewsOnDD from '../views/ReviewsOnDD.vue'
 
 Vue.use(VueRouter);
 
@@ -109,6 +111,22 @@ Vue.use(VueRouter);
       path: '/register',
       name: 'register',
       component: Register,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/reviews/:officeId',
+      name: 'reviewsPD',
+      component: ReviewsOnPD,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/reviews/:officeId',
+      name: 'reviewsDD',
+      component: ReviewsOnDD,
       meta: {
         requiresAuth: false
       }

@@ -5,6 +5,7 @@
         <h2>Dr. {{ office.officeName }} </h2>
         <h3>{{ office.address }}</h3>
         <h3> {{office.phoneNumber}}</h3>
+        <button> <router-link :to="{name: 'reviewsPD'}">See reviews for this office</router-link> </button>
       </li>
     </ul>
   </div>
@@ -26,7 +27,8 @@ export default {
           this.offices = response.data;
         });
       
-  }
+  }, 
+
 }
 </script>
 
