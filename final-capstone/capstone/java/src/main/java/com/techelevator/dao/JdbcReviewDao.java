@@ -13,8 +13,6 @@ import java.util.List;
 public class JdbcReviewDao implements ReviewDAO{
 
     private final JdbcTemplate jdbcTemplate;
-    @Autowired
-    private JdbcAvailabilityDao jdbcAvailabilityDao;
     public JdbcReviewDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
@@ -45,9 +43,9 @@ public class JdbcReviewDao implements ReviewDAO{
     @Override
     public Review addReview(Review review) {
         Review newReview = null;
-        String sql = "INSERT INTO reviews (office_id, description, rating) " +
+        String sql = "INSERT INTO reviews (office_id, description, rating, patient_id) " +
                 "VALUES (?, ?, ?) RETURNING review_id";
-        int reviewId = jdbcTemplate.queryForObject(sql, int.class, review.getOfficeId(), review.getDescription(), review.getRating() );
+        int reviewId = jdbcTemplate.queryForObject(sql, int.class, review.getOfficeId(), review.getDescription(), review.getRating(), review.getPatientId() );
 
         return getReviewById(reviewId);
     }
@@ -71,7 +69,8 @@ public class JdbcReviewDao implements ReviewDAO{
                 row.getInt("review_id"),
                 row.getInt("office_id"),
                 row.getString("description"),
-                row.getInt("rating")
+                row.getInt("rating"),
+                row.getInt("patient_id")
         );
 
         return review;

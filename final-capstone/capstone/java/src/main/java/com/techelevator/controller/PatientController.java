@@ -21,4 +21,6 @@ public class PatientController {
     public Patient newPatient(@Valid @RequestBody Patient patient){
         return patientDAO.addPatient(patient);
     }
+
+    //TODO: GET PATIENT BY ID
 }

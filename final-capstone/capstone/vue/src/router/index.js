@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import Vue from "vue";
 import VueRouter from "vue-router";
 import DoctorDashboard from "../views/DoctorDashboard.vue";
@@ -14,6 +15,26 @@ import DoctorAccountRegistration from "../views/DoctorAccountRegistration.vue";
 import PatientAccountRegistration from "../views/PatientAccountRegistration.vue";
 import store from "../store/index";
 import Home from "../views/Home.vue";
+=======
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import DoctorDashboard from '../views/DoctorDashboard.vue';
+import PatientDashboard from '../views/PatientDashboard.vue';
+import Login from '../views/Login.vue'
+import Logout from '../views/Logout.vue'
+import Offices from '../views/Offices.vue'
+import Providers from '../views/Providers.vue'
+import Register from '../views/Register.vue'
+import ScheduleAppointment from '../views/ScheduleAppointment.vue'
+import PatientRegistration from '../views/PatientRegistration.vue'
+import DoctorUserRegistration from '../views/DoctorUserRegistration.vue'
+import DoctorAccountRegistration from '../views/DoctorAccountRegistration.vue'
+import store from '../store/index'
+import Home from '../views/Home.vue'
+import ReviewsOnPD from '../views/ReviewsOnPD.vue'
+import ReviewsOnDD from '../views/ReviewsOnDD.vue'
+import AddReview from '../views/AddReview.vue'
+>>>>>>> main
 
 Vue.use(VueRouter);
 
@@ -115,9 +136,39 @@ const router = new VueRouter({
       },
     },
     {
+<<<<<<< HEAD
       path: "/doctor-account-creation/",
       name: "DoctorAccountCreationPage",
-      component: DoctorAccountRegistration,
+=======
+      path: '/reviews/:officeId',
+      name: 'reviewsPD',
+      component: ReviewsOnPD,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/reviews/:officeId',
+      name: 'reviewsDD',
+      component: ReviewsOnDD,
+      meta: {
+        requiresAuth: false
+      },
+    },
+    {
+      path: '/reviews/:officeId/addReview',
+      name: 'add-review',
+      component: AddReview,
+      meta: {
+        requiresAuth: false
+      },
+    },
+  
+    {
+      path: '/doctor-account-creation',
+      name: 'DoctorAccountCreationPage',
+>>>>>>> main
+       component: DoctorAccountRegistration,
       meta: {
         requiresAuth: true,
       },

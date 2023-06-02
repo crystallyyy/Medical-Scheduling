@@ -5,15 +5,17 @@ public class Review {
     private int officeId;
     private String description;
     private int rating;
+    private int patientId;
 
     public Review() {
     }
 
-    public Review(int reviewId, int officeId, String description, int rating) {
+    public Review(int reviewId, int officeId, String description, int rating, int patientId) {
         this.reviewId = reviewId;
         this.officeId = officeId;
         this.description = description;
         this.rating = rating;
+        this.patientId = patientId;
     }
 
     public int getReviewId() {
@@ -46,5 +48,13 @@ public class Review {
 
     public void setRating(int rating) {
         this.rating = rating;
+    }
+
+    public int getPatientId() {
+        return patientId;
+    }
+
+    public void setPatientId(int patientId) {
+        this.patientId = patientId;
     }
 }
