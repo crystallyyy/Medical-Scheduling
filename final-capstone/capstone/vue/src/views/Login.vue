@@ -52,7 +52,7 @@ export default {
     return {
       user: {
         username: "",
-        password: ""
+        password: "",
       },
       invalidCredentials: false
     };
@@ -80,7 +80,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .form-input-group {
   margin-bottom: 1rem;
 }
