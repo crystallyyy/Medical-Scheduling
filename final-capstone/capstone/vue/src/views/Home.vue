@@ -105,7 +105,9 @@
   @media(min-width: 600px) {
     height: 100%;
   }
-  border-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  
 }
 .video-container video {
   object-fit: cover; 
@@ -121,11 +123,11 @@
   justify-content: space-between;
   align-content: center;
   padding: 20px;
-  margin-top: 20px;
-  background-color:teal;
-  border: 2px solid #66b2b2;
-  border-radius: 20px;
-  
+  background-color: white;
+  border: 3px solid;
+  border-color: #192841 transparent transparent;
+  border-top-left-radius: 20px;
+  border-top-right-radius:20px;
 }
 
 .links{
@@ -138,7 +140,7 @@
 
 }
 .name{
-  color:white;
+  color:teal;
   font: 40px  bold; 
  
 }
