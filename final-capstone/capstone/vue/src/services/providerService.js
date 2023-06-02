@@ -12,6 +12,10 @@ export default {
 
     getDoctorByUserId(id){
         return axios.get(`/pid/${id}`);
+        
+    },
+    updateDoctorInformation(doctor){
+        return axios.put(`/pid/update/${doctor.doctorId}`,doctor);
     }
 
 }
