@@ -13,7 +13,7 @@
           <!-- Use the <router-link> component instead of <b-nav-item> -->
             
      
-           <router-link to="/login"> <button type="button" class="btn btn-primary btn-lg">Login or Create Account</button>          </router-link>
+           <router-link to="/login"> <button type="button" class="btn btn-primary btn-lg"  v-show="$store.state.token === ''">Login or Create Account</button>          </router-link>
           </b-navbar>
         </div>
 

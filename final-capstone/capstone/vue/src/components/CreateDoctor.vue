@@ -46,19 +46,30 @@ export default {
     };
   },
   methods: {
-    submitForm() {
-        providerService.getDoctorUserIdByUsername(this.userName).then(res=>{
-            this.userId = res.data
-            console.log(this.userId);
-        });
-
-        providerService.getDoctorByUserId(this.userId).then(res=>{
-            this.doctor = res.data;
-            console.log(this.doctor.timeSlotDefault)
-        })
-
-
-    
+    async submitForm() { 
+          try {
+    const res1 = await providerService.getDoctorUserIdByUsername(this.userName);
+    this.userId = res1.data;
+    const res2 = await providerService.getDoctorByUserId(this.userId);
+    this.doctor = res2.data;
+    this.doctor.firstName = this.firstName;
+    this.doctor.lastName = this.lastName;
+    this.doctor.email = this.email;
+    this.doctor.timeSlotDefault = this.timeSlotDefault;
+    providerService.updateDoctorInformation(this.doctor).then(res=>{
+      if(res.status==200){
+        this.$router.push("/doctorDash")
+      }
+    })
+       } catch (error) {
+    // Handle any errors that occur during the async calls
+    console.error(error);
+  }
+   
+    },
+    created(){
+      
+   
     }
   }
 };

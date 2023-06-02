@@ -9,10 +9,10 @@
     <div id="nav">
       <ul>
         
-        <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
+        <router-link v-bind:to="{ name: 'home' }" >Home</router-link>&nbsp;|&nbsp;
         <li><router-link v-bind:to="{name: 'login'}" v-show="$store.state.token === ''">Login</router-link></li>&nbsp;&nbsp;
-        <li><router-link v-bind:to="{ name: 'doctordash' }">Doctor Dashboard</router-link></li>&nbsp;&nbsp;
-        <li><router-link v-bind:to="{ name: 'patientdash' }">Patient Dashboard</router-link></li>&nbsp;&nbsp;
+        <li><router-link v-bind:to="{ name: 'doctordash' }" v-show="$store.state.token != ''">Doctor Dashboard</router-link></li>&nbsp;&nbsp;
+        <li><router-link v-bind:to="{ name: 'patientdash' }" v-show="$store.state.token != ''" >Patient Dashboard</router-link></li>&nbsp;&nbsp;
         <li> <router-link :to="{name: 'logout'}" v-show="$store.state.token != ''"> Logout</router-link> </li>&nbsp;&nbsp;
         <li> <router-link :to="{name: 'login'}" v-show="false">Register</router-link> </li>
       </ul>
