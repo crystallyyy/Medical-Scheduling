@@ -61,6 +61,14 @@ export default {
 form {
   width: 500px;
   margin: 20px;
+
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+  width:50%; 
+  text-align: center;
+
 }
 .form-element label {
   width: 100px;
@@ -76,7 +84,7 @@ textarea {
   height: 150px;
 }
 .actions {
-  float: right;
+  float: auto;
 }
 .actions button {
   margin-left: 10px;

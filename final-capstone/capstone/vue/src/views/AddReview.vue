@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Add Review</h1>
+    <h3>Add Review</h3>
     <add-review />
   </div>
 </template>
@@ -16,4 +16,5 @@ export default {
 </script>
 
 <style>
+
 </style>
