@@ -17,14 +17,16 @@
         <li> <router-link :to="{name: 'login'}" v-show="false">Register</router-link> </li>
       </ul>
     </div>
-
+  
     
     <router-view />
   </div>
 </template>
 <script>
 
+
 export default {
+  
   name: 'app'
 }
 </script>

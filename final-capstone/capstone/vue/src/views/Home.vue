@@ -1,7 +1,37 @@
 <template>
   <div class="home">
+    <div class="header">
+        <div >
+          
+          <!-- Image and text -->
+          <b-navbar variant="faded" type="light" class="nav">
+            <b-navbar-brand class="name">
+              <img src="../../img/logo2.jpeg" class="d-inline-block align-top" alt="LOGO HERE">
+              GENESIS COMPLETE CARE
+            </b-navbar-brand>
+        
+          <!-- Use the <router-link> component instead of <b-nav-item> -->
+            
+     
+           <router-link to="/login"> <button type="button" class="btn btn-primary btn-lg">Login or Create Account</button>          </router-link>
+          </b-navbar>
+        </div>
+
+       <p> </p>
+    </div>
+    <div class="video">
+      <div class="video-container">
+        <video src="../../img/DNA molecule.mp4" autoplay loop playsinline muted></video>
+        <!-- <div class="callout">
+          <h1>Object-Fit </h1>
+          <div>The CSS Background-Size: Cover for Inline Images &amp; Videos</div>
+        </div> -->
+        
+      </div>
+    </div>
+    </div>
     <!-- <h1>Home</h1> -->
-    <div class="fancy-border">
+    <!-- <div class="fancy-border">
       <h1>WELCOME TO THE MEDICAL SCHEDULING PORTAL</h1>
       
       <img src="image.jpg" alt="Fancy Portal Image">
@@ -10,125 +40,111 @@
     </div>
 
     <div >
-      <!-- <router-link class="fancy-border" >Add New Patient</router-link> -->
+      
     </div>
-    <!-- <p>You must be authenticated to see this</p> -->
+   
     <div>
 
-    </div>
-  </div>
+    </div> -->
 </template>
 
 <script>
-import serverService from '../services/ServerService.js';
+
 
 export default {
   name: "home",
   data() {
-    return {
-      patientList : []
-    }
-  },
+    return {}
 
-  created() {
-    serverService.getAllPatients().then(
-      // anonymous function
-      (response) => {
-        this.patientList = response.data;
-      }
-    );
+  },
+  methods: {
+    
   }
+ 
 };
 </script>
 
 <style scoped>
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-  display: flex;
-}
-
-/* Header */
-.header {
-  background-color: #3F51B5; /* Dark blue */
-  color: #FFFFFF; /* White text */
-  padding: 20px;
-}
-
-.header h1 {
-  margin: 0;
-}
-
-/* Sidebar */
-.sidebar {
-  width: 30%;
-  background-color: #F5F5F5; /* Light gray */
-  padding: 20px;
-}
-
-/* Main content area */
-.content {
-  width: 70%;
-  padding: 20px;
-}
-
-/* Footer */
-.footer {
-  background-color: #3F51B5; /* Dark blue */
-  color: #FFFFFF; /* White text */
-  padding: 20px;
-  text-align: center;
-}
-
-.footer p {
-  margin: 0;
+.home{
+  display: grid;
+  height: 100vh;
+  padding: 30px 30px;
+  grid-template-columns: 1fr;
+  grid-template-rows: 30% 70%;
+  grid-template-areas: 
+  "header"
+  "video";
 }
 
 
 
-
-
-
-.fancy-border {
-  border: 2px solid #3F51B5; /* Dark blue border */
-  border-radius: 10px; /* Rounded corners */
-  padding: 20px;
-  background-color: #F5F5F5; /* Light gray background */
-
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%; /* Adjust the width as needed */
-
-  text-align: center;
-
+.header{
+  
+  grid-area:header;
+  margin: 30px;
+  padding-top: 20px;
 }
-
-.fancy-border h2 {
-  margin: 0 0 10px;
-}
-
-.fancy-border p {
-  margin: 0;
+.video{
+  grid-area: video;
+  margin: 20px;
 }
 
 
-
-.router-link {
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%; 
-
-  text-align: center;
-
+.video-container {
+  position: relative;
+  width:100%;
+  height: 0;
+  
+  overflow: hidden;
+  @media(min-width: 600px) {
+    height: 100%;
+  }
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  
+}
+.video-container video {
+  object-fit: cover; 
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  
+}
+.nav {
+  display:flex;
+  justify-content: space-between;
+  align-content: center;
+  padding: 20px 0px;
+  background-color: white;
+  border-bottom: 1px solid;
+  border-top: 1px solid;
+  border-color:#aaaaaa;
+  
 }
 
+.links{
+  background-color: white;
+  padding:10px;
+  font: 20px bold; 
+  color:black;
+  border-radius: 20px;
+  
+  
 
 
+}
+.name{
+  color:#203354;
+  font: 40px bold; 
+ 
+}
+p{
+  font-size: 40px;
+  padding:30px;
+}
+img{
+  height: 50px;
+}
 </style>

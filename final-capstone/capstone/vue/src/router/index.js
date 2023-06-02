@@ -9,7 +9,8 @@ import Providers from '../views/Providers.vue'
 import Register from '../views/Register.vue'
 import ScheduleAppointment from '../views/ScheduleAppointment.vue'
 import PatientRegistration from '../views/PatientRegistration.vue'
-import DoctorRegistration from '../views/DoctorRegistration.vue'
+import DoctorUserRegistration from '../views/DoctorUserRegistration.vue'
+import DoctorAccountRegistration from '../views/DoctorAccountRegistration.vue'
 import store from '../store/index'
 import Home from '../views/Home.vue'
 import ReviewsOnPD from '../views/ReviewsOnPD.vue'
@@ -70,7 +71,7 @@ Vue.use(VueRouter);
     {
       path: '/doctorRegistration',
       name: 'doctorRegister',
-      component: DoctorRegistration,
+      component: DoctorUserRegistration,
       meta: {
         requiresAuth: false
       }
@@ -129,7 +130,17 @@ Vue.use(VueRouter);
       component: ReviewsOnDD,
       meta: {
         requiresAuth: false
-      }
+      },
+    },
+    {
+
+      path: '/doctor-account-creation',
+      name: 'DoctorAccountCreationPage',
+      component: DoctorAccountRegistration,
+      meta: {
+        requiresAuth: false
+      },
+      props: true
     }
   ]
 
