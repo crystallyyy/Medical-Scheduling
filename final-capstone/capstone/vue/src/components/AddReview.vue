@@ -1,9 +1,10 @@
 <template>
   <form v-on:submit.prevent="addNewReview">
     <div class="form-element">
-      <label for="reviewer">Name:</label>
-      <!-- use method to get patient id from name // orrr change table to accept patient name -->
-      <input id="reviewer" type="text" v-model="newReview.patientId" />
+     <div class="form-element">
+      <label for="review">Review</label>
+      <textarea id="review" v-model="newReview.description"></textarea>
+    </div>
     </div>
     <div class="form-element">
       <label for="rating">Rating:</label>
@@ -15,40 +16,39 @@
         <option value="5">5 Stars</option>
       </select>
     </div>
-    <div class="form-element">
-      <label for="review">Review</label>
-      <textarea id="review" v-model="newReview.review"></textarea>
-    </div>
+   
     <div class="actions">
-      <button v-on:click="resetForm" type="button">Cancel</button>
+      <button v-on:click="resetForm" type="button" >Reset Form</button>
+      <button  v-on:click="this.$router.push({name: 'patientdash'})">Cancel</button>
       <button>Submit</button>
     </div>
   </form>
 </template>
 
 <script>
+import reviewService from '../services/reviewService';
 export default {
   name: "add-review",
   data() {
     return {
       newReview: {
-        id: 0,
-        productID: 0,
-        reviewer: "",
-        title: "",
-        rating: 0,
-        review: "",
-        favorited: false
+        reviewId: 0,
+        officeId: 0,
+        description: "",
+        rating: 0
       }
     };
   },
   methods: {
     addNewReview() {
-      const productID = this.$route.params.id;
-      this.newReview.productID = productID;
-      this.$store.commit("ADD_REVIEW", this.newReview);
+      const officeID = this.$route.params.officeId;
+      this.newReview.officeId = officeID;
+      reviewService.addReview(this.newReview).then( (response) => {
+        if(response.status === 201){
+          this.$router.push({ path: "/patientDash" });
+        }
+      })
       // TODO: send the visitor back to the product page to see the new review
-      this.$router.push({ name: "product-detail", params: { id: productID } });
     },
     resetForm() {
       this.newReview = {};

@@ -10,12 +10,11 @@ public class Review {
     public Review() {
     }
 
-    public Review(int reviewId, int officeId, String description, int rating, int patientId) {
+    public Review(int reviewId, int officeId, String description, int rating) {
         this.reviewId = reviewId;
         this.officeId = officeId;
         this.description = description;
         this.rating = rating;
-        this.patientId = patientId;
     }
 
     public int getReviewId() {
@@ -50,11 +49,4 @@ public class Review {
         this.rating = rating;
     }
 
-    public int getPatientId() {
-        return patientId;
-    }
-
-    public void setPatientId(int patientId) {
-        this.patientId = patientId;
-    }
 }
