@@ -133,14 +133,13 @@ Vue.use(VueRouter);
       },
     },
     {
-
       path: '/doctor-account-creation',
       name: 'DoctorAccountCreationPage',
       component: DoctorAccountRegistration,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       },
-      props: true
+      
     }
   ]
 

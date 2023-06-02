@@ -1,6 +1,7 @@
 <template>
   <div>
     <form @submit.prevent="submitForm">
+        
       <div class="form-group">
         <label for="first_name">First Name:</label>
         <input type="text" class="form-control" v-model="firstName" required>
@@ -29,21 +30,35 @@
 </template>
 
 <script>
+import providerService from "../services/providerService.js";
 export default {
-  props : {
-      user: Object 
-  },
+    props :{
+        userName: String
+    },
   data() {
     return {
       firstName: '',
       lastName: '',
       timeSlotDefault: '',
-      email: ''
+      email: '',
+      userId: 0,
+      doctor: {},
     };
   },
   methods: {
     submitForm() {
-  
+        providerService.getDoctorUserIdByUsername(this.userName).then(res=>{
+            this.userId = res.data
+            console.log(this.userId);
+        });
+
+        providerService.getDoctorByUserId(this.userId).then(res=>{
+            this.doctor = res.data;
+            console.log(this.doctor.timeSlotDefault)
+        })
+
+
+    
     }
   }
 };

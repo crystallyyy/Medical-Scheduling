@@ -12,4 +12,5 @@ public interface DoctorDAO {
     Doctor addDoctor(Doctor doctor);
     Doctor updateDoctor(Doctor doctor);
     List<Doctor> getDoctorsByOffice(int id);
+    public Doctor getDoctorByUserId(int userId);
 }
