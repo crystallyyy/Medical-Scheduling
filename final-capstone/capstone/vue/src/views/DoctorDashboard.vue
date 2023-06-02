@@ -60,12 +60,7 @@ export default {
 </script>
 
 <style scoped>
-    .navbar {
-      height: 100vh;
-    }
-    .nav-item {
-      margin-bottom: 10px;
-    }
+    
     #img {
       max-width: 30%;
       margin-bottom: 20px;
@@ -76,8 +71,8 @@ export default {
         grid-template-areas: "nav content";
     }
     #nav{
-      grid-area: nav;
-        background-color: grey;
+    grid-area: nav;
+    background-color: grey;
     height: 100vh;
     display:flex;
     justify-content: center;
