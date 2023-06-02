@@ -11,10 +11,9 @@
             </b-navbar-brand>
         
           <!-- Use the <router-link> component instead of <b-nav-item> -->
-              <router-link to="/login" exact exact-active-class="active" tag="li">
-                <b-nav-item class="links">Login or Create Account</b-nav-item>
-              </router-link>
-
+            
+     
+           <router-link to="/login"> <button type="button" class="btn btn-primary btn-lg">Login or Create Account</button>          </router-link>
           </b-navbar>
         </div>
 

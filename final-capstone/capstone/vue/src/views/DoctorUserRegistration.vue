@@ -57,8 +57,9 @@ export default {
           .then((response) => {
             if (response.status == 201) {
               this.$router.push({
-                path: '/login',
+                name: 'DoctorAccountCreation',
                 query: { registration: 'success' },
+                params: { user: this.user }
               });
             }
           })
