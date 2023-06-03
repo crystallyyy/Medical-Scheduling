@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="reviewsDD">
      <ReviewListDD/>
   </div>
 </template>
@@ -14,5 +14,12 @@ export default {
 </script>
 
 <style>
-
+.reviewsDD {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 50%; 
+  text-align: center;
+}
 </style>

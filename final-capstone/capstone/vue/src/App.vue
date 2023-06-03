@@ -1,11 +1,8 @@
 <template>
   <div id="app">
-    
-    <div id="newNav">
-      
+    <div id="newNav">      
     </div>
-    
-  
+
     <div id="nav">
       <ul>
         <router-link v-bind:to="{ name: 'home' }" >HOME</router-link>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -17,7 +14,6 @@
       </ul>
     </div>
   
-    
     <router-view />
   </div>
 </template>
@@ -31,17 +27,26 @@ export default {
 
 
 <style scoped>
+
+
 #nav {
   display: flex;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: auto;
   width: 100%;
   background-color: white;
+  /* color: white; */
+  /* background-color: #243688; */
   text-align: center;
   font-size: 21px;
+  font-weight: 525;
   justify-content: center;
   font-family: Arial, Helvetica, sans-serif;
-  margin-top: 30px;
+  padding: 22px;
+  padding-top: auto;
+  padding-bottom: auto;
+
 }
 
 #nav ul{

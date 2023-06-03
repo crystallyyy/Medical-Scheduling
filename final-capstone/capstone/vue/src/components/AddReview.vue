@@ -2,7 +2,7 @@
   <form v-on:submit.prevent="addNewReview">
     <div class="form-element">
      <div class="form-element">
-      <label for="review">Review</label>
+      <label for="review">Patient Review</label>
       <textarea id="review" v-model="newReview.description"></textarea>
     </div>
     </div>
@@ -73,20 +73,49 @@ form {
 .form-element label {
   width: 100px;
   vertical-align: top;
+
+  margin-left: auto;
+  margin-right: auto;
+
 }
 .form-element input,
 select,
 textarea {
   width: 400px;
   font-size: 1.1rem;
+  margin-left: auto;
+  margin-right: auto;
 }
+
 .form-element textarea {
   height: 150px;
+  
 }
+
 .actions {
   float: auto;
+  
+  margin-left: auto;
+  margin-right: auto;
+  /* margin-top: auto; */
+  margin-bottom: auto;
+  width:100%; 
+  text-align: center;
+
 }
 .actions button {
   margin-left: 10px;
+
+  background-color: #1559c7;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+
 }
+
+.actions button:hover {
+  background-color: #243688;
+}
+
 </style>
