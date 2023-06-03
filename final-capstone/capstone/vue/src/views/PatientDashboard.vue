@@ -33,7 +33,7 @@
                 <schedule-appointment></schedule-appointment>
             </div>  
             <div class="info" v-show="activeCard === 3">
-                Content for manage location
+                <b-calendar v-model="value" @context="onContext" locale="en-US"></b-calendar>
             </div>
             <div class="visits" v-show="activeCard === 4">
                 Content for change availability
@@ -92,6 +92,7 @@ export default {
     #content{
         grid-area: content;
         display: flex;
+        flex-grow: 1;
         flex-direction: column;
         align-content: center;
         height: 100%;

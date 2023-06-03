@@ -1,48 +1,53 @@
 <template>
-    <div class="main">
-      
+    <b-container class="bv-example-row">
+        <b-row>
+            <b-col>
+                <b-card style="max-width: 20rem;" class="dash">
+                    <b-card-title>
+                        Upcoming Appointments
+                    </b-card-title>
+                    <b-card-text>
+                        Some quick example text to build on the card title and make up the bulk of the card's content.
+                    </b-card-text>
+                    <b-button href="#" variant="primary">View All</b-button>
+                </b-card>
 
-        <b-card style="max-width: 20rem;" class="dash">
-            <b-card-title>
-                Upcoming Appointments
-            </b-card-title>
-            <b-card-text>
-                Some quick example text to build on the card title and make up the bulk of the card's content.
-            </b-card-text>
-            <b-button href="#" variant="primary">View All</b-button>
-        </b-card>
+                <b-card style="max-width: 20rem;" class="dash">
+                    <b-card-title>
+                        Notification Center
+                    </b-card-title>
+                    <b-card-text>
+                        Some quick example text to build on the card title and make up the bulk of the card's content.
+                    </b-card-text>
+                    <b-button href="#" variant="primary">View All</b-button>
+                </b-card>
+            </b-col>
 
-        <b-card style="max-width: 20rem;" class="dash">
-            <b-card-title>
-                Notification Center
-            </b-card-title>
-            <b-card-text>
-                Some quick example text to build on the card title and make up the bulk of the card's content.
-            </b-card-text>
-            <b-button href="#" variant="primary">View All</b-button>
-        </b-card>
+            <b-col>
+                <b-card style="max-width: 20rem;" class="dash">
+                    <b-card-title>
+                        Update Info
+                    </b-card-title>
+                    <b-card-text>
+                        Some quick example text to build on the card title and make up the bulk of the card's content.
+                    </b-card-text>
+                    <b-button href="#" variant="primary">View All</b-button>
+                </b-card>
 
-        <b-card style="max-width: 20rem;" class="dash">
-            <b-card-title>
-                Update Info
-            </b-card-title>
-            <b-card-text>
-                Some quick example text to build on the card title and make up the bulk of the card's content.
-            </b-card-text>
-            <b-button href="#" variant="primary">View All</b-button>
-        </b-card>
+                <b-card style="max-width: 20rem;" class="dash">
+                    <b-card-title>
+                    Not Sure
+                    </b-card-title>
+                    <b-card-text>
+                        Some quick example text to build on the card title and make up the bulk of the card's content.
+                    </b-card-text>
+                    <b-button href="#" variant="primary">View All</b-button>
+                </b-card>
+            </b-col>
+        
 
-        <b-card style="max-width: 20rem;" class="dash">
-            <b-card-title>
-              Not Sure
-            </b-card-title>
-            <b-card-text>
-                Some quick example text to build on the card title and make up the bulk of the card's content.
-            </b-card-text>
-            <b-button href="#" variant="primary">View All</b-button>
-        </b-card>
-
-    </div>
+        </b-row>
+    </b-container>
 </template>
 
 
@@ -62,6 +67,7 @@ export default {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    background-color: sandybrown;
 }
 b-card {
     display: flex;
