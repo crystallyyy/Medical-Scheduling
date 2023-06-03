@@ -95,7 +95,11 @@ export default {
         flex-direction: column;
         align-content: center;
         height: 100%;
-        background-color: whitesmoke;
+        background-color: yellowgreen;
+    }
+
+    #content div{
+      
     }
       #img {
       max-width: 100px;
