@@ -13,7 +13,7 @@
           params: { officeId: currentOfficeId },
         }"
       >
-        Add reivew
+        Add review
       </router-link>
     </div>
 
