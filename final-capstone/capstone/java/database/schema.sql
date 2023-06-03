@@ -76,7 +76,6 @@ CREATE TABLE reviews (
 	office_id int NOT NULL,
 	description varchar(1000),
 	rating int NOT NULL,
-	patient_id int NOT NULL,
 	CONSTRAINT PK_review PRIMARY KEY (review_id),
 	CONSTRAINT FK_reviews_office FOREIGN KEY (office_id) REFERENCES office(office_id)
 );

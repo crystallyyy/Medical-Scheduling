@@ -60,4 +60,66 @@ td {
 tr:nth-child(even) {
   background-color: rgb(238, 238, 238);
 }
+
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+}
+
+table thead {
+  background-color: #f5f5f5;
+}
+
+table th {
+  padding: 10px;
+  font-weight: bold;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table td {
+  padding: 10px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+table tbody tr:hover {
+  background-color: #e6e6e6;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+}
+
+.rating i {
+  color: #f2b01e;
+  margin-right: 2px;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+th,
+td {
+  padding: 10px;
+}
+
+td {
+  text-align: left;
+}
+
+td {
+  vertical-align: top;
+}
+
+
 </style>

@@ -3,6 +3,7 @@ package com.techelevator.controller;
 import com.techelevator.dao.DoctorDAO;
 import com.techelevator.model.Doctor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -48,9 +49,10 @@ public class DoctorController {
 
     }
 
-    @PutMapping(path = "providers/{doctorId}")
+    @CrossOrigin
+    @PutMapping(path = "pid/update/{doctorId}")
+    @ResponseStatus(HttpStatus.OK)
     public Doctor updateDoctorInfo(@PathVariable int doctorId,  @Valid @RequestBody Doctor doctorToUpdate){
-
         return doctorDAO.updateDoctor(doctorToUpdate);
     }
 

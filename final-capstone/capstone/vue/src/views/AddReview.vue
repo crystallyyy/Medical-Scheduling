@@ -1,6 +1,14 @@
 <template>
   <div>
-    <h1>Add Review</h1>
+    <h3>Add Review</h3>
+
+    <div class='actions'>
+      <router-link v-bind:to="{ name: 'reviewsPD' }">
+        Return to Reviews
+      </router-link>
+      <span style="paddingLeft: 8px; paddingRight: 8px;"></span>
+    </div>
+
     <add-review />
   </div>
 </template>
@@ -16,4 +24,5 @@ export default {
 </script>
 
 <style>
+
 </style>

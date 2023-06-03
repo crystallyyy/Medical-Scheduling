@@ -81,7 +81,8 @@ export default {
 .header{
   
   grid-area:header;
-  margin: 30px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   padding-top: 20px;
 }
 .video{
