@@ -1,19 +1,17 @@
 <template>
-  <div class="reviews">
+  <div class="reviewsPD">
     <h3>REVIEWS</h3>
 
     <div class="actions">
       <router-link v-bind:to="{ name: 'Offices' }">
         Return to Offices
-      </router-link>
-      <span style="paddingleft: 8px; paddingright: 8px">|</span>
+      </router-link> | 
+      <span style="paddingleft: 8px; paddingright: 8px"></span>
       <router-link
         v-bind:to="{
           name: 'add-review',
           params: { officeId: currentOfficeId },
-        }"
-      >
-        Add review
+        }">Add Review
       </router-link>
     </div>
 
@@ -37,7 +35,7 @@ export default {
 </script>
 
 <style>
-.reviews {
+.reviewsPD {
   margin-left: auto;
   margin-right: auto;
   margin-top: 20px;

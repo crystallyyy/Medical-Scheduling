@@ -1,13 +1,12 @@
 <template>
   <div id="login">
-    <div class="fancy-border">
-      <h1>WELCOME TO THE MEDICAL SCHEDULING PORTAL</h1>
-      <img src="../../img/logo2.jpeg" alt="company logo">
+    <div class="header">
+      <h1> <strong>GENESIS MEDICAL SCHEDULING PORTAL</strong></h1>
+      <img class="image" src="../../img/logo2.jpeg" alt="company logo">
     </div>
     
-
     <form class="credentials" @submit.prevent="login">
-      <h2 >Sign In</h2>
+      <h2><strong>Sign In</strong></h2>
       <div role="alert" v-if="invalidCredentials">
         Invalid username and password!
       </div>
@@ -23,21 +22,13 @@
         <input type="password" id="password" v-model="user.password" required />
       </div>
     <button type="submit">Sign In</button>
-      
     </form>
 
-
-    <form class="fancy-border">
-      <h2 >Create Account</h2> <br>
-
-      <!-- as PATIENT         -->
-      <p><router-link :to="{ name: 'patientRegister' }">Patient</router-link> </p><br>
-      
-      <!-- as PROVIDER         -->
-      <p><router-link :to="{ name: 'doctorRegister' }">Provider</router-link> </p>
-
+    <form class="createAccount">
+      <h2><strong>Create Account</strong></h2> <br>
+      <button type="submit"><router-link :to="{ name: 'patientRegister' }">Patient</router-link> </button><br>
+      <button type="submit"><router-link :to="{ name: 'doctorRegister' }">Provider</router-link> </button>
     </form>
-
 
   </div>
 </template>
@@ -80,45 +71,111 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+
+#login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+}
+
+.header {
+  width: 400px;
+  max-width: 100%;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 0.5rem;
+}
+
+.image {
+  max-width: 100px;
+  height: auto;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.credentials,
+.fancy-border {
+  width: 400px;
+  max-width: 100%;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+}
+
+.createAccount {
+  width: 400px;
+  max-width: 100%;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+  text-align: center; 
+}
+
+.createAccount button {
+  margin-bottom: 1rem;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+
+.credentials h2,
+.fancy-border h2,
+.createAccount h2 {
+  margin-bottom: 1rem;
+  text-align: center;
+  font-size: 20px;
+}
+
 .form-input-group {
   margin-bottom: 1rem;
 }
-label {
-  margin-right: 0.5rem;
-}
 
-
-
-.fancy-border {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
-  border: 2px solid #3F51B5; /* Dark blue border */
-  border-radius: 10px; /* Rounded corners */
+form input {
+  width: 100%;
   padding: 10px;
-  background-color: white; /* Light gray background */
-
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #cccccc;
+  font-size: 16px;
 }
 
-.fancy-border h2 {
-  margin: 0 0 10px;
+button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
 }
 
-.fancy-border p {
-  margin: 0;
+button:hover {
+  background-color: #45a049;
 }
 
-.form{
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%; /* Adjust the width as needed */
-  
-  text-align: center;
+.alert {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6;
 }
- 
- img {
-   max-width: 10%;
- }
 </style>

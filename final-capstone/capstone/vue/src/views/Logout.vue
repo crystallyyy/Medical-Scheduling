@@ -12,7 +12,7 @@ export default {
 </script>
 
 
-<style>
+<style scope>
 
 body {
   background-color: #FFFFFF; /* White background */
@@ -23,12 +23,16 @@ h1, h2, h3, h4, h5, h6 {
   color: #000000; /* Black headings */
 }
 
+/* a {
+  color:white; 
+} */
+
 a {
-  color: #00BFFF; /* Sky-blue links */
+  color: #243688; 
 }
 
 a:hover {
-  color: #1E90FF; /* Darker sky-blue on hover */
+  color: #1E90FF; 
 }
 
 /* Example of a sky-blue button */
@@ -45,20 +49,20 @@ a:hover {
 }
 
 /* Example of a sky-blue border */
-.border {
+/* .border {
   border: 2px solid #00BFFF;
-}
+} */
 
 /* Example of sky-blue background with white text */
-.skyblue-background {
+/* .skyblue-background {
   background-color: #00BFFF;
   color: #FFFFFF;
-}
+} */
 
 /* Example of sky-blue text on white background */
-.skyblue-text {
+/* .skyblue-text {
   color: #00BFFF;
   background-color: #FFFFFF;
-}
+} */
 
 </style>
