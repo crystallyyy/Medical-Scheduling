@@ -73,7 +73,6 @@ export default {
     #nav{
     grid-area: nav;
     background-color: grey;
-    height: 100vh;
     display:flex;
     justify-content: center;
     flex-direction: column;
