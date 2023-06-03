@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button>
+    <!-- <button>
         <router-link :to="{name: 'Providers'}">
       Find A Provider
       </router-link>
@@ -9,7 +9,8 @@
         <router-link :to="{name: 'Offices'}">
      Find An Office
      </router-link>
-    </button>
+    </button> -->
+    
   </div>
 </template>
 
