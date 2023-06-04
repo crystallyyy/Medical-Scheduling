@@ -7,14 +7,15 @@
           <b-navbar variant="faded" type="light" class="nav">
             <b-navbar-brand class="name">
               <img src="../../img/logo2.jpeg" class="d-inline-block align-top" alt="LOGO HERE">
-              GENESIS COMPLETE CARE
+              GENESIS MEDICAL
             </b-navbar-brand>
         
           <!-- Use the <router-link> component instead of <b-nav-item> -->
-            
-     
-           <router-link to="/login"> <button type="button" class="btn btn-primary btn-lg"  v-show="$store.state.token === ''">Login or Create Account</button>          </router-link>
+          
           </b-navbar>
+            <div class="loginButton">
+             <router-link to="/login"> <button type="button" class="btn btn-primary btn-lg"  v-show="$store.state.token === ''">Login or Create Account</button></router-link>
+             </div>
         </div>
 
        <p> </p>
@@ -115,13 +116,15 @@ export default {
 }
 .nav {
   display:flex;
-  justify-content: space-between;
+  justify-content: center;
   align-content: center;
   padding: 20px 0px;
   background-color: white;
   border-bottom: 1px solid;
   border-top: 1px solid;
   border-color:#aaaaaa;
+  margin-bottom: 50px;
+
   
 }
 
@@ -148,4 +151,18 @@ p{
 img{
   height: 50px;
 }
+
+.loginButton {
+  display: flex;
+  justify-content: center;
+
+}
+
+.btn-primary {
+  display: inline-block;
+  justify-content: center;
+  background-color:#04abcc
+;
+}
+
 </style>

@@ -61,7 +61,100 @@ export default {
 
 <style scoped>
     
+#main {
+  display: flex;
+}
+
+#nav {
+  width: 200px;
+  background-color: #f1f1f1;
+}
+
+.imgdiv {
+  padding: 10px;
+}
+
+#img {
+  width: 100%;
+}
+
+.nav {
+  padding: 0;
+  list-style: none;
+}
+
+.nav-item {
+  padding: 10px;
+  text-align: center;
+}
+
+.btn {
+  width: 100%;
+}
+
+#content {
+  flex: 1;
+  padding: 20px;
+}
+
+.card {
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.card-body {
+  padding: 10px;
+  background-color: #fff;
+  display: none;
+}
+
+.card-body.show {
+  display: block;
+}
+
+
+     /* #main{
+        
+        display: grid;
+        height: 90vh;
+        grid-template-columns: 25% 75%;
+        grid-template-areas: "nav content";
+        margin: 20px;
+        border: 4px solid black;
+    }
+
+    #nav{
+        grid-area: nav;
+        display:flex;
+        flex-direction: column;
+        height: 100%;
+        background-color: #243688;
+      
+    }
+
+    #content{
+        grid-area: content;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        height: 100%;
+        background-color: whitesmoke;
+    }
+      
     #img {
+      max-width: 100px;
+      margin-bottom: 20px;
+      display: flex;
+      margin: auto;
+    }
+
+ */
+
+
+
+
+    /* #img {
       max-width: 30%;
       margin-bottom: 20px;
     }
@@ -97,5 +190,5 @@ export default {
    padding:0;
    justify-content: center;
 
-    }
+    } */
 </style>

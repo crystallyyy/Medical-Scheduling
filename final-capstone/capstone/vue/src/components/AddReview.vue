@@ -61,7 +61,6 @@ export default {
 form {
   width: 500px;
   margin: 20px;
-
   margin-left: auto;
   margin-right: auto;
   margin-top: auto;
@@ -71,17 +70,16 @@ form {
 
 }
 .form-element label {
-  width: 100px;
+  width: 400px;
   vertical-align: top;
-
   margin-left: auto;
   margin-right: auto;
-
 }
+
 .form-element input,
 select,
 textarea {
-  width: 400px;
+  width: 600px;
   font-size: 1.1rem;
   margin-left: auto;
   margin-right: auto;
@@ -105,8 +103,8 @@ textarea {
 }
 .actions button {
   margin-left: 10px;
-
-  background-color: #1559c7;
+  
+  background-color: #04abcc;
   color: white;
   border: none;
   padding: 5px 10px;
@@ -115,7 +113,7 @@ textarea {
 }
 
 .actions button:hover {
-  background-color: #243688;
+  background-color: #048eaa;
 }
 
 </style>

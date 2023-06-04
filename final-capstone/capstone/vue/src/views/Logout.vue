@@ -27,8 +27,12 @@ h1, h2, h3, h4, h5, h6 {
   color:white; 
 } */
 
-a {
+/* a {
   color: #243688; 
+} */
+
+a {
+  color: #04abcc; 
 }
 
 a:hover {
