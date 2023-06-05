@@ -18,6 +18,9 @@ export default {
     updateOfficeById(officeId, data){
         return axios.put(`/offices/${officeId}`, data)
     },
+    updateOffice(office){
+        return axios.put(`/updateoffice`, office);
+    },
 
     getOfficeHours(officeId){
         console.log(axios.get(`/offices/office-hours/${officeId}`))

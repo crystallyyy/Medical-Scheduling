@@ -2,21 +2,21 @@
   <div>
     <h3 class="offices">OFFICES</h3>
 
-    <div class='actions'>
+    <div class="actions">
       <router-link v-bind:to="{ name: 'patientdash' }">
         Return to Dashboard
-      </router-link> |
+      </router-link>
+      |
       <!-- <span style="paddingLeft: 8px; paddingRight: 8px;"></span> -->
 
       <router-link
         v-bind:to="{
           name: 'reviewsPD',
           params: { officeId: currentOfficeId },
-        }">Edit Office Information
+        }"
+        >Edit Office Information
       </router-link>
-
     </div>
-
 
     <table class="officeTable">
       <thead>
@@ -33,17 +33,16 @@
           <td>{{ office.address }}</td>
           <td>{{ office.phoneNumber }}</td>
           <td>
-            <button>
-              <router-link :to="{ name: 'reviewsPD', params: { officeId: office.officeId }}">
+            <button @click="showFormWithData(office)">
+            
                 <strong>Edit Office Information</strong>
-              </router-link>
+             
             </button>
           </td>
         </tr>
-        
       </tbody>
     </table>
-        <!-- <div class="list">
+    <!-- <div class="list">
           
             <div class="officeinfo" v-for="office in offices" v-bind:key="office.officeId">
                 <div>
@@ -65,8 +64,25 @@
           </div>
           
       </div> -->
-    </div>
 
+    <form @submit.prevent="submitForm" v-show="showForm">
+      <div>
+        <label for="officeName">Office Name:</label>
+        <input type="text" id="officeName" v-model="officeName" required />
+      </div>
+      <div>
+        <label for="address">Address:</label>
+        <input type="text" id="address" v-model="address" required />
+      </div>
+      <div>
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="text" id="phoneNumber" v-model="phoneNumber"/>
+      </div>
+      <div>
+        <button type="submit">Update</button>
+      </div>
+    </form>
+  </div>
 
   <!-- </div> -->
 </template>
@@ -79,56 +95,71 @@ export default {
   data() {
     return {
       offices: [],
-      officeHours:[],
-      doctorsInOffice:[]
-    }
+      officeHours: [],
+      doctorsInOffice: [],
+      showForm: false,
+      officeName: "friday",
+      address: "satyrday",
+      phoneNumber: "sundat",
+      activeOffice: {},
+    };
   },
- 
+
   created() {
     officeService.getAllOffices().then((response) => {
       this.offices = response.data;
 
-      this.offices.forEach(office => {
-         officeService.getOfficeHours(office.officeId).then((response) =>{
+      this.offices.forEach((office) => {
+        officeService.getOfficeHours(office.officeId).then((response) => {
           this.officeHours = response.data;
-          });
+        });
 
-         officeService.getDoctors(office.officeId).then((response) =>{
+        officeService.getDoctors(office.officeId).then((response) => {
           this.doctorsInOffice = response.data;
-          });
-        
+        });
       });
-     
     });
-   },
+  },
+  methods:{
+    submitForm(){
+      this.activeOffice.officeName = this.officeName;
+      this.activeOffice.address =this.address;
+      this.activeOffice.phoneNumber = this.phoneNumber;
+    officeService.updateOffice(this.activeOffice)
+    
 
+    },
+    showFormWithData(office){
+
+   this.showForm = true;
+   this.activeOffice = office;
+   this.officeName = office.officeName;
+   this.address = office.address;
+   this.phoneNumber = office.phoneNumber;
  
-  
-        
-  
-}
+
+    }
+  }
+};
 </script>
 
 <style>
-
 .actions {
   margin-left: auto;
   margin-right: auto;
   margin-top: 20px;
   margin-bottom: 20px;
-  width: 50%; 
+  width: 50%;
   text-align: center;
 }
-
 
 h3 {
   margin-left: auto;
   margin-right: auto;
   margin-top: 20px;
   margin-bottom: 20px;
-  width: 50%; 
+  width: 50%;
   text-align: center;
-  
 }
 
 .officeTable {
@@ -168,12 +199,13 @@ button:hover {
 }
 
 .list {
-  padding:20px;
+  padding: 20px;
 }
 
-.officeinfo , .officehours , .doctors {
+.officeinfo,
+.officehours,
+.doctors {
   padding-top: 15px;
   padding-bottom: 15px;
 }
-
 </style>
