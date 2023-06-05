@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.OfficeDAO;
 import com.techelevator.model.Office;
+import com.techelevator.model.OfficeHours;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -33,8 +34,14 @@ public class OfficeController {
        return officeDAO.getOfficesByDoctor(doctorId);
     }
 
+<<<<<<< HEAD
     @GetMapping(path = "/offices/{doctorId}")
     public List<Integer> getOfficeIdsByDoctor(@PathVariable int doctorId){
         return officeDAO.getOfficeIdsByDoctorId(doctorId);
+=======
+    @GetMapping(path = "/offices/office-hours/{officeId}")
+    public List<OfficeHours> getOfficeHours(@PathVariable int officeId){
+        return officeDAO.getOfficeHoursByOfficeId(officeId);
+>>>>>>> 4129e9788a8fe5af6f0ae02a289f80935f0d8012
     }
 }

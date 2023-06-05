@@ -2,11 +2,13 @@
   <table>
     <thead>
       <tr>
-        <th>ID</th>
+       
+       
         <th>Review</th>
         <!-- <th>Number of Reviews</th> -->
         <th>Rating</th>
-        <th>Patient</th>
+    
+    
       </tr>
     </thead>
     <tbody>
@@ -14,16 +16,16 @@
          <!--  COMMENT   -->
          <!-- need to swap out "product" to something like "office" -->
       <tr v-for="review in reviews" v-bind:key="review.id">
-        <td>{{ review.reviewId }}</td>
+    
         <td>
           <!-- <router-link
             v-bind:to="{ name: 'product-detail', params: { id: product.id }}"}></router-link> -->
           {{ review.description }} </td>
        
-        <td>{{review.rating}}</td>
+        <td>{{review.rating}} / 5</td>
 
         <!-- PATIENT NAME -->
-        <td>{{review.patientId}}</td>
+      
         <!-- <td>{{ product.reviews.length }}</td> -->
       </tr>
     </tbody>

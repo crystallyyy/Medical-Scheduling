@@ -44,7 +44,7 @@
         ></b-calendar>
       </div>
       <div class="visits" v-show="activeCard === 4">
-        Content for change availability
+        
       </div>
     </div>
   </div>
@@ -118,7 +118,7 @@ export default {
 .card-body {
   padding: 10px;
   background-color: #fff;
-  display: none;
+  justify-content: center;
 }
 
 .card-body.show {

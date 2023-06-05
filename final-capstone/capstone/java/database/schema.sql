@@ -48,7 +48,7 @@ CREATE TABLE office (
 	office_id serial,
 	office_name varchar(50) NOT NULL,
 	address varchar(200) NOT NULL,
-	phone_number int NOT NULL,
+	phone_number varchar(12) NOT NULL,
 	CONSTRAINT PK_office PRIMARY KEY (office_id),
 	CONSTRAINT UQ_office UNIQUE (office_name)
 );

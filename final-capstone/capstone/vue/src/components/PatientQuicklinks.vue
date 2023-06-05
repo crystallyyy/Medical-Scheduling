@@ -1,9 +1,8 @@
 <template>
-<div class="main">
-    <!-- <b-container class="bv-example-row">
-        <b-row> -->
-            <!-- <b-col> -->
-                <!-- <b-card style="max-width: 20rem;" class="dash">
+    <b-container class="bv-example-row">
+        <b-row>
+            <b-col>
+                <b-card style="max-width: 20rem;" class="dash">
                     <b-card-title>
                         Upcoming Appointments
                     </b-card-title>
@@ -11,37 +10,8 @@
                         Some quick example text to build on the card title and make up the bulk of the card's content.
                     </b-card-text>
                     <b-button href="#" variant="primary">View All</b-button>
-                </b-card> -->
+                </b-card>
 
-        <b-card style="max-width: 20rem;" class="dash">
-            <b-card-title>
-                Upcoming Appointments
-            </b-card-title>
-            <b-button href="#" variant="primary">View All</b-button>
-        </b-card>
-
-        <b-card style="max-width: 20rem;" class="dash">
-            <b-card-title>
-                Notification Center
-            </b-card-title>
-            <b-button href="#" variant="primary">View All</b-button>
-        </b-card>
-
-        <b-card style="max-width: 20rem;" class="dash">
-            <b-card-title>
-                Update Info
-            </b-card-title>
-            <b-button href="#" variant="primary">View All</b-button>
-        </b-card>
-
-        <b-card style="max-width: 20rem;" class="dash">
-            <b-card-title>
-              Not Sure
-            </b-card-title>
-            <b-button href="#" variant="primary">View All</b-button>
-        </b-card>
-
-    <!-- </div>
                 <b-card style="max-width: 20rem;" class="dash">
                     <b-card-title>
                         Notification Center
@@ -66,7 +36,7 @@
 
                 <b-card style="max-width: 20rem;" class="dash">
                     <b-card-title>
-                    Not Sure
+                    More
                     </b-card-title>
                     <b-card-text>
                         Some quick example text to build on the card title and make up the bulk of the card's content.
@@ -74,11 +44,10 @@
                     <b-button href="#" variant="primary">View All</b-button>
                 </b-card>
             </b-col>
-         -->
+        
 
-        <!-- </b-row>
-    </b-container> -->
-</div>
+        </b-row>
+    </b-container>
 </template>
 
 
@@ -90,10 +59,7 @@ export default {
 </script>
 
 
-
-
 <style>
-
 
 .main {
   display: grid;
@@ -135,7 +101,7 @@ export default {
   padding: 12px;
   border: none;
   border-radius: 5px;
-  background-color: #007bff;
+  background-color: #04abcc;
   color: #fff;
   font-size: 1rem;
   text-align: center;
@@ -151,28 +117,9 @@ export default {
   background-color: #048eaa;
 } 
 
-b-card {
-    display: flex;
-    flex-direction: column;
-    flex-basis: 50%;
-    height: 200px;
-    border: 4px black solid;
-    background-color: white;
-}
+/* a .b-button {
 
-b-button {
-    padding: 8.5px;
-    margin: auto;
-    background-color: #04abcc;
-    color: white;
-    border-radius: 10px;
-}
-
-b-card b-card-title {
-    font-size: 22px;
-    font-weight: bold;
-    padding: 5px;
-}
-
+  background-color: #04abcc;
+} */
 
 </style>

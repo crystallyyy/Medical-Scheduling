@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Office;
+import com.techelevator.model.OfficeHours;
 import com.techelevator.model.User;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -82,6 +83,7 @@ public class JdbcOfficeDAO implements OfficeDAO {
         return offices;
     }
 
+<<<<<<< HEAD
     public List<Integer> getOfficeIdsByDoctorId(int doctorId){
         List<Integer> officeIds = new ArrayList<>();
         String sql = "SELECT office_id FROM doctor_office WHERE doctor_id = ?";
@@ -92,11 +94,25 @@ public class JdbcOfficeDAO implements OfficeDAO {
         }
 
         return officeIds;
+=======
+    @Override
+    public List<OfficeHours> getOfficeHoursByOfficeId(int officeId){
+        List<OfficeHours> officeHoursList = new ArrayList<>();
+        String sql = "select * from office_hours where office_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, officeId);
+        while (results.next()){
+            officeHoursList.add(mapRowToOfficeHours(results));
+        }
+        return officeHoursList;
+>>>>>>> 4129e9788a8fe5af6f0ae02a289f80935f0d8012
     }
 
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4129e9788a8fe5af6f0ae02a289f80935f0d8012
     private Office mapRowToOffice(SqlRowSet rs) {
         Office office = new Office();
         office.setOfficeId(rs.getInt("office_id"));
@@ -106,4 +122,16 @@ public class JdbcOfficeDAO implements OfficeDAO {
         return office;
     }
 
+<<<<<<< HEAD
+=======
+    private OfficeHours mapRowToOfficeHours(SqlRowSet row){
+        OfficeHours officeHours = new OfficeHours();
+        officeHours.setOhId(row.getInt("office_hours_id"));
+        officeHours.setOfficeId(row.getInt("office_id"));
+        officeHours.setDayOfWeek(row.getString("day_of_week"));
+        officeHours.setStartTime(row.getTime("start_time").toLocalTime());
+        officeHours.setEndTime(row.getTime("end_time").toLocalTime());
+        return officeHours;
+    }
+>>>>>>> 4129e9788a8fe5af6f0ae02a289f80935f0d8012
 }
