@@ -43,26 +43,22 @@
       </div>
     </div>
     <div class="card card-body" v-show="activeCard === 4">
-          Content for change availability
-          <doctor-availability></doctor-availability>
-    </div> 
-</div>
-
-    
-
+      Content for change availability
+      <doctor-availability></doctor-availability>
+    </div>
+  </div>
 
   <!-- include contact support -->
 </template>
 
 <script>
-import DoctorAvailability from '../components/DoctorAvailability.vue'
+import DoctorAvailability from "../components/DoctorAvailability.vue";
 export default {
-  name: "doctor-dash",
+  components: { DoctorAvailability },
   data() {
     return {
       activeCard: null,
       methods: {},
-      components: {DoctorAvailability}
     };
   },
 };
@@ -72,7 +68,7 @@ export default {
 #main {
   display: flex;
 }
-  
+
 #nav {
   width: 200px;
   background-color: #f1f1f1;
@@ -120,5 +116,4 @@ export default {
 .card-body.show {
   display: block;
 }
-
 </style>

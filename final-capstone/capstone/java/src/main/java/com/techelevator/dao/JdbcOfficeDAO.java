@@ -82,6 +82,21 @@ public class JdbcOfficeDAO implements OfficeDAO {
         return offices;
     }
 
+    public List<Integer> getOfficeIdsByDoctorId(int doctorId){
+        List<Integer> officeIds = new ArrayList<>();
+        String sql = "SELECT office_id FROM doctor_office WHERE doctor_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, doctorId);
+        while (results.next()){
+            Integer officeId = results.getInt("office_id");
+            officeIds.add(officeId);
+        }
+
+        return officeIds;
+    }
+
+
+
+
     private Office mapRowToOffice(SqlRowSet rs) {
         Office office = new Office();
         office.setOfficeId(rs.getInt("office_id"));
@@ -90,4 +105,5 @@ public class JdbcOfficeDAO implements OfficeDAO {
         office.setPhoneNumber(rs.getString("phone_number"));
         return office;
     }
+
 }

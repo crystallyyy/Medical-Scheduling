@@ -24,7 +24,11 @@ export default {
 
     updateDocAvailability(availability){
         return axios.put(`/availability/${availability.doctorId}`, availability)
-    }
+    },
+
+    getAllAvailabilities(){
+        return axios.get(`/availabilities`)
+    },
 
 }
     

@@ -95,6 +95,18 @@ public class JdbcDoctorDao implements DoctorDAO{
         return doctorsByOffice;
     }
 
+    public List<Integer> getDoctorIdsByOfficeId(int officeId) {
+        List<Integer> doctorIds = new ArrayList<>();
+        String sql = "SELECT doctor_id FROM doctor_office WHERE office_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, officeId);
+        while (results.next()){
+            Integer doctorId = results.getInt("doctor_id");
+            doctorIds.add(doctorId);
+        }
+
+        return doctorIds;
+    }
+
     private Doctor mapRowToDoctor(SqlRowSet row){
         Doctor doctor = new Doctor(
                 row.getInt("doctor_id"),

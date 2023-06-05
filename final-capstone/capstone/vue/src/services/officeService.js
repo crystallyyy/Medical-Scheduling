@@ -9,6 +9,10 @@ export default {
 
     getOfficesByDoctorId(doctorId){
         return axios.get(`/offices/doctors/${doctorId}`)
+    },
+
+    getOfficeIdsByDoctor(doctorId){
+        return axios.get(`/offices/${doctorId}`)
     }
 }
 

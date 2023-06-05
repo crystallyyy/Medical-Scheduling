@@ -38,6 +38,18 @@ public class JdbcAvailabilityDao implements AvailabilityDAO{
         return isUpdated;
     }
 
+    public List<DoctorAvailability> listAvailabilities(){
+        List<DoctorAvailability> availabilities = new ArrayList<>();
+        String sql = "SELECT * FROM doctor_availability";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+
+        while (results.next()){
+            DoctorAvailability availability = mapRowToAvailability(results);
+            availabilities.add(availability);
+        }
+        return availabilities;
+    }
+
     private DoctorAvailability mapRowToAvailability(SqlRowSet results) {
         DoctorAvailability doctorAvailability = new DoctorAvailability();
         doctorAvailability.setDoctorId(results.getInt("doctor_id"));

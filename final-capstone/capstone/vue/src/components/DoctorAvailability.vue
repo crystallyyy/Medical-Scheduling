@@ -13,7 +13,7 @@
         </p>
       </li>
     </ul>
-   <button>Update Availability</button> 
+    <button>Update Availability</button> 
    <div id="update-availability-form">
      
      <input type="checkbox" value="Monday" id="monday" v-model="daysOfWeek" >Monday
@@ -39,14 +39,14 @@ export default {
       isAvailabilityVisible: false,
       availabilities: [], 
       daysOfWeek: [],
-      updatedAvailability: [
+      updatedAvailability: 
         {
           doctorId: 0,
           dayOfWeek: '',
           startTime: '',
           endTime: ''
         }
-      ]
+      
     }
  
   },
@@ -54,8 +54,8 @@ export default {
     updateAvailability(){
       for (let i =0; i < this.daysOfWeek.length; i++){
         if(this.daysOfWeek[i] == 'Monday'){
-          this.updatedAvailability.doctorId = this.$route.params.doctorId;
-          this.dayOfWeek = 'monday'
+          this.updatedAvailability.doctorId = 2
+          this.updatedAvailability.dayOfWeek = 'monday'
           providerService.updateDocAvailability(this.updatedAvailability).then( (response) => {
             console.log(response.statusText)
           })

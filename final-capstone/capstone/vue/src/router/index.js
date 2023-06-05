@@ -42,7 +42,7 @@ const router = new VueRouter({
       // }
     },
     {
-      path: "/doctorDash/:doctorId",
+      path: "/doctorDash",
       name: "doctordash",
       component: DoctorDashboard,
       meta: {

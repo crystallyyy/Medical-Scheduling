@@ -13,4 +13,5 @@ public interface DoctorDAO {
     boolean updateDoctor(Doctor doctor);
     List<Doctor> getDoctorsByOffice(int id);
     public Doctor getDoctorByUserId(int userId);
+    List<Integer> getDoctorIdsByOfficeId(int officeId);
 }

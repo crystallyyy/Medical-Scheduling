@@ -58,7 +58,7 @@ export default {
     this.doctor.timeSlotDefault = this.timeSlotDefault;
     providerService.updateDoctorInformation(this.doctor).then(res=>{
       if(res.status==200){
-        this.$router.push({name: 'doctordash', params: { doctorId: this.doctor.doctorId }})
+        this.$router.push({name: 'doctordash', params: {doctorId: this.doctor.doctorId}})
       }
     })
        } catch (error) {
