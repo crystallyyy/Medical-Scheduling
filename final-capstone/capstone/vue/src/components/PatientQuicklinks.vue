@@ -36,7 +36,7 @@
 
                 <b-card style="max-width: 20rem;" class="dash">
                     <b-card-title>
-                    Not Sure
+                    More
                     </b-card-title>
                     <b-card-text>
                         Some quick example text to build on the card title and make up the bulk of the card's content.
@@ -59,53 +59,7 @@ export default {
 </script>
 
 
-
-
 <style>
-
-.main{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    background-color: sandybrown;
-}
-b-card {
-    display: flex;
-    flex-direction: column;
-    flex-basis: 50%;
-    height: 200px;
-    border: 4px black solid;
-    background-color: white;
-}
-b-button {
-    padding: 5px;
-    margin: auto;
-    background-color: teal;
-    border-radius: 8px;
-    
-
-}
-b-card b-card-title {
-    font-size: 25px;
-    font-weight: bold;
-    padding: 5px;
-    
-}
-
-</style>
-
-
-<script>
-export default {
-    
-}
-</script>
-
-
-
-
-<style>
-
 
 .main {
   display: grid;
@@ -147,7 +101,7 @@ export default {
   padding: 12px;
   border: none;
   border-radius: 5px;
-  background-color: #007bff;
+  background-color: #04abcc;
   color: #fff;
   font-size: 1rem;
   text-align: center;
@@ -163,28 +117,9 @@ export default {
   background-color: #048eaa;
 } 
 
-b-card {
-    display: flex;
-    flex-direction: column;
-    flex-basis: 50%;
-    height: 200px;
-    border: 4px black solid;
-    background-color: white;
-}
+/* a .b-button {
 
-b-button {
-    padding: 8.5px;
-    margin: auto;
-    background-color: #04abcc;
-    color: white;
-    border-radius: 10px;
-}
-
-b-card b-card-title {
-    font-size: 22px;
-    font-weight: bold;
-    padding: 5px;
-}
-
+  background-color: #04abcc;
+} */
 
 </style>

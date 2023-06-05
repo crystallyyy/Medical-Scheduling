@@ -1,8 +1,8 @@
 <template>
   <div>
-    <b-container class="bv-example-row">
-      <b-row>
-        <b-col>
+    <!-- <b-container class="bv-example-row"> -->
+      <!-- <b-row> -->
+        <!-- <b-col> -->
           <div>
             <b-card no-body>
               <b-tabs pills card align="center">
@@ -11,9 +11,9 @@
               </b-tabs>
             </b-card>
           </div>
-        </b-col>
-      </b-row>
-    </b-container>
+        <!-- </b-col> -->
+      <!-- </b-row> -->
+    <!-- </b-container> -->
   </div>
 </template>
 
@@ -35,7 +35,7 @@ export default {
 </script>
 
 <style scoped>
-.bv-example-row {
-  background-color: sandybrown;
-}
+/* .bv-example-row {
+  background-color: #4edbf7;
+} */
 </style>
