@@ -64,7 +64,7 @@ export default {
           this.updatedAvailability.dayOfWeek = 'tuesday'
           providerService.updateDocAvailability(this.updatedAvailability)
         } else  if(this.daysOfWeek[i] == 'Wednesday'){
-          this.updatedAvailability.doctorId = this.$route.params.doctorId;
+          this.updatedAvailability.doctorId = 2
           this.updatedAvailability.dayOfWeek = 'wednesday'
           providerService.updateDocAvailability(this.updatedAvailability)
         } else  if(this.daysOfWeek[i] == 'Thursday'){
