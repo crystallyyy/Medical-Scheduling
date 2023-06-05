@@ -1,10 +1,10 @@
 <template>
   <div id="main">
     <div id="nav">
-      <div class="imgdiv">
-        <img id="img" src="../../img/logo2.jpeg" alt="company logo" />
-      </div>
       <ul class="nav flex-column">
+        <li class="nav-item">
+          <img id="img" src="../../img/logo2.jpeg" alt="company logo" />
+        </li>
         <li class="nav-item">
           <button type="button" class="btn btn-info" @click="activeCard = 1">
             Dashboard
@@ -17,29 +17,31 @@
         </li>
         <li class="nav-item">
           <button type="button" class="btn btn-info" @click="activeCard = 3">
-            Manage Locations
+           Manage Locations
           </button>
         </li>
         <li class="nav-item">
           <button type="button" class="btn btn-info" @click="activeCard = 4">
-            Manage Availability
+           Manage Availability
           </button>
         </li>
       </ul>
     </div>
 
     <div id="content">
-      <div class="card card-body" v-show="activeCard === 1">
-        Content for show dashboard
+      <div class="dashboard" v-show="activeCard === 1">
+        <h1>Welcome to your Dashboard</h1>
+        
       </div>
-      <div class="card card-body" v-show="activeCard === 2">
-        Content for my profile
+      <div class="appointments" v-show="activeCard === 2">
+       
       </div>
-      <div class="card card-body" v-show="activeCard === 3">
-        Content for manage location
+      <div class="info" v-show="activeCard === 3">
+       
+         <edit-office-list></edit-office-list>
       </div>
-      <div class="card card-body" v-show="activeCard === 4">
-        Content for change availability
+      <div class="visits" v-show="activeCard === 4">
+        
       </div>
     </div>
     <div class="card card-body" v-show="activeCard === 4">
@@ -53,18 +55,25 @@
 
 <script>
 import DoctorAvailability from "../components/DoctorAvailability.vue";
+import EditOfficeList from '../components/EditOfficeList.vue'
 export default {
-  components: { DoctorAvailability },
+  name: "doctor-dash",
+  components: {EditOfficeList, DoctorAvailability},
   data() {
     return {
-      activeCard: null,
-      methods: {},
+      activeCard: 1,
+      methods: {
+        // showProviders(){
+        //     this.$router.push("/")
+        // }
+      },
     };
   },
 };
+
 </script>
 
-<style scoped>
+<style>
 #main {
   display: flex;
 }
@@ -110,7 +119,7 @@ export default {
 .card-body {
   padding: 10px;
   background-color: #fff;
-  display: none;
+  justify-content: center;
 }
 
 .card-body.show {
