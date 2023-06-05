@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Office;
+import com.techelevator.model.OfficeHours;
 import com.techelevator.model.User;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -82,6 +83,19 @@ public class JdbcOfficeDAO implements OfficeDAO {
         return offices;
     }
 
+    @Override
+    public List<OfficeHours> getOfficeHoursByOfficeId(int officeId){
+        List<OfficeHours> officeHoursList = new ArrayList<>();
+        String sql = "select * from office_hours where office_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, officeId);
+        while (results.next()){
+            officeHoursList.add(mapRowToOfficeHours(results));
+        }
+        return officeHoursList;
+    }
+
+
+
     private Office mapRowToOffice(SqlRowSet rs) {
         Office office = new Office();
         office.setOfficeId(rs.getInt("office_id"));
@@ -89,5 +103,15 @@ public class JdbcOfficeDAO implements OfficeDAO {
         office.setAddress(rs.getString("address"));
         office.setPhoneNumber(rs.getString("phone_number"));
         return office;
+    }
+
+    private OfficeHours mapRowToOfficeHours(SqlRowSet row){
+        OfficeHours officeHours = new OfficeHours();
+        officeHours.setOhId(row.getInt("office_hours_id"));
+        officeHours.setOfficeId(row.getInt("office_id"));
+        officeHours.setDayOfWeek(row.getString("day_of_week"));
+        officeHours.setStartTime(row.getTime("start_time").toLocalTime());
+        officeHours.setEndTime(row.getTime("end_time").toLocalTime());
+        return officeHours;
     }
 }

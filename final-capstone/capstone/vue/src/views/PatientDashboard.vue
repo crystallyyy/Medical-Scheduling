@@ -44,7 +44,7 @@
         ></b-calendar>
       </div>
       <div class="visits" v-show="activeCard === 4">
-        Content for change availability
+        
       </div>
     </div>
   </div>

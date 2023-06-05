@@ -18,7 +18,7 @@
     </div>
 
 
-    <table class="officeTable">
+    <!-- <table class="officeTable">
       <thead>
         <tr>
           <th>Office Name</th>
@@ -40,9 +40,35 @@
             </button>
           </td>
         </tr>
+        
       </tbody>
-    </table>
-  </div>
+    </table> -->
+    <div class="list">
+      
+        <div class="officeinfo" v-for="office in offices" v-bind:key="office.officeId">
+            <div>
+              <table>
+                  <tr><td> {{ office.officeName }}</td></tr>
+                  <tr><td>{{ office.address }} </td></tr>
+                  <tr><td>{{ office.phoneNumber }} </td></tr>
+              </table>
+        </div>
+        <div class="officehours" v-for="hour in officeHours" v-bind:key="hour.dayOfWeek">
+               
+                  <tr><td>{{hour.dayOfWeek}}:</td><td>{{ hour.startTime}} - </td><td>{{hour.endTime}} </td></tr>
+                
+        </div>
+
+        <div class="doctors" v-for="doctor in doctorsInOffice" v-bind:key="doctor.firstName">
+                <tr><td>Dr. {{doctor.firstName}} {{ doctor.lastName}} </td></tr>
+        </div>
+      </div>
+      
+    </div>
+    </div>
+
+
+  <!-- </div> -->
 </template>
 
 <script>
@@ -53,14 +79,34 @@ export default {
   data() {
     return {
       offices: [],
-    };
+      officeHours:[],
+      doctorsInOffice:[]
+    }
   },
+ 
   created() {
     officeService.getAllOffices().then((response) => {
       this.offices = response.data;
+
+      this.offices.forEach(office => {
+         officeService.getOfficeHours(office.officeId).then((response) =>{
+          this.officeHours = response.data;
+          });
+
+         officeService.getDoctors(office.officeId).then((response) =>{
+          this.doctorsInOffice = response.data;
+          });
+        
+      });
+     
     });
-  },
-};
+   },
+
+ 
+  
+        
+  
+}
 </script>
 
 <style>
@@ -120,4 +166,14 @@ button {
 button:hover {
   background-color: #e6e6e6;
 }
+
+.list {
+  padding:20px;
+}
+
+.officeinfo , .officehours , .doctors {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
 </style>
