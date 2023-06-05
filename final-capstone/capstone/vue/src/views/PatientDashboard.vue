@@ -37,11 +37,7 @@
         <schedule-appointment></schedule-appointment>
       </div>
       <div class="info" v-show="activeCard === 3">
-        <b-calendar
-          v-model="value"
-          @context="onContext"
-          locale="en-US"
-        ></b-calendar>
+        
       </div>
       <div class="visits" v-show="activeCard === 4">
         

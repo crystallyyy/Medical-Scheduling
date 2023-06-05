@@ -15,6 +15,7 @@
       </router-link>
     </div>
 
+
     <table class="officeTable">
       <thead>
         <tr>
@@ -74,10 +75,13 @@
         <div class="doctors" v-for="doctor in doctorsInOffice" v-bind:key="doctor.firstName">
                 <tr><td>Dr. {{doctor.firstName}} {{ doctor.lastName}} </td></tr>
         </div>
+        <div v-for="dr in doctors" v-bind:key="dr.firstName">
+            <p>{{  dr.firstName}}</p>
+        </div>
       </div>
       
     </div>
-    </div>
+  </div>
 
 
   <!-- </div> -->
@@ -86,13 +90,15 @@
 <script>
 import officeService from "../services/officeService.js";
 
+
 export default {
   name: "office-list",
   data() {
     return {
       offices: [],
       officeHours:[],
-      doctorsInOffice:[]
+      doctorsInOffice:[],
+    
     }
   },
  

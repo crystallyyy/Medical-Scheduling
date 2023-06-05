@@ -18,6 +18,8 @@ import com.techelevator.dao.UserDao;
 import com.techelevator.security.jwt.JWTFilter;
 import com.techelevator.security.jwt.TokenProvider;
 
+import java.security.Principal;
+
 @RestController
 @CrossOrigin
 public class AuthenticationController {
@@ -71,5 +73,9 @@ public class AuthenticationController {
         return userId;
     }
 
+    @GetMapping(path = "/whoamI/role")
+    public String getRole(Principal principal){
+        return null;
+    }
 }
 

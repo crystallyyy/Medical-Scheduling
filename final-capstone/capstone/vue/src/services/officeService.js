@@ -11,8 +11,8 @@ export default {
         return axios.get(`/offices/doctors/${doctorId}`)
     },
 
-    updateOfficeById(officeId, data){
-        return axios.put(`/offices/${officeId}`, data)
+    updateOffice(office){
+        return axios.put(`/updateoffice`, office);
     },
 
     getOfficeHours(officeId){

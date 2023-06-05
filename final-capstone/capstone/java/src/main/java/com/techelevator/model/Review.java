@@ -1,6 +1,9 @@
 package com.techelevator.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class Review {
+    @JsonIgnore
     private int reviewId;
     private int officeId;
     private String description;
