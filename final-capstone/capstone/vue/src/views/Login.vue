@@ -26,8 +26,8 @@
 
     <form class="createAccount">
       <h2><strong>Create Account</strong></h2> <br>
-      <button type="submit"><router-link :to="{ name: 'patientRegister' }">Patient</router-link> </button><br>
-      <button type="submit"><router-link :to="{ name: 'doctorRegister' }">Provider</router-link> </button>
+      <button type="submit"><router-link class="patientButton" :to="{ name: 'patientRegister' }">PATIENT</router-link> </button><br>
+      <button type="submit"><router-link class="providerButton" :to="{ name: 'doctorRegister' }">PROVIDER</router-link> </button>
     </form>
 
   </div>
@@ -163,7 +163,8 @@ form input {
 }
 
 button {
-  background-color: #4caf50;
+  background-color: #04abcc;
+  /* background-color: #4caf50; */
   color: white;
   border: none;
   padding: 10px 20px;
@@ -174,7 +175,8 @@ button {
 }
 
 button:hover {
-  background-color: #45a049;
+  background-color: #048eaa;
+  /* background-color: #45a049; */
 }
 
 .alert {
@@ -182,4 +184,18 @@ button:hover {
   color: #721c24;
   border: 1px solid #f5c6;
 }
+
+.patientButton {
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.providerButton {
+  color: white;
+  display: flex;
+  justify-content: center;
+  
+}
+
 </style>

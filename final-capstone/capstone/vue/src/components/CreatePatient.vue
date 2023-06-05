@@ -112,7 +112,7 @@ input[type="password"] {
 }
 
 input[type="submit"] {
-  background-color: #4caf50;
+  background-color: #04abcc;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -123,6 +123,6 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-  background-color: #45a049;
+  background-color: #048eaa;
 }
 </style>

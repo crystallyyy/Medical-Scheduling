@@ -1,7 +1,7 @@
 <template>
   <div id="register" class="text-center">
     <form class="form" @submit.prevent="register">
-      <h2>Create Patient Account</h2>
+      <h2 class="h2">Create Patient Account</h2>
       <div role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
@@ -116,7 +116,7 @@ input[type="password"] {
 }
 
 button {
-  background-color: #4caf50;
+  background-color: #04abcc;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -128,6 +128,14 @@ button {
 }
 
 button:hover {
-  background-color: #45a049;
+  background-color: #048eaa;
 }
+
+.h2 {
+  display: inline-block;
+  font-size: 23px;
+  font-weight: bold;
+  padding-bottom: 23px
+}
+
 </style>

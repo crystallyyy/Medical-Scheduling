@@ -149,7 +149,7 @@ const router = new VueRouter({
       name: 'DoctorAccountCreationPage',
        component: DoctorAccountRegistration,
       meta: {
-        requiresAuth: true,
+        requiresAuth: false,
       },
     },
     {
