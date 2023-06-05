@@ -18,7 +18,7 @@
     </div>
 
 
-    <!-- <table class="officeTable">
+    <table class="officeTable">
       <thead>
         <tr>
           <th>Office Name</th>
@@ -42,7 +42,7 @@
         </tr>
         
       </tbody>
-    </table> -->
+    </table>
     <div class="list">
       
         <div class="officeinfo" v-for="office in offices" v-bind:key="office.officeId">

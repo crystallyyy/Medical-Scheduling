@@ -32,7 +32,6 @@ export default {
   data() {
     return {
       newReview: {
-        reviewId: 0,
         officeId: 0,
         description: "",
         rating: 0

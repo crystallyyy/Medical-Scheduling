@@ -3,8 +3,8 @@
     <h3>REVIEWS</h3>
 
     <div class="actions">
-      <router-link v-bind:to="{ name: 'Offices' }">
-        Return to Offices
+      <router-link v-bind:to="{ name: 'patientdash' }">
+        Return to Patient Dashboard
       </router-link> | 
       <span style="paddingleft: 8px; paddingright: 8px"></span>
       <router-link
