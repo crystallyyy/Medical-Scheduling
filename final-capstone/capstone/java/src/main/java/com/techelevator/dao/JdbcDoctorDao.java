@@ -70,13 +70,13 @@ public class JdbcDoctorDao implements DoctorDAO{
     }
 
     @Override
-    public Doctor updateDoctor(Doctor doctor) {
+    public boolean updateDoctor(Doctor doctor) {
         String sql = "UPDATE doctor SET first_name = ?, last_name = ?, time_slot_default = ?, email = ? " +
                 "WHERE doctor_id = ?";
-        int doctorId = jdbcTemplate.update(sql, doctor.getFirstName(), doctor.getLastName(),
+        int numRows = jdbcTemplate.update(sql, doctor.getFirstName(), doctor.getLastName(),
                 doctor.getTimeSlotDefault(), doctor.getEmail(), doctor.getDoctorId());
-
-        return getDoctorById(doctorId);
+        boolean isUpdated = numRows > 0;
+        return isUpdated;
     }
 
     @Override

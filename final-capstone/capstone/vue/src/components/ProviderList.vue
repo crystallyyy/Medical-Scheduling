@@ -4,10 +4,11 @@
    
         <h2>Dr. {{ doctor.firstName }} {{ doctor.lastName }}</h2>
         <h3>{{ doctor.email }}</h3>
-        <h3> <button v-on:click.prevent="isAvailabilityVisible = true"
+        <h3> <button 
         > View Availability </button>
         </h3>
-       <doctor-availability></doctor-availability>
+       <doctor-availability ></doctor-availability>
+       <!-- v-on:click.prevent="isAvailabilityVisible = true" -->
      <!-- <button v-b-b-toggle></button> -->
      <!-- <div> Book A Time
       <form  action="POST">

@@ -36,6 +36,7 @@
     </div>
     <div class="card card-body" v-show="activeCard === 4">
           Content for change availability
+          <doctor-availability></doctor-availability>
     </div> 
 </div>
 </div>
@@ -45,6 +46,7 @@
 </template>
 
 <script>
+import DoctorAvailability from '../components/DoctorAvailability.vue'
 export default {
   name: "doctor-dash",
   data() {
@@ -55,7 +57,8 @@ export default {
 
      } 
     }
-  }
+  },
+  components: {DoctorAvailability}
 }
 </script>
 

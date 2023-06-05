@@ -5,15 +5,8 @@
     <div class='actions'>
       <router-link v-bind:to="{ name: 'patientdash' }">
         Return to Dashboard
-      </router-link> |
+      </router-link> 
       <!-- <span style="paddingLeft: 8px; paddingRight: 8px;"></span> -->
-
-      <router-link
-        v-bind:to="{
-          name: 'reviewsPD',
-          params: { officeId: currentOfficeId },
-        }">Read Reviews
-      </router-link>
 
     </div>
 
