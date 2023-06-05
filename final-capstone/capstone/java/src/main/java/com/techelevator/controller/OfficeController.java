@@ -23,8 +23,8 @@ public class OfficeController {
         return officeDAO.listAllOffices();
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @PostMapping(path = "/updateoffice")
+   // @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PutMapping(path = "/updateoffice")
     public void updateOffice(@Valid @RequestBody Office office){
         officeDAO.updateOffice(office);
     }
