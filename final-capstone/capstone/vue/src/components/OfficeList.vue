@@ -3,10 +3,9 @@
     <h3 class="offices">OFFICES</h3>
 
     <div class='actions'>
-      <router-link v-bind:to="{ name: 'patientdash' }">
+      <router-link v-bind:to="{ name: 'patientDash' }">
         Return to Dashboard
       </router-link> |
-      <!-- <span style="paddingLeft: 8px; paddingRight: 8px;"></span> -->
 
       <router-link
         v-bind:to="{
@@ -14,23 +13,31 @@
           params: { officeId: currentOfficeId },
         }">Read Reviews
       </router-link>
-
     </div>
 
-
-    <!-- <table class="officeTable">
+    <table class="officeTable">
       <thead>
         <tr>
           <th>Office Name</th>
           <th>Address</th>
+
+          <!-- NEW -->
+          <th>Hours</th>
+
           <th>Phone Number</th>
           <th>Actions</th>
         </tr>
       </thead>
+
+
       <tbody>
         <tr v-for="office in offices" v-bind:key="office.officeId">
           <td>{{ office.officeName }}</td>
           <td>{{ office.address }}</td>
+
+          <!-- NEW -->
+          <td>{{ office.hours }}</td>
+
           <td>{{ office.phoneNumber }}</td>
           <td>
             <button>
@@ -40,9 +47,10 @@
             </button>
           </td>
         </tr>
-        
       </tbody>
-    </table> -->
+
+    </table>
+
     <div class="list">
       
         <div class="officeinfo" v-for="office in offices" v-bind:key="office.officeId">
@@ -50,6 +58,10 @@
               <table>
                   <tr><td> {{ office.officeName }}</td></tr>
                   <tr><td>{{ office.address }} </td></tr>
+                  
+                  <!-- NEW -->
+                  <tr><td>{{ office.hours }} </td></tr>
+
                   <tr><td>{{ office.phoneNumber }} </td></tr>
               </table>
         </div>
