@@ -99,7 +99,7 @@ export default {
   padding: 12px;
   border: none;
   border-radius: 5px;
-  background-color: #007bff;
+  background-color: #04abcc;
   color: #fff;
   font-size: 1rem;
   text-align: center;

@@ -118,7 +118,7 @@ export default {
 .card-body {
   padding: 10px;
   background-color: #fff;
-  display: none;
+  justify-content: center;
 }
 
 .card-body.show {
