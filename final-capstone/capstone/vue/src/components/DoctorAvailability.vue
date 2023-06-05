@@ -61,19 +61,19 @@ export default {
           })
         }else  if(this.daysOfWeek[i] == 'Tuesday'){
           this.updatedAvailability.doctorId = this.$route.params.doctorId;
-          this.dayOfWeek = 'tuesday'
+          this.updatedAvailability.dayOfWeek = 'tuesday'
           providerService.updateDocAvailability(this.updatedAvailability)
         } else  if(this.daysOfWeek[i] == 'Wednesday'){
           this.updatedAvailability.doctorId = this.$route.params.doctorId;
-          this.dayOfWeek = 'wednesday'
+          this.updatedAvailability.dayOfWeek = 'wednesday'
           providerService.updateDocAvailability(this.updatedAvailability)
         } else  if(this.daysOfWeek[i] == 'Thursday'){
           this.updatedAvailability.doctorId = this.$route.params.doctorId;
-          this.dayOfWeek = 'Thursday'
+          this.updatedAvailability.dayOfWeek = 'Thursday'
           providerService.updateDocAvailability(this.updatedAvailability)
         } else  if(this.daysOfWeek[i] == 'Friday'){
           this.updatedAvailability.doctorId = this.$route.params.doctorId;
-          this.dayOfWeek = 'Friday'
+          this.updatedAvailability.dayOfWeek = 'Friday'
           providerService.updateDocAvailability(this.updatedAvailability)
         } 
       }

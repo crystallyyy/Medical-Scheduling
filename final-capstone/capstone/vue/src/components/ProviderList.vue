@@ -19,17 +19,15 @@
             }}
           </p>
         </li>
-      </ul>
-      <select name="office-id" id="office-id">
-        <!-- <option ></option> -->
-        <option
-          v-for="(office) in offices"
+    </ul>
+    <ul>
+       <li v-for="(office) in doctor.offices"
           v-bind:key="office.officeId"
-          :value="office.officeId"
-        >
-          {{ office.officeName }}
-        </option>
-      </select>
+          :value="office.officeId">{{ office.officeName }} </li>
+  </ul>
+          
+          
+     
 
       <scheduling-calendar></scheduling-calendar>
       <!-- v-on:click.prevent="isAvailabilityVisible = true" -->
@@ -64,19 +62,27 @@ export default {
   },
 
   created() {
+
     providerService.getAllProviders().then((response) => {
       this.doctors = response.data;
+
       this.doctors.forEach((doctor) => {
+
         officeService.getOfficesByDoctorId(doctor.doctorId).then((response) => {
-          this.offices = response.data;
-          console.log(this.offices)
+          this.offices.push(response.data);
+          
         });
-      });
+        
+     });
     });
 
     providerService.getAllAvailabilities().then((response) => {
       this.availabilities = response.data;
     });
+
+    // officeService.getAllOffices().then( (response) => {
+    //   this.offices = response.data
+    // })
   },
   data() {
     return {
@@ -92,9 +98,7 @@ export default {
       // },
       availabilities: [],
       doctors: [],
-      offices: [
-  
-      ],
+      offices: [],
     };
   },
   methods: {
