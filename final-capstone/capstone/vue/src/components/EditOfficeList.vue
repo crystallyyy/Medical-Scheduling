@@ -12,7 +12,7 @@
         v-bind:to="{
           name: 'reviewsPD',
           params: { officeId: currentOfficeId },
-        }">Read Reviews
+        }">Edit Office Information
       </router-link>
 
     </div>
@@ -35,7 +35,7 @@
           <td>
             <button>
               <router-link :to="{ name: 'reviewsPD', params: { officeId: office.officeId }}">
-                <strong>Read Reviews</strong>
+                <strong>Edit Office Information</strong>
               </router-link>
             </button>
           </td>
@@ -43,32 +43,29 @@
         
       </tbody>
     </table>
-    <div class="list">
-      
-        <div class="officeinfo" v-for="office in offices" v-bind:key="office.officeId">
-            <div>
-              <table>
-                  <tr><td> {{ office.officeName }}</td></tr>
-                  <tr><td>{{ office.address }} </td></tr>
-                  <tr><td>{{ office.phoneNumber }} </td></tr>
-              </table>
-        </div>
-        <div class="officehours" v-for="hour in officeHours" v-bind:key="hour.dayOfWeek">
-               
-                  <tr><td>{{hour.dayOfWeek}}:</td><td>{{ hour.startTime}} - </td><td>{{hour.endTime}} </td></tr>
-                
-        </div>
+        <!-- <div class="list">
+          
+            <div class="officeinfo" v-for="office in offices" v-bind:key="office.officeId">
+                <div>
+                  <table>
+                      <tr><td> {{ office.officeName }}</td></tr>
+                      <tr><td>{{ office.address }} </td></tr>
+                      <tr><td>{{ office.phoneNumber }} </td></tr>
+                  </table>
+            </div>
+            <div class="officehours" v-for="hour in officeHours" v-bind:key="hour.dayOfWeek">
+                  
+                      <tr><td>{{hour.dayOfWeek}}:</td><td>{{ hour.startTime}} - </td><td>{{hour.endTime}} </td></tr>
+                    
+            </div>
 
-        <div class="doctors" v-for="doctor in doctorsInOffice" v-bind:key="doctor.firstName">
-                <tr><td>Dr. {{doctor.firstName}} {{ doctor.lastName}} </td></tr>
-        </div>
-        <div v-for="dr in doctors" v-bind:key="dr.firstName">
-            <p>{{  dr.firstName}}</p>
-        </div>
-      </div>
-      
+            <div class="doctors" v-for="doctor in doctorsInOffice" v-bind:key="doctor.firstName">
+                    <tr><td>Dr. {{doctor.firstName}} {{ doctor.lastName}} </td></tr>
+            </div>
+          </div>
+          
+      </div> -->
     </div>
-  </div>
 
 
   <!-- </div> -->
@@ -77,15 +74,13 @@
 <script>
 import officeService from "../services/officeService.js";
 
-
 export default {
   name: "office-list",
   data() {
     return {
       offices: [],
       officeHours:[],
-      doctorsInOffice:[],
-    
+      doctorsInOffice:[]
     }
   },
  
