@@ -7,6 +7,7 @@ export default {
   created() {
     this.$store.commit("LOGOUT");
     this.$router.push("/login");
+    console.log("logout" + this.$store.state.role.role);
   }
 };
 </script>
