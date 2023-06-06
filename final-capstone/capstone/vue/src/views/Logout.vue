@@ -14,36 +14,31 @@ export default {
 
 
 <style scope>
-
 body {
-  background-color: #FFFFFF; /* White background */
-  color: #000000; /* Black text */
+  background-color: #ffffff;
+  color: #000000;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  color: #000000; /* Black headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #000000;
 }
-
-/* a {
-  color:white; 
-} */
-
-/* a {
-  color: #243688; 
-} */
 
 a {
-  color: #04abcc; 
+  color: #04abcc;
 }
 
 a:hover {
-  color: #1E90FF; 
+  color: #048eaa;
 }
 
-/* Example of a sky-blue button */
 .button {
-  background-color: #00BFFF;
-  color: #FFFFFF;
+  background-color: #04abcc;
+  color: #ffffff;
   border: none;
   padding: 10px 20px;
   text-align: center;
@@ -52,22 +47,4 @@ a:hover {
   font-size: 16px;
   cursor: pointer;
 }
-
-/* Example of a sky-blue border */
-/* .border {
-  border: 2px solid #00BFFF;
-} */
-
-/* Example of sky-blue background with white text */
-/* .skyblue-background {
-  background-color: #00BFFF;
-  color: #FFFFFF;
-} */
-
-/* Example of sky-blue text on white background */
-/* .skyblue-text {
-  color: #00BFFF;
-  background-color: #FFFFFF;
-} */
-
 </style>

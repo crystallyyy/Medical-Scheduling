@@ -53,7 +53,8 @@ export default {
             if (response.status == 201) {
               this.$router.push({
                 path: '/patient-account-creation',
-                query: { registration: 'success' },
+                query: { registration: 'success',
+                 username: this.user.username,},
               });
             }
           })

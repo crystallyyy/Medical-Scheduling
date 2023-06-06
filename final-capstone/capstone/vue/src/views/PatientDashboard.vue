@@ -2,36 +2,13 @@
 <template>
   <div id="main">
     <div id="nav">
-      <ul class="nav flex-column">
-        <li class="nav-item">
-          <img id="img" src="../../img/logo2.jpeg" alt="company logo" />
-        </li>
-        <li class="nav-item">
-          <button type="button" class="btn btn-info" @click="activeCard = 1">
-            Dashboard
-          </button>
-        </li>
-        <li class="nav-item">
-          <button type="button" class="btn btn-info" @click="activeCard = 2">
-            Appointments
-          </button>
-        </li>
-        <li class="nav-item">
-          <button type="button" class="btn btn-info" @click="activeCard = 3">
-            Update Info
-          </button>
-         
-        </li>
-        <li class="nav-item">
-          <button type="button" class="btn btn-info" @click="activeCard = 4">
-            Past Visits
-          </button>
-        </li>
-      </ul>
-    </div>
-
       <li class="nav-item">
-        <img id="img" src="../../img/logo2.jpeg" alt="company logo" />
+        <img
+          class="nav-item"
+          id="img"
+          src="../../img/logo2.jpeg"
+          alt="company logo"
+        />
       </li>
       <li class="nav-item">
         <button type="button" class="btn btn-info" @click="activeCard = 1">
@@ -52,10 +29,12 @@
         <button type="button" class="btn btn-info" @click="activeCard = 4">
           Past Visits
         </button>
-      </li> 
-      <div id="content">
+      </li>
+
+    </div>
+    <div id="content">
       <div class="dashboard" v-show="activeCard === 1">
-        <h1>Welcome to your Dashboard</h1>
+        <h1 id="dashboardMessage">Welcome to your Dashboard</h1>
         <patient-quicklinks></patient-quicklinks>
       </div>
       <div class="appointments" v-show="activeCard === 2">
@@ -92,7 +71,7 @@ export default {
 };
 </script>
 
-<style>
+<style >
 #main {
   display: flex;
 }
@@ -104,6 +83,7 @@ export default {
 
 .imgdiv {
   padding: 10px;
+  text-align: center;
 }
 
 #img {
@@ -131,7 +111,6 @@ export default {
 
 .card {
   margin-bottom: 10px;
-  border: 1px solid #ccc;
   border-radius: 5px;
 }
 
@@ -143,5 +122,14 @@ export default {
 
 .card-body.show {
   display: block;
+}
+
+#dashboardMessage {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.nav-item {
+  list-style: none;
 }
 </style>

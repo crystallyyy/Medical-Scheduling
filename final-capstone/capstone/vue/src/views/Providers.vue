@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Find A Provider</h1>
+    <h3>FIND A PROVIDER</h3>
     <div class="actions">
       <router-link v-bind:to="{ name: 'patientDash' }">
         Return to Dashboard
@@ -32,12 +32,11 @@
           <th>Address</th>
 
           <th>Hours</th>
-          
+
           <th>Phone Number</th>
           <th>Actions</th>
         </tr>
       </thead>
-
 
       <tbody>
         <tr v-for="office in offices" v-bind:key="office.officeId">
@@ -47,43 +46,68 @@
           <td>{{ provider.phoneNumber }}</td>
           <td>
             <button>
-              <router-link :to="{ name: 'reviewsPD', params: { officeId: office.officeId }}">
+              <router-link
+                :to="{
+                  name: 'reviewsPD',
+                  params: { officeId: office.officeId },
+                }"
+              >
                 <strong>Read Reviews</strong>
               </router-link>
             </button>
           </td>
         </tr>
       </tbody>
-
     </table>
 
     <div class="list">
-      
-        <div class="providerinfo" v-for="provider in providers" v-bind:key="provider.providerId">
-            <div>
-              <table>
-                  <tr><td> {{ provider.providerName }}</td></tr>
-                  <tr><td>{{ provider.address }} </td></tr>
-                  
-                  <!-- NEW -->
-                  <tr><td>{{ provider.hours }} </td></tr>
+      <div
+        class="providerinfo"
+        v-for="provider in providers"
+        v-bind:key="provider.providerId"
+      >
+        <div>
+          <table>
+            <tr>
+              <td>{{ provider.providerName }}</td>
+            </tr>
+            <tr>
+              <td>{{ provider.address }}</td>
+            </tr>
 
-                  <tr><td>{{ provider.phoneNumber }} </td></tr>
-              </table>
+            <!-- NEW -->
+            <tr>
+              <td>{{ provider.hours }}</td>
+            </tr>
+
+            <tr>
+              <td>{{ provider.phoneNumber }}</td>
+            </tr>
+          </table>
         </div>
-        <div class="officehours" v-for="hour in officeHours" v-bind:key="hour.dayOfWeek">
-               
-                  <tr><td>{{hour.dayOfWeek}}:</td><td>{{ hour.startTime}} - </td><td>{{hour.endTime}} </td></tr>
-                
+        <div
+          class="officehours"
+          v-for="hour in officeHours"
+          v-bind:key="hour.dayOfWeek"
+        >
+          <tr>
+            <td>{{ hour.dayOfWeek }}:</td>
+            <td>{{ hour.startTime }} -</td>
+            <td>{{ hour.endTime }}</td>
+          </tr>
         </div>
 
-        <div class="doctors" v-for="doctor in doctorsInOffice" v-bind:key="doctor.firstName">
-                <tr><td>Dr. {{doctor.firstName}} {{ doctor.lastName}} </td></tr>
+        <div
+          class="doctors"
+          v-for="doctor in doctorsInOffice"
+          v-bind:key="doctor.firstName"
+        >
+          <tr>
+            <td>Dr. {{ doctor.firstName }} {{ doctor.lastName }}</td>
+          </tr>
         </div>
       </div>
-      
     </div>
-
 
     <provider-list></provider-list>
   </div>
@@ -98,11 +122,10 @@ export default {
 };
 </script>
 
-<style>
-
+<style scoped>
 .button {
-    display: inline-block;
-    justify-self: center;
+  display: inline-block;
+  justify-self: center;
 }
 .mt-2 {
   padding: 0;
@@ -113,6 +136,4 @@ export default {
   padding: 10px;
   text-align: center;
 }
-
-
 </style>

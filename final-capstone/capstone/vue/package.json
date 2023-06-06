@@ -10,7 +10,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
-    "bootstrap-vue": "^2.21.2",
+    "bootstrap-vue": "^2.23.1",
     "core-js": "^3.9.1",
     "vue": "^2.7.14",
     "vue-bootstrap-datetimepicker": "^5.0.1",
