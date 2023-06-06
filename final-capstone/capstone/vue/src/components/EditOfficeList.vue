@@ -106,7 +106,8 @@ export default {
   },
 
   created() {
-    officeService.getAllOffices().then((response) => {
+    const doctorId = this.$route.params.doctorId
+    officeService.getOfficesByDoctorId(doctorId).then((response) => {
       this.offices = response.data;
 
       this.offices.forEach((office) => {
