@@ -1,3 +1,4 @@
+          
 <template>
   <div id="main">
     <div id="nav">
@@ -29,7 +30,30 @@
       </ul>
     </div>
 
-    <div id="content">
+      <li class="nav-item">
+        <img id="img" src="../../img/logo2.jpeg" alt="company logo" />
+      </li>
+      <li class="nav-item">
+        <button type="button" class="btn btn-info" @click="activeCard = 1">
+          Dashboard
+        </button>
+      </li>
+      <li class="nav-item">
+        <button type="button" class="btn btn-info" @click="activeCard = 2">
+          Appointments
+        </button>
+      </li>
+      <li class="nav-item">
+        <button type="button" class="btn btn-info" @click="activeCard = 3">
+          Update Info
+        </button>
+      </li>
+      <li class="nav-item">
+        <button type="button" class="btn btn-info" @click="activeCard = 4">
+          Past Visits
+        </button>
+      </li> 
+      <div id="content">
       <div class="dashboard" v-show="activeCard === 1">
         <h1>Welcome to your Dashboard</h1>
         <patient-quicklinks></patient-quicklinks>
@@ -44,9 +68,7 @@
         
       </div>
     </div>
-  </div>
-
-  <!-- include contact support -->
+    </div>
 </template>
 
 <script>

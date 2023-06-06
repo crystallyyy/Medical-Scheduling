@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import axios from 'axios'
 
 
+
 Vue.use(Vuex)
 
 /*
@@ -21,7 +22,7 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
-    
+    role: {}
     
   },
   mutations: {
@@ -39,7 +40,13 @@ export default new Vuex.Store({
       localStorage.removeItem('user');
       state.token = '';
       state.user = {};
+       state.role = {};
       axios.defaults.headers.common = {};
     },
+
+    SET_ROLE(state,roles){
+      state.role = roles;
+    }
+
   }
 })

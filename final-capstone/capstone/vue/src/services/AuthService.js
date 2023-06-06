@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+
 export default {
 
   login(user) {
@@ -8,6 +9,9 @@ export default {
 
   register(user) {
     return axios.post('/register', user)
-  }
+  },
 
+  getRole(username){
+    return axios.get(`/info/${username}`)
+  }
 }
