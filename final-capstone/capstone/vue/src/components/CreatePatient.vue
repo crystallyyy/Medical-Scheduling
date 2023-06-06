@@ -1,88 +1,74 @@
 <template>
-  <div>
-    <form @submit.prevent="submitForm">
-      <label for="first_name">First Name:</label>
-      <input
-        type="text"
-        id="first_name"
-        v-model="patient.first_name"
-        required
-      />
-      <br />
-
-      <label for="last_name">Last Name:</label>
-      <input type="text" id="last_name" v-model="patient.last_name" required />
-      <br />
-
-      <label for="date_of_birth">Date of Birth:</label>
-      <input
-        type="date"
-        id="date_of_birth"
-        v-model="patient.date_of_birth"
-        required
-      />
-      <br />
-
-      <label for="address_line1">Address Line 1:</label>
-      <input
-        type="text"
-        id="address_line1"
-        v-model="address.address_line1"
-        required
-      />
-      <br />
-
-      <label for="address_line2">Address Line 2:</label>
-      <input type="text" id="address_line2" v-model="address.address_line2" />
-      <br />
-
-      <label for="city">City:</label>
-      <input type="text" id="city" v-model="address.city" required />
-      <br />
-
-      <label for="state">State:</label>
-      <input type="text" id="state" v-model="address.state" required />
-      <br />
-
-      <label for="zip_code">Zip Code:</label>
-      <input type="text" id="zip_code" v-model="address.zip_code" required />
-      <br />
-
-      <button type="submit">Submit</button>
-    </form>
-  </div>
+  <form @submit="submitForm">
+    <div>
+      <label for="userId">User ID:</label>
+      <input type="number" id="userId" v-model="formData.userId" required />
+    </div>
+    <div>
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" v-model="formData.firstName" required />
+    </div>
+    <div>
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" v-model="formData.lastName" required />
+    </div>
+    <div>
+      <label for="dateOfBirth">Date of Birth:</label>
+      <input type="date" id="dateOfBirth" v-model="formData.dateOfBirth" required />
+    </div>
+    <div>
+      <label for="address">Address:</label>
+      <textarea id="address" v-model="formData.address" required></textarea>
+    </div>
+    <div>
+      <label for="phoneNumber">Phone Number:</label>
+      <input type="tel" id="phoneNumber" v-model="formData.phoneNumber" required />
+    </div>
+    <button type="submit">Submit</button>
+    <button @click="showUserId"> Click Me</button>
+  </form>
 </template>
 
 <script>
+import patientService from "../services/patientService.js";
 export default {
-  props: {
-    userName: String,
-  },
+    props :{
+        userName: String
+    },
   data() {
     return {
-      patient: {
-        user_id: null,
-        first_name: "",
-        last_name: "",
-        date_of_birth: "",
-        address: "",
-      },
-      address: {
-        address_line1: "",
-        address_line2: "",
-        city: "",
-        state: "",
-        zip_code: "",
-      },
+      formData: {
+        userId: null,
+        firstName: '',
+        lastName: '',
+        dateOfBirth: '',
+        address: '',
+        phoneNumber: ''
+      }
     };
   },
   methods: {
     async submitForm() {
-      this.patient.address = `${this.address.address_line1}, ${this.address.address_line2}, ${this.address.city}, ${this.address.state} ${this.address.zip_code}`;
+     await console.log((await patientService.getPatientUserIdByUsername(this.userName)).data)
+      
     },
-  },
+    resetForm() {
+      this.formData = {
+        userId: null,
+        firstName: '',
+        lastName: '',
+        dateOfBirth: '',
+        address: '',
+        phoneNumber: ''
+      };
+    },
+   async showUserId(){
+      console.log(this.userName)
+    }
+  }
 };
 </script>
+
 
 
 <style>
