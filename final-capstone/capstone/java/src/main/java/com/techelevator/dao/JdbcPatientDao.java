@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.Doctor;
 import com.techelevator.model.Patient;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -52,16 +53,23 @@ public class JdbcPatientDao implements PatientDAO{
     }
 
     private Patient mapRowToPatient(SqlRowSet row){
-        Patient patient = new Patient(
-                row.getInt("patient_id"),
-                row.getInt("user_id"),
-                row.getString("first_name"),
-                row.getString("last_name"),
-                row.getDate("date_of_birth").toLocalDate(),
-                row.getString("address"),
-                row.getString("phone_number")
-        );
-
+        Patient patient = new Patient();
+        patient.setUserId(row.getInt("user_id"));
+        patient.setPatientId(row.getInt("patient_id"));
+        patient.setFirstName(row.getString("first_name"));
+        patient.setLastName(row.getString("last_name"));
+        patient.setAddress(row.getString("address"));
+        patient.setPhoneNumber(row.getString("phone_number"));
+        return patient;
+    }
+    @Override
+    public Patient getPatientByUserId(int userID) {
+        Patient patient = null;
+        String sql = "SELECT * FROM patient WHERE user_id = ?";
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sql,userID);
+        if(result.next()){
+            patient = mapRowToPatient(result);
+        }
         return patient;
     }
 }
