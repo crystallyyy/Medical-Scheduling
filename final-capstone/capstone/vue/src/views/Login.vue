@@ -58,7 +58,7 @@ export default {
             this.$store.commit("SET_USER", response.data.user);
 
           
-               this.$router.push("/patientDash"); 
+               this.$router.push("/patientDash/:patientId"); 
             
             
           }

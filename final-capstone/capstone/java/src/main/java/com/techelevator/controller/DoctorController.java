@@ -1,7 +1,9 @@
 package com.techelevator.controller;
 
+import com.techelevator.dao.AvailabilityDAO;
 import com.techelevator.dao.DoctorDAO;
 import com.techelevator.model.Doctor;
+import com.techelevator.model.DoctorAvailability;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -18,6 +20,8 @@ public class DoctorController {
 
     @Autowired
      DoctorDAO doctorDAO;
+    @Autowired
+    AvailabilityDAO availabilityDAO;
 
     @GetMapping(path = "/providers")
     public List<Doctor> listProviders(){
@@ -52,7 +56,7 @@ public class DoctorController {
     @CrossOrigin
     @PutMapping(path = "pid/update/{doctorId}")
     @ResponseStatus(HttpStatus.OK)
-    public Doctor updateDoctorInfo(@PathVariable int doctorId,  @Valid @RequestBody Doctor doctorToUpdate){
+    public boolean updateDoctorInfo(@PathVariable int doctorId,  @Valid @RequestBody Doctor doctorToUpdate){
         return doctorDAO.updateDoctor(doctorToUpdate);
     }
 
@@ -60,5 +64,25 @@ public class DoctorController {
     public List<Doctor> getDoctorsByOffice(@PathVariable int officeId){
 
         return doctorDAO.getDoctorsByOffice(officeId);
+    }
+
+    @GetMapping(path = "/availability/{doctorId}")
+    public List<DoctorAvailability> availabilityByDoctor(@PathVariable int doctorId){
+        return availabilityDAO.getAvailabilityById(doctorId);
+    }
+
+    @PutMapping(path = "/availability/{doctorId}")
+    public boolean updateDoctorAvailability(@PathVariable int doctorId,  @Valid @RequestBody DoctorAvailability doctorAvailability){
+        return availabilityDAO.updateAvailability(doctorAvailability);
+    }
+
+    @GetMapping(path = "/availabilities")
+    public List<DoctorAvailability> listAllAvailabilities(){
+        return availabilityDAO.listAvailabilities();
+    }
+
+    @GetMapping(path = "/providersIds/{officeId}")
+    public List<Integer> getDoctorIdsByOfficeId(@PathVariable int officeId){
+        return doctorDAO.getDoctorIdsByOfficeId(officeId);
     }
 }

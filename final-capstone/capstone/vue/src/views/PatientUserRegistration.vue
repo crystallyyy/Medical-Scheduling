@@ -52,7 +52,7 @@ export default {
           .then((response) => {
             if (response.status == 201) {
               this.$router.push({
-                path: '/doctor-account-creation',
+                path: '/patient-account-creation',
                 query: { registration: 'success' },
               });
             }

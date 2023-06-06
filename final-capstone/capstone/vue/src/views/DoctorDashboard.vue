@@ -4,12 +4,16 @@
       <div class="imgdiv">
           <img id="img" src="../../img/logo2.jpeg" alt="company logo">
       </div>
-      <ul class="nav flex-column">
-
-          
+      <!-- <ul class="nav flex-column">
         <li class="nav-item">
           <button type="button" class="btn btn-info" @click="activeCard = 1">Dashboard</button>
 
+          <img id="img" src="../../img/logo2.jpeg" alt="company logo" />
+        </li> -->
+        <li class="nav-item">
+          <button type="button" class="btn btn-info" @click="activeCard = 1">
+            Dashboard
+          </button>
         </li>
         <li class="nav-item">
           <button type="button" class="btn btn-info " @click="activeCard = 2">My Profile</button>
@@ -21,7 +25,7 @@
           <button type="button" class="btn btn-info" @click="activeCard = 4">Manage Availability</button>
         </li>
 
-      </ul>
+      <!-- </ul> -->
     </div>
 
 <div id="content"> 
@@ -38,29 +42,52 @@
           Content for change availability
     </div> 
 </div>
+
+ <div id="content">
+      <div class="dashboard" v-show="activeCard === 1">
+        <h1>Welcome to your Dashboard</h1>
+      </div>
+
+      <div class="appointments" v-show="activeCard === 2">
+      </div>
+
+      <div class="info" v-show="activeCard === 3">
+         <edit-office-list></edit-office-list>
+      </div>
+
+      <div class="visits" v-show="activeCard === 4">
+      </div>
+
+    <div class="card card-body" v-show="activeCard === 4">
+      Content for change availability
+      <doctor-availability></doctor-availability>
+    </div>
+</div>
+
 </div>
     
+   
   <!-- include contact support -->
   
 </template>
 
 <script>
+import DoctorAvailability from "../components/DoctorAvailability.vue";
+import EditOfficeList from "../components/EditOfficeList.vue";
 export default {
   name: "doctor-dash",
+  components: { EditOfficeList, DoctorAvailability },
   data() {
     return {
-
-    activeCard: null,
-    methods:{
-
-     } 
-    }
-  }
-}
+      activeCard: null,
+      methods: {},
+    };
+  },
+};
 </script>
 
-<style scoped>
-    
+
+<style>
 #main {
   display: flex;
 }
@@ -106,15 +133,14 @@ export default {
 .card-body {
   padding: 10px;
   background-color: #fff;
-  display: none;
+  justify-content: center;
 }
 
 .card-body.show {
   display: block;
 }
 
-
-     /* #main{
+/* #main{
         
         display: grid;
         height: 90vh;
@@ -151,10 +177,7 @@ export default {
 
  */
 
-
-
-
-    /* #img {
+/* #img {
       max-width: 30%;
       margin-bottom: 20px;
     }

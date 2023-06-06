@@ -16,7 +16,19 @@ export default {
     },
     updateDoctorInformation(doctor){
         return axios.put(`/pid/update/${doctor.doctorId}`,doctor);
-    }
+    },
+
+    getAvailabilityByDoctor(doctorId){
+        return axios.get(`/availability/${doctorId}`)
+    },
+
+    updateDocAvailability(availability){
+        return axios.put(`/availability/${availability.doctorId}`, availability)
+    },
+
+    getAllAvailabilities(){
+        return axios.get(`/availabilities`)
+    },
 
 }
     
