@@ -1,9 +1,5 @@
 <template>
-  <form @submit="submitForm">
-    <div>
-      <label for="userId">User ID:</label>
-      <input type="number" id="userId" v-model="formData.userId" required />
-    </div>
+  <form @submit.prevent="submitForm">
     <div>
       <label for="firstName">First Name:</label>
       <input type="text" id="firstName" v-model="formData.firstName" required />
@@ -25,7 +21,6 @@
       <input type="tel" id="phoneNumber" v-model="formData.phoneNumber" required />
     </div>
     <button type="submit">Submit</button>
-    <button @click="showUserId"> Click Me</button>
   </form>
 </template>
 
@@ -44,13 +39,25 @@ export default {
         dateOfBirth: '',
         address: '',
         phoneNumber: ''
-      }
+      },
+      fetchPatient : {},
     };
   },
   methods: {
     async submitForm() {
-     await console.log((await patientService.getPatientUserIdByUsername(this.userName)).data)
-      
+
+
+      try{
+     const res1 = await patientService.getPatientUserIdByUsername(this.userName);
+       this.userId = res1.data;
+      console.log(this.userId);
+       const res2 =  await patientService.getPatientByUserId(this.userId)
+       this.fetchPatient = res2.data
+      console.log(this.fetchPatient);
+      }catch(error) {
+      console.log(error)
+      }
+     
     },
     resetForm() {
       this.formData = {
@@ -62,13 +69,11 @@ export default {
         phoneNumber: ''
       };
     },
-   async showUserId(){
-      console.log(this.userName)
-    }
+
   }
 };
 </script>
-
+ 
 
 
 <style>
