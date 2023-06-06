@@ -51,14 +51,14 @@ export default {
     const res1 = await providerService.getDoctorUserIdByUsername(this.userName);
     this.userId = res1.data;
     const res2 = await providerService.getDoctorByUserId(this.userId);
-    this.doctor = res2.data;
+    this.doctor = res2.data; 
     this.doctor.firstName = this.firstName;
     this.doctor.lastName = this.lastName;
     this.doctor.email = this.email;
     this.doctor.timeSlotDefault = this.timeSlotDefault;
     providerService.updateDoctorInformation(this.doctor).then(res=>{
       if(res.status==200){
-        this.$router.push("/doctorDash")
+        this.$router.push({name: 'doctordash', params: {doctorId: this.doctor.doctorId}})
       }
     })
        } catch (error) {

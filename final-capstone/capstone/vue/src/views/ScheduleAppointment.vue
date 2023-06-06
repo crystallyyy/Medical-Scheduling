@@ -9,6 +9,11 @@
                 <b-tab title="Search For Provider" active><providers></providers></b-tab>
                 <b-tab title="Search By Location"><b-card-text><offices></offices></b-card-text></b-tab>
               </b-tabs>
+                <!-- <div class='actions'> -->
+                 <!-- <router-link v-bind:to="{ name: 'patientdash' }">
+                    Return to Dashboard
+                </router-link> -->
+                <!-- </div> -->
             </b-card>
           </div>
         <!-- </b-col> -->

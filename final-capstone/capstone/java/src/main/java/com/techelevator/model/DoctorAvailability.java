@@ -1,11 +1,15 @@
 package com.techelevator.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.time.LocalTime;
 
 public class DoctorAvailability {
     private int doctorId;
     private String dayOfWeek;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
     private LocalTime startTime;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
     private LocalTime endTime;
 
     public DoctorAvailability() {
@@ -27,11 +31,11 @@ public class DoctorAvailability {
         this.doctorId = doctorId;
     }
 
-    public String getDayOdWeek() {
+    public String getDayOfWeek() {
         return dayOfWeek;
     }
 
-    public void setDayOdWeek(String dayOdWeek) {
+    public void setDayOfWeek(String dayOdWeek) {
         this.dayOfWeek = dayOdWeek;
     }
 

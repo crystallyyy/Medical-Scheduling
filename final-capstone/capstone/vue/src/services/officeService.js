@@ -11,6 +11,13 @@ export default {
         return axios.get(`/offices/doctors/${doctorId}`)
     },
 
+    getOfficeIdsByDoctor(doctorId){
+        return axios.get(`/offices/${doctorId}`)
+    },
+    
+    updateOfficeById(officeId, data){
+        return axios.put(`/offices/${officeId}`, data)
+    },
     updateOffice(office){
         return axios.put(`/updateoffice`, office);
     },

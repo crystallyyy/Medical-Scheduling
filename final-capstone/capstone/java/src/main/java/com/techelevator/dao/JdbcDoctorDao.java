@@ -70,13 +70,13 @@ public class JdbcDoctorDao implements DoctorDAO{
     }
 
     @Override
-    public Doctor updateDoctor(Doctor doctor) {
+    public boolean updateDoctor(Doctor doctor) {
         String sql = "UPDATE doctor SET first_name = ?, last_name = ?, time_slot_default = ?, email = ? " +
                 "WHERE doctor_id = ?";
-        int doctorId = jdbcTemplate.update(sql, doctor.getFirstName(), doctor.getLastName(),
+        int numRows = jdbcTemplate.update(sql, doctor.getFirstName(), doctor.getLastName(),
                 doctor.getTimeSlotDefault(), doctor.getEmail(), doctor.getDoctorId());
-
-        return getDoctorById(doctorId);
+        boolean isUpdated = numRows > 0;
+        return isUpdated;
     }
 
     @Override
@@ -93,6 +93,18 @@ public class JdbcDoctorDao implements DoctorDAO{
             doctorsByOffice.add(doctor);
         }
         return doctorsByOffice;
+    }
+
+    public List<Integer> getDoctorIdsByOfficeId(int officeId) {
+        List<Integer> doctorIds = new ArrayList<>();
+        String sql = "SELECT doctor_id FROM doctor_office WHERE office_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, officeId);
+        while (results.next()){
+            Integer doctorId = results.getInt("doctor_id");
+            doctorIds.add(doctorId);
+        }
+
+        return doctorIds;
     }
 
     private Doctor mapRowToDoctor(SqlRowSet row){

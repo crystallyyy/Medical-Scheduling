@@ -1,33 +1,33 @@
+          
 <template>
   <div id="main">
     <div id="nav">
-      <ul class="nav flex-column">
-        <li class="nav-item">
-          <img id="img" src="../../img/logo2.jpeg" alt="company logo" />
-        </li>
-        <li class="nav-item">
-          <button type="button" class="btn btn-info" @click="activeCard = 1">
-            Dashboard
-          </button>
-        </li>
-        <li class="nav-item">
-          <button type="button" class="btn btn-info" @click="activeCard = 2">
-            Appointments
-          </button>
-        </li>
-        <li class="nav-item">
-          <button type="button" class="btn btn-info" @click="activeCard = 3">
-            Update Info
-          </button>
-        </li>
-        <li class="nav-item">
-          <button type="button" class="btn btn-info" @click="activeCard = 4">
-            Past Visits
-          </button>
-        </li>
-      </ul>
-    </div>
+      <!-- <ul class="nav flex-column"> -->
 
+      <li class="nav-item">
+        <img id="img" src="../../img/logo2.jpeg" alt="company logo" />
+      </li>
+      <li class="nav-item">
+        <button type="button" class="btn btn-info" @click="activeCard = 1">
+          Dashboard
+        </button>
+      </li>
+      <li class="nav-item">
+        <button type="button" class="btn btn-info" @click="activeCard = 2">
+          Appointments
+        </button>
+      </li>
+      <li class="nav-item">
+        <button type="button" class="btn btn-info" @click="activeCard = 3">
+          Update Info
+        </button>
+      </li>
+      <li class="nav-item">
+        <button type="button" class="btn btn-info" @click="activeCard = 4">
+          Past Visits
+        </button>
+      </li>
+    </div>
     <div id="content">
       <div class="dashboard" v-show="activeCard === 1">
         <h1>Welcome to your Dashboard</h1>
@@ -36,16 +36,10 @@
       <div class="appointments" v-show="activeCard === 2">
         <schedule-appointment></schedule-appointment>
       </div>
-      <div class="info" v-show="activeCard === 3">
-        
-      </div>
-      <div class="visits" v-show="activeCard === 4">
-        
-      </div>
+      <div class="info" v-show="activeCard === 3"></div>
+      <div class="visits" v-show="activeCard === 4"></div>
     </div>
   </div>
-
-  <!-- include contact support -->
 </template>
 
 <script>

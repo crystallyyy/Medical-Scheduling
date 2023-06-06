@@ -83,6 +83,18 @@ public class JdbcOfficeDAO implements OfficeDAO {
         return offices;
     }
 
+
+    public List<Integer> getOfficeIdsByDoctorId(int doctorId) {
+        List<Integer> officeIds = new ArrayList<>();
+        String sql = "SELECT office_id FROM doctor_office WHERE doctor_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, doctorId);
+        while (results.next()) {
+            Integer officeId = results.getInt("office_id");
+            officeIds.add(officeId);
+        }
+
+        return officeIds;
+    }
     @Override
     public List<OfficeHours> getOfficeHoursByOfficeId(int officeId){
         List<OfficeHours> officeHoursList = new ArrayList<>();
@@ -92,7 +104,9 @@ public class JdbcOfficeDAO implements OfficeDAO {
             officeHoursList.add(mapRowToOfficeHours(results));
         }
         return officeHoursList;
+
     }
+
 
 
 
@@ -105,6 +119,7 @@ public class JdbcOfficeDAO implements OfficeDAO {
         return office;
     }
 
+
     private OfficeHours mapRowToOfficeHours(SqlRowSet row){
         OfficeHours officeHours = new OfficeHours();
         officeHours.setOhId(row.getInt("office_hours_id"));
@@ -114,4 +129,5 @@ public class JdbcOfficeDAO implements OfficeDAO {
         officeHours.setEndTime(row.getTime("end_time").toLocalTime());
         return officeHours;
     }
+
 }

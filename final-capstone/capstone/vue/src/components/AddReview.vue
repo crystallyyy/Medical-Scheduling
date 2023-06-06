@@ -40,6 +40,7 @@ export default {
   },
   methods: {
     addNewReview() {
+      //TODO: add check so that they cannot submit empty review
       const officeID = this.$route.params.officeId;
       this.newReview.officeId = officeID;
       reviewService.addReview(this.newReview).then( (response) => {
@@ -47,7 +48,6 @@ export default {
           this.$router.push({ path: "/patientDash" });
         }
       })
-      // TODO: send the visitor back to the product page to see the new review
     },
     resetForm() {
       this.newReview = {};

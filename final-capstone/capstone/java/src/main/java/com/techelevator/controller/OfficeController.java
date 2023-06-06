@@ -34,8 +34,13 @@ public class OfficeController {
        return officeDAO.getOfficesByDoctor(doctorId);
     }
 
+    @GetMapping(path = "/offices/{doctorId}")
+    public List<Integer> getOfficeIdsByDoctor(@PathVariable int doctorId) {
+        return officeDAO.getOfficeIdsByDoctorId(doctorId);
+    }
     @GetMapping(path = "/offices/office-hours/{officeId}")
     public List<OfficeHours> getOfficeHours(@PathVariable int officeId){
         return officeDAO.getOfficeHoursByOfficeId(officeId);
+
     }
 }
