@@ -30,6 +30,10 @@ export default {
         return axios.get(`/availabilities`)
     },
 
+    createAvailability(availability){
+        return axios.post(`/availability`, availability)
+    }
+
 }
     
 

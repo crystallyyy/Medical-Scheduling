@@ -19,6 +19,7 @@
           <button type="button" class="btn btn-info" @click="activeCard = 3">
             Update Info
           </button>
+         
         </li>
         <li class="nav-item">
           <button type="button" class="btn btn-info" @click="activeCard = 4">
@@ -37,7 +38,7 @@
         <schedule-appointment></schedule-appointment>
       </div>
       <div class="info" v-show="activeCard === 3">
-        
+        <UpdateInfoPD/>
       </div>
       <div class="visits" v-show="activeCard === 4">
         
@@ -51,10 +52,11 @@
 <script>
 import PatientQuicklinks from "../components/PatientQuicklinks.vue";
 import ScheduleAppointment from "./ScheduleAppointment.vue";
+import UpdateInfoPD from '../components/UpdateInfoPD.vue'
 
 export default {
   name: "doctor-dash",
-  components: { ScheduleAppointment, PatientQuicklinks },
+  components: { ScheduleAppointment, PatientQuicklinks, UpdateInfoPD },
   data() {
     return {
       activeCard: 1,

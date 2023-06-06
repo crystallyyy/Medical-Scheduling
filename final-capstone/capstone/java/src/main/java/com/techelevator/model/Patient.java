@@ -9,12 +9,12 @@ public class Patient {
     private String lastName;
     private LocalDate dateOfBirth;
     private String address;
-    private int phoneNumber;
+    private String phoneNumber;
 
     public Patient() {
     }
 
-    public Patient(int patientId, int userId, String firstName, String lastName, LocalDate dateOfBirth, String address, int phoneNumber) {
+    public Patient(int patientId, int userId, String firstName, String lastName, LocalDate dateOfBirth, String address, String phoneNumber) {
         this.patientId = patientId;
         this.userId = userId;
         this.firstName = firstName;
@@ -72,11 +72,11 @@ public class Patient {
         this.address = address;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 }

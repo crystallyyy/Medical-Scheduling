@@ -13,7 +13,11 @@ export default {
         
     },
     updatePatientInformation(patient){
-        return axios.put(`/pid/update/${patient.patientId}`,patient);
+        return axios.put(`/patient/update/${patient.patientId}`,patient);
+    },
+
+    getPatientByPatientId(patientId){
+        return axios.get(`/patient/${patientId}`)
     }
 
 }

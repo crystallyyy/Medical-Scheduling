@@ -21,11 +21,11 @@
         <label for="email">Email:</label>
         <input type="email" class="form-control" v-model="email" required>
       </div>
-      
+
       <button type="submit" class="btn btn-primary">Submit</button>
       
     </form>
-    
+
   </div>
 </template>
 
