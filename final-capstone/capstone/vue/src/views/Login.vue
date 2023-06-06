@@ -52,15 +52,15 @@ export default {
     push() {
               
             if(this.$store.state.role.role === 'ROLE_ADMIN'){
-                  this.$router.push({name: "doctordash"}); 
+                  this.$router.push({name: "doctordash", params: {doctorId : this.$store.state.role.id}}); 
                }
            if(this.$store.state.role.role === 'ROLE_USER'){    
-                     this.$router.push({name: "patientdash"}); 
+                     this.$router.push({name: "patientdash", params: {patientId : this.$store.state.role.id}}); 
             
            }
     },
-    login() {
-      authService
+ async login() {
+    await authService
         .login(this.user)
         .then(response => {
           if (response.status == 200) {

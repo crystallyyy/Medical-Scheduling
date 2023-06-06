@@ -70,7 +70,7 @@ data(){
 },
 
 created(){
-    const patientId = this.$route.params.patientId;
+    const patientId = this.$route.params.patientId
     patientService.getPatientByPatientId(patientId).then( (response) => {
         this.patient.firstName = response.data.firstName;
         this.patient.lastName = response.data.lastName;
@@ -82,13 +82,13 @@ created(){
 methods: {
     submitForm(){
         this.updatedPatient.address = `${this.address.address_line1}, ${this.address.address_line2}, ${this.address.city}, ${this.address.state} ${this.address.zip_code}`;
-        this.updatedPatient.patientId = this.$route.params.patientId;
+        this.updatedPatient.patientId = this.$store.state.role.id
 
         patientService.updatePatientInformation(this.updatedPatient).then( (response) => {
             if(response.status == 200){
                this.updatedPatient = {};
                 alert("Patient Information updated")
-                this.$router.push({name: 'patientdash', params: {patientId: this.updatedPatient.patientId}})
+                this.$router.push({name: 'patientdash',})
             }
         })
     }

@@ -56,15 +56,13 @@ export default {
         if(this.daysOfWeek[i] == 'Monday'){
           this.updatedAvailability.doctorId = this.$route.params.doctorId;
           this.updatedAvailability.dayOfWeek = 'Monday'
-          providerService.updateDocAvailability(this.updatedAvailability).then( (response) => {
-            console.log(response.statusText)
-          })
+          providerService.updateDocAvailability(this.updatedAvailability)
         }else  if(this.daysOfWeek[i] == 'Tuesday'){
           this.updatedAvailability.doctorId = this.$route.params.doctorId;
           this.updatedAvailability.dayOfWeek = 'Tuesday'
           providerService.updateDocAvailability(this.updatedAvailability)
         } else  if(this.daysOfWeek[i] == 'Wednesday'){
-          this.updatedAvailability.doctorId = 2
+          this.updatedAvailability.doctorId = this.$route.params.doctorId;
           this.updatedAvailability.dayOfWeek = 'Wednesday'
           providerService.updateDocAvailability(this.updatedAvailability)
         } else  if(this.daysOfWeek[i] == 'Thursday'){
@@ -78,10 +76,11 @@ export default {
         } 
       }
       alert("Your availability has been updated");
+      this.$router.push({name: 'doctordash', params: {doctorId: this.$route.params.doctorId}})
     }
   },
    created(){
-    const currentDoctorId = this.$route.params.doctorId;
+    const currentDoctorId = this.$route.params.doctorId
 
      providerService.getAvailabilityByDoctor(currentDoctorId).then( (response) => {
        this.availabilities = response.data;
