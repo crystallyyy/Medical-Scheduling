@@ -27,6 +27,16 @@ public class JdbcPatientDao implements PatientDAO{
     }
 
     @Override
+    public boolean updatePatient(Patient patient) {
+        String sql = "UPDATE patient SET first_name = ?, last_name = ?, date_of_birth = ?, address = ?, phone_number = ? " +
+                "WHERE patient_id = ?;";
+        int numRows = jdbcTemplate.update(sql, patient.getFirstName(), patient.getLastName(), patient.getDateOfBirth(),
+                patient.getAddress(), patient.getPhoneNumber(), patient.getPatientId());
+
+        return numRows > 0;
+    }
+
+    @Override
     public List<Patient> getAllPatients() {
         return null;
     }
@@ -49,7 +59,7 @@ public class JdbcPatientDao implements PatientDAO{
                 row.getString("last_name"),
                 row.getDate("date_of_birth").toLocalDate(),
                 row.getString("address"),
-                row.getInt("phone_number")
+                row.getString("phone_number")
         );
 
         return patient;

@@ -85,4 +85,9 @@ public class DoctorController {
     public List<Integer> getDoctorIdsByOfficeId(@PathVariable int officeId){
         return doctorDAO.getDoctorIdsByOfficeId(officeId);
     }
+
+    @PostMapping(path = "/availability")
+    public boolean createAvailability(@Valid @RequestBody DoctorAvailability availability){
+        return availabilityDAO.createAvailability(availability);
+    }
 }

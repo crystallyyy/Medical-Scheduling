@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import authService from '../services/authService.js';
+import authService from '../services/authService.js'; 
 
 export default {
   name: 'register',

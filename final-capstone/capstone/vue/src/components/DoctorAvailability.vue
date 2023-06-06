@@ -90,25 +90,23 @@ export default {
     };
   },
   methods: {
-    updateAvailability() {
-      for (let i = 0; i < this.daysOfWeek.length; i++) {
-        if (this.daysOfWeek[i] == "Monday") {
-          this.updatedAvailability.doctorId = 2;
-          this.updatedAvailability.dayOfWeek = "monday";
-          providerService
-            .updateDocAvailability(this.updatedAvailability)
-            .then((response) => {
-              console.log(response.statusText);
-            });
-        } else if (this.daysOfWeek[i] == "Tuesday") {
+    updateAvailability(){
+      for (let i =0; i < this.daysOfWeek.length; i++){
+        if(this.daysOfWeek[i] == 'Monday'){
           this.updatedAvailability.doctorId = this.$route.params.doctorId;
-          this.updatedAvailability.dayOfWeek = "tuesday";
-          providerService.updateDocAvailability(this.updatedAvailability);
-        } else if (this.daysOfWeek[i] == "Wednesday") {
-          this.updatedAvailability.doctorId = 2;
-          this.updatedAvailability.dayOfWeek = "wednesday";
-          providerService.updateDocAvailability(this.updatedAvailability);
-        } else if (this.daysOfWeek[i] == "Thursday") {
+          this.updatedAvailability.dayOfWeek = 'Monday'
+          providerService.updateDocAvailability(this.updatedAvailability).then( (response) => {
+            console.log(response.statusText)
+          })
+        }else  if(this.daysOfWeek[i] == 'Tuesday'){
+          this.updatedAvailability.doctorId = this.$route.params.doctorId;
+          this.updatedAvailability.dayOfWeek = 'Tuesday'
+          providerService.updateDocAvailability(this.updatedAvailability)
+        } else  if(this.daysOfWeek[i] == 'Wednesday'){
+          this.updatedAvailability.doctorId = 2
+          this.updatedAvailability.dayOfWeek = 'Wednesday'
+          providerService.updateDocAvailability(this.updatedAvailability)
+        } else  if(this.daysOfWeek[i] == 'Thursday'){
           this.updatedAvailability.doctorId = this.$route.params.doctorId;
           this.updatedAvailability.dayOfWeek = "Thursday";
           providerService.updateDocAvailability(this.updatedAvailability);

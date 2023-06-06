@@ -50,6 +50,17 @@ public class JdbcAvailabilityDao implements AvailabilityDAO{
         return availabilities;
     }
 
+    public boolean createAvailability(DoctorAvailability availability){
+        DoctorAvailability oneAvailability = null;
+        String sql = "INSERT INTO doctor_availability (doctor_id, day_of_week, start_time, end_time) " +
+                "VALUES (?, ?, ?, ?) RETURNING doctor_id;";
+        int doctorId = jdbcTemplate.queryForObject(sql, int.class, availability.getDoctorId(), availability.getDayOfWeek(), availability.getStartTime(), availability.getEndTime());
+        if(doctorId > 0){
+            return true;
+        }
+        return false;
+    }
+
     private DoctorAvailability mapRowToAvailability(SqlRowSet results) {
         DoctorAvailability doctorAvailability = new DoctorAvailability();
         doctorAvailability.setDoctorId(results.getInt("doctor_id"));

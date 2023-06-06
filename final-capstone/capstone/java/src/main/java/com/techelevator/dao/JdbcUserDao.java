@@ -1,8 +1,6 @@
 package com.techelevator.dao;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -34,6 +32,41 @@ public class JdbcUserDao implements UserDao {
         }
 
         return userId;
+    }
+
+    List<String> roles = new ArrayList<>();
+
+    @Override
+    public Map<String, String> getRoleInfoByUsername(String username) {
+        Map<String, String> roleInfo = new HashMap<>();
+        if (username == null) throw new IllegalArgumentException("Username cannot be null");
+
+        String sql = "Select role, patient_id, doctor_id  From users " +
+        "LEFT JOIN patient USING (user_id)" +
+                "LEFT JOIN doctor USING (user_id) Where username = ?;";
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql,username);
+
+            while (results.next()) {
+                if (results.getString("role") != null) {
+                    roleInfo.put("role", results.getString("role"));
+                }
+
+                String pid = String.valueOf(results.getInt("patient_id"));
+                String did = String.valueOf(results.getInt("doctor_id"));
+                if (!pid.equals("0") ) {
+                    roleInfo.put("id", pid);
+                    System.out.println(pid);
+                } else {
+                    roleInfo.put("id", did);
+                    System.out.println(did);
+                }
+            }
+
+        } catch (EmptyResultDataAccessException e) {
+            throw new UsernameNotFoundException("User " + username + " was not found.");
+        }
+        return roleInfo;
     }
 
 	@Override

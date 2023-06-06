@@ -40,19 +40,24 @@
       <div class="appointments" v-show="activeCard === 2">
         <schedule-appointment></schedule-appointment>
       </div>
-      <div class="info" v-show="activeCard === 3"></div>
-      <div class="visits" v-show="activeCard === 4"></div>
+      <div class="info" v-show="activeCard === 3">
+        <UpdateInfoPD/>
+      </div>
+      <div class="visits" v-show="activeCard === 4">
+        
+      </div>
     </div>
-  </div>
+    </div>
 </template>
 
 <script>
 import PatientQuicklinks from "../components/PatientQuicklinks.vue";
 import ScheduleAppointment from "./ScheduleAppointment.vue";
+import UpdateInfoPD from '../components/UpdateInfoPD.vue'
 
 export default {
   name: "doctor-dash",
-  components: { ScheduleAppointment, PatientQuicklinks },
+  components: { ScheduleAppointment, PatientQuicklinks, UpdateInfoPD },
   data() {
     return {
       activeCard: 1,

@@ -5,14 +5,13 @@ import com.techelevator.dao.PatientDAO;
 import com.techelevator.model.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
 @RestController
-@PreAuthorize("isAuthenticated()")
+//@PreAuthorize("isAuthenticated()")
+@CrossOrigin
 public class PatientController {
     @Autowired
     JdbcPatientDao patientDAO;
@@ -22,5 +21,13 @@ public class PatientController {
         return patientDAO.addPatient(patient);
     }
 
-    //TODO: GET PATIENT BY ID
+    @GetMapping(path = "/patient/{patientId}")
+    public Patient getPatientById(@PathVariable int patientId){
+        return patientDAO.getPatientById(patientId);
+    }
+
+    @PutMapping(path = "/patient/update/{patientId}")
+    public boolean updatePatient(@PathVariable int patientId, @Valid @RequestBody Patient patient){
+        return patientDAO.updatePatient(patient);
+    }
 }

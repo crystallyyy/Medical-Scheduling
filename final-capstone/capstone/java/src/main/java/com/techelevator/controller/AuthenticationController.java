@@ -19,6 +19,7 @@ import com.techelevator.security.jwt.JWTFilter;
 import com.techelevator.security.jwt.TokenProvider;
 
 import java.security.Principal;
+import java.util.Map;
 
 @RestController
 @CrossOrigin
@@ -73,9 +74,18 @@ public class AuthenticationController {
         return userId;
     }
 
-    @GetMapping(path = "/whoamI/role")
-    public String getRole(Principal principal){
-        return null;
+
+
+    @GetMapping(path = "/info/{username}")
+    public Map<String, String> getRole(@PathVariable String username){
+        Map<String, String> roles;
+
+        try{
+           roles = userDao.getRoleInfoByUsername(username);
+        } catch (UsernameNotFoundException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"User not found");
+        }
+        return roles;
     }
 }
 

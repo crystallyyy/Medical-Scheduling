@@ -63,6 +63,16 @@ export default {
     };
   },
   methods: {
+    push() {
+              
+            if(this.$store.state.role.role === 'ROLE_ADMIN'){
+                  this.$router.push({name: "doctordash"}); 
+               }
+           if(this.$store.state.role.role === 'ROLE_USER'){    
+                     this.$router.push({name: "patientdash"}); 
+            
+           }
+    },
     login() {
       authService
         .login(this.user)
@@ -71,8 +81,20 @@ export default {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
 
-            this.$router.push("/patientDash/:patientId");
+             authService.getRole(this.user.username)
+              .then(response => {
+                const roles = response.data;
+                this.$store.commit("SET_ROLE", roles);
+                console.log("login" +this.$store.state.role.role);
+                console.log(this.$store.state.role.role === 'ROLE_ADMIN');
+              });
+
+            
           }
+          setTimeout(()=>{
+            this.push();
+          },2000)
+           
         })
         .catch((error) => {
           const response = error.response;

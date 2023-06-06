@@ -171,14 +171,23 @@ export default {
 } */
 
 #main {
-  display: flex;
+  display: grid;
+   grid-template-columns: 25% 75%;
+    grid-template-areas: "nav content";
+    min-height: 100vh;
 }
 
 #nav {
+  grid-area: nav;
   width: 200px;
-  background-color: #f1f1f1;
+  /* background-color:red; */
 }
 
+#content {
+  grid-area: content;
+  padding: 20px;
+  /* background-color: coral; */
+}
 .imgdiv {
   padding: 10px;
   text-align: center;
@@ -202,10 +211,7 @@ export default {
   width: 100%;
 }
 
-#content {
-  flex: 1;
-  padding: 20px;
-}
+
 
 .card {
   margin-bottom: 10px;
