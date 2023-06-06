@@ -1,10 +1,10 @@
 <template>
   <div id="login">
     <div class="header">
-      <h1> <strong>GENESIS MEDICAL SCHEDULING PORTAL</strong></h1>
-      <img class="image" src="../../img/logo2.jpeg" alt="company logo">
+      <h1><strong>GENESIS MEDICAL SCHEDULING PORTAL</strong></h1>
+      <img class="image" src="../../img/logo2.jpeg" alt="company logo" />
     </div>
-    
+
     <form class="credentials" @submit.prevent="login">
       <h2><strong>Sign In</strong></h2>
       <div role="alert" v-if="invalidCredentials">
@@ -15,21 +15,35 @@
       </div>
       <div class="form-input-group">
         <label for="username">Username</label>
-        <input type="text" id="username" v-model="user.username" required autofocus />
+        <input
+          type="text"
+          id="username"
+          v-model="user.username"
+          required
+          autofocus
+        />
       </div>
       <div class="form-input-group">
         <label for="password">Password</label>
         <input type="password" id="password" v-model="user.password" required />
       </div>
-    <button type="submit">Sign In</button>
+      <button type="submit">Sign In</button>
     </form>
 
     <form class="createAccount">
-      <h2><strong>Create Account</strong></h2> <br>
-      <button type="submit"><router-link class="patientButton" :to="{ name: 'patientRegister' }">PATIENT</router-link> </button><br>
-      <button type="submit"><router-link class="providerButton" :to="{ name: 'doctorRegister' }">PROVIDER</router-link> </button>
+      <h2><strong>Create Account</strong></h2>
+      <br />
+      <button type="submit">
+        <router-link class="patientButton" :to="{ name: 'patientRegister' }"
+          >PATIENT</router-link
+        ></button
+      ><br />
+      <button type="submit">
+        <router-link class="providerButton" :to="{ name: 'doctorRegister' }"
+          >PROVIDER</router-link
+        >
+      </button>
     </form>
-
   </div>
 </template>
 
@@ -45,38 +59,34 @@ export default {
         username: "",
         password: "",
       },
-      invalidCredentials: false
+      invalidCredentials: false,
     };
   },
   methods: {
     login() {
       authService
         .login(this.user)
-        .then(response => {
+        .then((response) => {
           if (response.status == 200) {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
 
-          
-               this.$router.push("/patientDash/:patientId"); 
-            
-            
+            this.$router.push("/patientDash/:patientId");
           }
         })
-        .catch(error => {
+        .catch((error) => {
           const response = error.response;
 
           if (response.status === 401) {
             this.invalidCredentials = true;
           }
         });
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style scoped>
-
 #login {
   display: flex;
   flex-direction: column;
@@ -109,7 +119,6 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  
 }
 
 .credentials,
@@ -131,7 +140,7 @@ h1 {
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   margin-bottom: 1rem;
-  text-align: center; 
+  text-align: center;
 }
 
 .createAccount button {
@@ -139,7 +148,6 @@ h1 {
   font-size: 16px;
   font-weight: bold;
 }
-
 
 .credentials h2,
 .fancy-border h2,
@@ -164,7 +172,6 @@ form input {
 
 button {
   background-color: #04abcc;
-  /* background-color: #4caf50; */
   color: white;
   border: none;
   padding: 10px 20px;
@@ -176,7 +183,6 @@ button {
 
 button:hover {
   background-color: #048eaa;
-  /* background-color: #45a049; */
 }
 
 .alert {
@@ -195,7 +201,5 @@ button:hover {
   color: white;
   display: flex;
   justify-content: center;
-  
 }
-
 </style>
