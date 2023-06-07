@@ -5,7 +5,7 @@
       v-for="doctor in doctors"
       v-bind:key="doctor.doctorId"
     >
-      <provider-card :doctor="doctor" :availabity="getAvailabilityByDoctorId(doctor.doctorId)"/>
+      <provider-card :doctor="doctor" />
     
 
 
