@@ -43,4 +43,14 @@ public class OfficeController {
         return officeDAO.getOfficeHoursByOfficeId(officeId);
 
     }
+
+    @DeleteMapping(path = "/offices/{doctorId}/{officeId}")
+    public void removeDoctorFromOffice(@PathVariable int doctorId, @PathVariable int officeId){
+        officeDAO.removeDocFromOffice(doctorId, officeId);
+    }
+
+    @PostMapping(path = "/offices/{doctorId}/{officeId}")
+    public boolean addDoctorToOffice(@PathVariable int doctorId, @PathVariable int officeId){
+        return officeDAO.addDocToOffice(doctorId, officeId);
+    }
 }

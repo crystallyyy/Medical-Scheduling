@@ -75,7 +75,9 @@
        
       </div>
 
-      <div class="appointments" v-show="activeCard === 2"></div>
+      <div class="myProfile" v-show="activeCard === 2">
+        
+      </div>
 
       <div class="info" v-show="activeCard === 3">
         <edit-office-list></edit-office-list>

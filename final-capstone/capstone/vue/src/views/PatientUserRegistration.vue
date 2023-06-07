@@ -7,7 +7,13 @@
       </div>
       <div class="form-input-group">
         <label for="username">Username</label>
-        <input type="text" id="username" v-model="user.username" required autofocus />
+        <input
+          type="text"
+          id="username"
+          v-model="user.username"
+          required
+          autofocus
+        />
       </div>
       <div class="form-input-group">
         <label for="password">Password</label>
@@ -15,46 +21,69 @@
       </div>
       <div class="form-input-group">
         <label for="confirmPassword">Confirm Password</label>
-        <input type="password" id="confirmPassword" v-model="user.confirmPassword" required />
+        <input
+          type="password"
+          id="confirmPassword"
+          v-model="user.confirmPassword"
+          required
+        />
       </div>
       <button type="submit">Create Account</button>
-      <p><router-link :to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
+      <p>
+        <router-link :to="{ name: 'login' }"
+          >Already have an account? Log in.</router-link
+        >
+      </p>
     </form>
-    
   </div>
 </template>
 
 <script>
-import authService from '../services/authService.js'; 
+import authService from "../services/authService.js";
 
 export default {
-  name: 'register',
+  name: "register",
   data() {
     return {
       user: {
-        username: '',
-        password: '',
-        confirmPassword: '',
-        role: 'user',
+        username: "",
+        password: "",
+        confirmPassword: "",
+        role: "user",
+      },
+      loginUser: {
+        username: "",
+        password: "",
       },
       registrationErrors: false,
-      registrationErrorMsg: 'There were problems registering this user.',
+      registrationErrorMsg: "There were problems registering this user.",
     };
   },
   methods: {
     register() {
       if (this.user.password != this.user.confirmPassword) {
         this.registrationErrors = true;
-        this.registrationErrorMsg = 'Password & Confirm Password do not match.';
+        this.registrationErrorMsg = "Password & Confirm Password do not match.";
       } else {
         authService
           .register(this.user)
           .then((response) => {
             if (response.status == 201) {
-              this.$router.push({
-                path: '/patient-account-creation',
-                query: { registration: 'success',
-                 username: this.user.username,},
+              this.loginUser.username = this.user.username;
+              this.loginUser.password = this.user.password;
+              authService.login(this.loginUser).then((res) => {
+                if (res.status == 200) {
+                  this.$store.commit("SET_AUTH_TOKEN", res.data.token);
+                  this.$store.commit("SET_USER", res.data.user);
+
+                  this.$router.push({
+                    path: "/patient-account-creation",
+                    query: {
+                      registration: "success",
+                      username: this.user.username,
+                    },
+                  });
+                }
               });
             }
           })
@@ -62,21 +91,20 @@ export default {
             const response = error.response;
             this.registrationErrors = true;
             if (response.status === 400) {
-              this.registrationErrorMsg = 'Bad Request: Validation Errors';
+              this.registrationErrorMsg = "Bad Request: Validation Errors";
             }
           });
       }
     },
     clearErrors() {
       this.registrationErrors = false;
-      this.registrationErrorMsg = 'There were problems registering this user.';
+      this.registrationErrorMsg = "There were problems registering this user.";
     },
   },
 };
 </script>
 
 <style scoped>
-
 #register {
   display: flex;
   flex-direction: column;
@@ -96,7 +124,6 @@ form {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   margin-bottom: 1rem;
 }
-
 
 .form-input-group {
   margin-bottom: 1rem;
@@ -136,7 +163,6 @@ button:hover {
   display: inline-block;
   font-size: 23px;
   font-weight: bold;
-  padding-bottom: 23px
+  padding-bottom: 23px;
 }
-
 </style>

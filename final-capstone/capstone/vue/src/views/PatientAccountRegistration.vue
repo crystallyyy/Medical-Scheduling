@@ -1,6 +1,6 @@
 <template>
    <div> 
-        <h1>Welcome, User Please Create An Account!</h1>
+        <h1>Patient Account Details</h1>
         <create-patient :userName="username"/>
     </div>
 </template>
@@ -24,5 +24,10 @@ data() {
 </script>
 
 <style>
+h1 {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
 
 </style>

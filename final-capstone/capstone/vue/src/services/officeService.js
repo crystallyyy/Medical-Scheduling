@@ -30,6 +30,14 @@ export default {
     getDoctors(officeId){
         console.log(axios.get(`/providers/offices/${officeId}`))
         return axios.get(`/providers/offices/${officeId}`)
+    },
+
+    removeDoctorFromOffice(doctorId, officeId){
+        return axios.delete(`/offices/${doctorId}/${officeId}`)
+    },
+
+    addDoctorToOffice(doctorId, officeId){
+        return axios.post(`/offices/${doctorId}/${officeId}`)
     }
 }
 

@@ -6,7 +6,18 @@ BEGIN
     IF NEW.role = 'ROLE_ADMIN' THEN
         INSERT INTO doctor (user_id, first_name, last_name, time_slot_default, email)
         VALUES (NEW.user_id, '', '', 0, '');
-
+		INSERT INTO doctor_availability (doctor_id, day_of_week, start_time, end_time)
+		VALUES ((SELECT doctor_id FROM doctor WHERE user_id = NEW.user_id), 'Monday', '9:00:00', '5:00:00');
+		INSERT INTO doctor_availability (doctor_id, day_of_week, start_time, end_time)
+		VALUES ((SELECT doctor_id FROM doctor WHERE user_id = NEW.user_id), 'Tuesday', '9:00:00', '5:00:00');
+		INSERT INTO doctor_availability (doctor_id, day_of_week, start_time, end_time)
+		VALUES ((SELECT doctor_id FROM doctor WHERE user_id = NEW.user_id), 'Wednesday', '9:00:00', '5:00:00');
+		INSERT INTO doctor_availability (doctor_id, day_of_week, start_time, end_time)
+		VALUES ((SELECT doctor_id FROM doctor WHERE user_id = NEW.user_id), 'Thursday', '9:00:00', '5:00:00');
+		INSERT INTO doctor_availability (doctor_id, day_of_week, start_time, end_time)
+		VALUES ((SELECT doctor_id FROM doctor WHERE user_id = NEW.user_id), 'Friday', '9:00:00', '5:00:00');
+		
+		
     ELSIF NEW.role = 'ROLE_USER' THEN
         INSERT INTO patient (user_id, first_name, last_name, date_of_birth, address, phone_number)
         VALUES (NEW.user_id, '', '', '1900-01-01', '', '');

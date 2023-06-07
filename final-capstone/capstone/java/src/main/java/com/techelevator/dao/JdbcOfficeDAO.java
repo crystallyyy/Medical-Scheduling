@@ -107,7 +107,20 @@ public class JdbcOfficeDAO implements OfficeDAO {
 
     }
 
+    @Override
+    public void removeDocFromOffice(int doctorId, int officeId) {
+        String sql = "DELETE FROM doctor_office WHERE doctor_id = ? AND office_id = ?";
+        jdbcTemplate.update(sql, doctorId, officeId);
+    }
 
+    @Override
+    public boolean addDocToOffice(int doctorId, int officeId) {
+        String sql = "INSERT INTO doctor_office (doctor_id, office_id) " +
+                "VALUES (?, ?) RETURNING doctor_id";
+       int rows = jdbcTemplate.queryForObject(sql, int.class, doctorId, officeId);
+
+       return rows > 0;
+    }
 
 
     private Office mapRowToOffice(SqlRowSet rs) {

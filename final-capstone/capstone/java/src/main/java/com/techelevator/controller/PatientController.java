@@ -25,6 +25,10 @@ public class PatientController {
     public Patient getPatientById(@PathVariable int patientId){
         return patientDAO.getPatientById(patientId);
     }
+    @GetMapping(path = "/patients/patientSearch/{userID}")
+    public Patient getPatientByUserId(@PathVariable int userID){
+        return patientDAO.getPatientByUserId(userID);
+    }
 
     @PutMapping(path = "/patient/update/{patientId}")
     public boolean updatePatient(@PathVariable int patientId, @Valid @RequestBody Patient patient){

@@ -176,7 +176,6 @@ export default {
   },
 
   created() {
-
     const doctorId = this.$route.params.doctorId
     officeService.getOfficesByDoctorId(doctorId).then((response) => {
       this.offices = response.data;

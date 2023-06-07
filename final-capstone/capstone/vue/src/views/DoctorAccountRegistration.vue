@@ -1,6 +1,6 @@
 <template>
    <div> 
-        <h1>Welcome, Doctor Please Create An Account!</h1>
+        <h1>Doctor Account Details</h1>
         <create-doctor :userName="username"/>
     </div>
 </template>
@@ -23,5 +23,9 @@ data() {
 </script>
 
 <style>
-
+h1 {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
 </style>

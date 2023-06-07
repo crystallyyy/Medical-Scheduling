@@ -10,4 +10,5 @@ public interface PatientDAO {
     Patient addPatient(Patient patient);
     Patient getPatientById(int patientId);
     boolean updatePatient(Patient patient);
+    Patient getPatientByUserId(int userID);
 }
