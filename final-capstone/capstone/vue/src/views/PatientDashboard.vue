@@ -132,4 +132,8 @@ export default {
 .nav-item {
   list-style: none;
 }
+
+h1 {
+  text-align: center;
+}
 </style>
