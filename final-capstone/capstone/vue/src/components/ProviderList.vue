@@ -5,8 +5,8 @@
       v-for="doctor in doctors"
       v-bind:key="doctor.doctorId"
     >
-      <h2>Dr. {{ doctor.firstName }} {{ doctor.lastName }}</h2>
-      <h3>{{ doctor.email }}</h3>
+      <!-- <h2>Dr. {{ doctor.firstName }} {{ doctor.lastName }}</h2>
+      <h3>{{ doctor.email }}</h3> -->
       <!-- <h3><button>View Availability</button></h3> --> -->
       <!-- <ul>
         <li
@@ -20,15 +20,16 @@
           </p>
         </li>
     </ul> -->
-           <CalendarWidget @passtDate="setDate($event)" />
+          <provider-card :doctor="doctor" />
 
+           <CalendarWidget @passtDate="setDate($event)" />
+    
            <h2>{{date}}</h2>
        
            <button v-for="appointment in appointmentsToday" v-bind:key="appointment.appointmentId">
              {{appointment.startTime}}
            </button>
   
-      <provider-card :doctor="doctor" :availabityList="getAvailabilityByDoctorId(doctor.doctorId)"/>
     
       <!-- v-on:click.prevent="isAvailabilityVisible = true" -->
       <!-- <button v-b-b-toggle></button> -->

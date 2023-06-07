@@ -16,4 +16,6 @@ public interface OfficeDAO {
     List<OfficeHours> getOfficeHoursByOfficeId(int office_id);
     void removeDocFromOffice(int doctorId, int officeId);
     boolean addDocToOffice(int doctorId, int officeId);
+
+    public boolean updateHours(OfficeHours officeHours);
 }
