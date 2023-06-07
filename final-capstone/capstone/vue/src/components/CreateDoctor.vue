@@ -22,8 +22,7 @@
         <input type="email" class="form-control" v-model="email" required>
       </div>
 
-      <button id="submitButton" type="submit" class="btn btn-primary">Submit</button>
-      
+       <button id="submitButton" type="submit">Submit</button>
     </form>
 
   </div>
@@ -144,6 +143,17 @@ input[type="submit"]:hover {
   background-color: #048eaa;
 }
 
+
+#submitButton {
+  display: flex;
+  margin-left: 265px;
+  margin-bottom: 25px;
+  background-color: #04abcc
+}
+
+#submitButton:hover {
+  background-color: #048eaa
+}
 </style>
 
 

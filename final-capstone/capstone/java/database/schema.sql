@@ -14,25 +14,22 @@ CREATE TABLE users (
   
 CREATE TABLE patient (
 	patient_id serial,
-	user_id int NOT NULL,
+	user_id int,
 	first_name varchar(50) NOT NULL,
 	last_name varchar(50) NOT NULL,
 	date_of_birth DATE NOT NULL,
 	address varchar(200) NOT NULL,
 	phone_number varchar(20) NOT NULL,
-	CONSTRAINT PK_patient PRIMARY KEY (patient_id),
-	CONSTRAINT FK_patient_user FOREIGN KEY (user_id) REFERENCES users(user_id)
+	CONSTRAINT PK_patient PRIMARY KEY (patient_id)
 );
-
 
 CREATE TABLE doctor (
 	doctor_id serial PRIMARY KEY,
-	user_id int NOT NULL,
+	user_id int,
 	first_name varchar(50) NOT NULL,
 	last_name varchar(50) NOT NULL,
 	time_slot_default int NOT NULL,
-	email varchar(50) NOT NULL,
-	CONSTRAINT FK_doctor_user FOREIGN KEY (user_id) REFERENCES users(user_id)
+	email varchar(50) NOT NULL
 );
 
 CREATE TABLE doctor_availability (
