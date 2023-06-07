@@ -47,14 +47,10 @@ export default {};
 
 <style scoped>
 #main {
-  display: grid;
-  /* grid-template-columns: repeat(2, minmax(0, 1fr)); */
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas: 
-    "d1 d2"
-    "d3 d4";
+  display: flex;
+  justify-content: center;
   gap: 20px;
-  /* justify-items: center; */
+
 }
 #dash1{
   grid-area: d1;
@@ -71,9 +67,7 @@ export default {};
 }
 
 .dash {
-  /* display: flex; */
   gap: 20px;
-  /* flex-direction: column; */
   text-align: center;
   border: 1px solid #e4e4e4;
   border-radius: 8px;

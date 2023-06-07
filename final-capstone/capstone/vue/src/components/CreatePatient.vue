@@ -50,9 +50,13 @@ export default {
       try{
      const res1 = await patientService.getPatientUserIdByUsername(this.userName);
        this.userId = res1.data;
-      console.log(this.userId);
-       const res2 =  await patientService.getPatientByUserId(this.userId)
-       this.fetchPatient = res2.data
+      
+      patientService.getPatientByUserId(this.userId).then(resp => {
+
+        this.fetchPatient = resp.data
+        console.log(this.fetchPatient.dateOfBirth);
+      })
+    
       console.log(this.fetchPatient);
       }catch(error) {
       console.log(error)

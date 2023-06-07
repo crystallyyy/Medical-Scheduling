@@ -1,13 +1,28 @@
 package com.techelevator.controller;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.techelevator.dao.AppointmentDao;
+import com.techelevator.dao.AvailabilityDAO;
+import com.techelevator.model.Appointment;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.time.LocalDate;
+import java.util.List;
 
 @RestController
 @CrossOrigin
 public class AppointmentController {
 
-   // @PostMapping(path = "/appointment")
+    @Autowired
+    AppointmentDao appointmentDao;
 
+    @PostMapping(path = "/appointment")
+    public Appointment addAppointment(@Valid @RequestBody Appointment appointment){
+        return appointmentDao.newAppt(appointment);
+    }
+    @GetMapping(path = "/appointment/{doctorId}")
+    public List<Appointment> getApptsByDocDate(@PathVariable int doctorId, LocalDate apptDate){
+        return appointmentDao.getAppointmentsByDocDate(doctorId, apptDate);
+    }
 }
