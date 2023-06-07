@@ -1,8 +1,8 @@
 <template>
   <form @submit="submitForm">
     <div>
-      <label for="userId">User ID:</label>
-      <input type="number" id="userId" v-model="formData.userId" required />
+      <!-- <label for="userId">User ID:</label>
+      <input type="number" id="userId" v-model="formData.userId" required /> -->
     </div>
     <div>
       <label for="firstName">First Name:</label>

@@ -72,6 +72,7 @@
     <div id="content">
       <div class="dashboard" v-show="activeCard === 1">
         <h1 id="dashboardMessage">Welcome to your Dashboard</h1>
+       
       </div>
 
       <div class="appointments" v-show="activeCard === 2"></div>
@@ -95,9 +96,11 @@
 <script>
 import DoctorAvailability from "../components/DoctorAvailability.vue";
 import EditOfficeList from "../components/EditOfficeList.vue";
+
+
 export default {
   name: "doctor-dash",
-  components: { EditOfficeList, DoctorAvailability },
+  components: { EditOfficeList, DoctorAvailability},
   data() {
     return {
       activeCard: null,
