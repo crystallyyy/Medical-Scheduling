@@ -32,6 +32,7 @@
           <td>{{ office.officeName }}</td>
           <td>{{ office.address }}</td>
           <td>{{ office.phoneNumber }}</td>
+          
           <td>
             <button @click="showFormWithData(office)">
             
@@ -90,7 +91,7 @@
               <h2> Office Hours</h2>
               <div>
                 <label for="Mondaystart">Monday:</label>
-                <input type="time" id="Mondaystart" v-model="officeHours[0].startTime" required />
+                <input type="text" id="Mondaystart" v-model="officeHours[0].startTime" required />
               </div>
               <div>
                 <label for="Mondayend"></label>
@@ -130,7 +131,17 @@
               </div>
             </div>  
 
-
+            <fieldset>
+              <legend>Providers Available</legend>
+              <div class="doctors" v-for="doctor in doctorsInOffice" v-bind:key="doctor.firstName">
+                <input type="checkbox" id="provider" checked />
+                <label for="provider">{{ doctor.firstName}} {{doctor.lastName }}</label>
+              </div>
+              <!-- <div>
+                <input type="checkbox" id="music" name="interest" value="music" />
+                <label for="music">Music</label>
+              </div> -->
+            </fieldset>
 
 
 
@@ -150,7 +161,7 @@
 import officeService from "../services/officeService.js";
 
 export default {
-  name: "office-list",
+  name: "edit-office-list",
   data() {
     return {
       offices: [],
@@ -186,6 +197,7 @@ export default {
       this.activeOffice.officeName = this.officeName;
       this.activeOffice.address =this.address;
       this.activeOffice.phoneNumber = this.phoneNumber;
+
     officeService.updateOffice(this.activeOffice);
     this.showForm = false;
     
@@ -195,11 +207,18 @@ export default {
 
    this.showForm = true;
    this.activeOffice = office;
+   this.officeId = office.officeId;
    this.officeName = office.officeName;
    this.address = office.address;
    this.phoneNumber = office.phoneNumber;
- 
+  
+  officeService.getOfficeHours(this.officeId).then((response) => {
+          this.officeHours = response.data;
+        });
 
+  officeService.getDoctors(this.officeId).then((response) => {
+          this.doctorsInOffice = response.data;
+        });
     }
   }
 };

@@ -95,15 +95,18 @@
 
 <script>
 import DoctorAvailability from "../components/DoctorAvailability.vue";
-import EditOfficeList from "../components/EditOfficeList.vue";
+
+import EditOfficeList from '../components/EditOfficeList.vue';
+
+
 
 
 export default {
   name: "doctor-dash",
-  components: { EditOfficeList, DoctorAvailability},
+  components: {  DoctorAvailability, EditOfficeList},
   data() {
     return {
-      activeCard: null,
+     activeCard: null,
       methods: {},
     };
   },
