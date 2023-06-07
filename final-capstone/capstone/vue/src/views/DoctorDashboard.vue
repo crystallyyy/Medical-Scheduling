@@ -63,9 +63,9 @@
         
       </div>
 
-      <div class="info" v-show="activeCard === 3"></div>
+      <div class="info" v-show="activeCard === 3">
         <edit-office-list></edit-office-list>
-
+       </div>
       <div class="visits" v-show="activeCard === 4"></div>
 
       <div class="card card-body" v-show="activeCard === 4">

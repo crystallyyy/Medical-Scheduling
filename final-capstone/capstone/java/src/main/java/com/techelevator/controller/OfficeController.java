@@ -53,4 +53,9 @@ public class OfficeController {
     public boolean addDoctorToOffice(@PathVariable int doctorId, @PathVariable int officeId){
         return officeDAO.addDocToOffice(doctorId, officeId);
     }
+
+    @PutMapping(path ="/office-hours")
+    public void updateOfficeHours(@RequestBody OfficeHours officeHours){
+        officeDAO.updateHours(officeHours);
+    }
 }

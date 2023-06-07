@@ -122,6 +122,20 @@ public class JdbcOfficeDAO implements OfficeDAO {
        return rows > 0;
     }
 
+    @Override
+    public boolean updateHours(OfficeHours officeHours) {
+        String sql = "UPDATE office_hours  SET start_time = ? , end_time = ? where day_of_week = ? AND office_id = ?;";
+        boolean success = false;
+        try {
+            jdbcTemplate.update(sql, officeHours.getStartTime(), officeHours.getEndTime(), officeHours.getDayOfWeek(), officeHours.getOfficeId());
+            success = true;
+        } catch (CannotGetJdbcConnectionException | BadSqlGrammarException | DataIntegrityViolationException e) {
+            return false;
+        }
+        return success;
+    }
+
+
 
     private Office mapRowToOffice(SqlRowSet rs) {
         Office office = new Office();
