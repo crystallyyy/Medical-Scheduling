@@ -5,26 +5,10 @@
       v-for="doctor in doctors"
       v-bind:key="doctor.doctorId"
     >
-      <h2>Dr. {{ doctor.firstName }} {{ doctor.lastName }}</h2>
-      <h3>{{ doctor.email }}</h3>
-      <h3><button>View Availability</button></h3>
-      <ul>
-        <li
-          v-for="availability in getAvailabilityByDoctorId(doctor.doctorId)"
-          v-bind:key="availability.dayOfWeek"
-        >
-          <p>
-            {{ availability.dayOfWeek }}: {{ availability.startTime }}-{{
-              availability.endTime
-            }}
-          </p>
-        </li>
-    </ul>
-    <ul>
-       <li v-for="(office) in doctor.offices"
-          v-bind:key="office.officeId"
-          :value="office.officeId">{{ office.officeName }} </li>
-  </ul>
+      <provider-card :doctor="doctor" :availabity="getAvailabilityByDoctorId(doctor.doctorId)"/>
+    
+
+
           
           
      
@@ -54,11 +38,13 @@ import SchedulingCalendar from "../components/SchedulingCalendar.vue";
 import officeService from "../services/officeService.js";
 import appointmentService from "../services/appointmentService.js";
 import providerService from "../services/providerService.js";
+import ProviderCard from './ProviderCard.vue';
 
 export default {
   name: "provider-list",
   components: {
     SchedulingCalendar,
+    ProviderCard,
   },
 
   created() {
@@ -69,7 +55,7 @@ export default {
       this.doctors.forEach((doctor) => {
 
         officeService.getOfficesByDoctorId(doctor.doctorId).then((response) => {
-          this.offices.push(response.data);
+          this.doctor.offices = response.data
           
         });
         
