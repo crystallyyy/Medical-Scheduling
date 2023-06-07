@@ -72,7 +72,7 @@
     <div id="content">
       <div class="dashboard" v-show="activeCard === 1">
         <h1 id="dashboardMessage">Welcome to your Dashboard</h1>
-       
+        <doctor-quicklinks/>
       </div>
 
       <div class="myProfile" v-show="activeCard === 2">
@@ -97,6 +97,7 @@
 
 <script>
 import DoctorAvailability from "../components/DoctorAvailability.vue";
+import DoctorQuicklinks from '../components/DoctorQuicklinks.vue';
 
 import EditOfficeList from '../components/EditOfficeList.vue';
 
@@ -108,7 +109,8 @@ export default {
   components: {  DoctorAvailability, EditOfficeList},
   data() {
     return {
-     activeCard: null,
+   ,
+    DoctorQuicklinks  activeCard: null,
       methods: {},
     };
   },
