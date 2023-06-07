@@ -29,12 +29,9 @@
 
 <script>
 export default {
-<<<<<<< HEAD
    
-=======
   name: "doctorQuicklinks"
     
->>>>>>> 5abe4417d10b16fa1143e8302799bba745cf0173
 }
 </script>
 

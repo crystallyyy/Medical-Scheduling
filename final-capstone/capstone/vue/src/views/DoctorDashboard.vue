@@ -55,12 +55,8 @@
     <div id="content">
       <div class="dashboard" v-show="activeCard === 1">
         <h1 id="dashboardMessage">Welcome to your Dashboard</h1>
-<<<<<<< HEAD
-        <doctor-quicklinks/>
-=======
         <doctor-quicklinks></doctor-quicklinks>
 
->>>>>>> 5abe4417d10b16fa1143e8302799bba745cf0173
       </div>
 
       <div class="myProfile" v-show="activeCard === 2">
@@ -84,26 +80,15 @@
 
 <script>
 import DoctorAvailability from "../components/DoctorAvailability.vue";
-<<<<<<< HEAD
-import DoctorQuicklinks from '../components/DoctorQuicklinks.vue';
-
-import EditOfficeList from '../components/EditOfficeList.vue';
-
-
-
-
-=======
 import DoctorQuicklinks from "../components/DoctorQuicklinks.vue";
 import EditOfficeList from "../components/EditOfficeList.vue";
->>>>>>> 5abe4417d10b16fa1143e8302799bba745cf0173
 export default {
   name: "doctor-dash",
   components: { EditOfficeList, DoctorAvailability, DoctorQuicklinks },
   data() {
     return {
-   ,
-    DoctorQuicklinks  activeCard: null,
-      methods: {},
+    activeCard: null,
+    methods: {},
     };
   },
 };
