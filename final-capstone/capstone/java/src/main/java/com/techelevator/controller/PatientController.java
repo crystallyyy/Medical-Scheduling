@@ -25,7 +25,7 @@ public class PatientController {
     public Patient getPatientById(@PathVariable int patientId){
         return patientDAO.getPatientById(patientId);
     }
-    @GetMapping(path = "/patients/patientSearch/{userID}")
+    @GetMapping(path = "/users/patients/{userID}")
     public Patient getPatientByUserId(@PathVariable int userID){
         return patientDAO.getPatientByUserId(userID);
     }

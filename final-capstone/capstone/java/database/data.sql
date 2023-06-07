@@ -85,4 +85,91 @@ VALUES
 
 
 
+-- Sample data for office_hours table
+-- Office 1
+INSERT INTO office_hours (office_id, day_of_week, start_time, end_time)
+VALUES
+    (1, 'Monday', '09:00:00', '17:00:00'),
+    (1, 'Tuesday', '09:00:00', '17:00:00'),
+    (1, 'Wednesday', '09:00:00', '17:00:00'),
+    (1, 'Thursday', '09:00:00', '17:00:00'),
+    (1, 'Friday', '09:00:00', '17:00:00');
+
+-- Office 2
+INSERT INTO office_hours (office_id, day_of_week, start_time, end_time)
+VALUES
+    (2, 'Monday', '09:30:00', '18:00:00'),
+    (2, 'Tuesday', '09:30:00', '18:00:00'),
+    (2, 'Wednesday', '09:30:00', '18:00:00'),
+    (2, 'Thursday', '09:30:00', '18:00:00'),
+    (2, 'Friday', '09:30:00', '18:00:00');
+
+-- Office 3
+INSERT INTO office_hours (office_id, day_of_week, start_time, end_time)
+VALUES
+    (3, 'Monday', '08:00:00', '16:30:00'),
+    (3, 'Tuesday', '08:00:00', '16:30:00'),
+    (3, 'Wednesday', '08:00:00', '16:30:00'),
+    (3, 'Thursday', '08:00:00', '16:30:00'),
+    (3, 'Friday', '08:00:00', '16:30:00');
+
+-- Office 4
+INSERT INTO office_hours (office_id, day_of_week, start_time, end_time)
+VALUES
+    (4, 'Monday', '10:00:00', '18:30:00'),
+    (4, 'Tuesday', '10:00:00', '18:30:00'),
+    (4, 'Wednesday', '10:00:00', '18:30:00'),
+    (4, 'Thursday', '10:00:00', '18:30:00'),
+    (4, 'Friday', '10:00:00', '18:30:00');
+
+-- Office 5
+INSERT INTO office_hours (office_id, day_of_week, start_time, end_time)
+VALUES
+    (5, 'Monday', '08:30:00', '16:30:00'),
+    (5, 'Tuesday', '08:30:00', '16:30:00'),
+    (5, 'Wednesday', '08:30:00', '16:30:00'),
+    (5, 'Thursday', '08:30:00', '16:30:00'),
+    (5, 'Friday', '08:30:00', '16:30:00');
+
+-- Office 6
+INSERT INTO office_hours (office_id, day_of_week, start_time, end_time)
+VALUES
+    (6, 'Monday', '09:00:00', '17:30:00'),
+    (6, 'Tuesday', '09:00:00', '17:30:00'),
+    (6, 'Wednesday', '09:00:00', '17:30:00'),
+    (6, 'Thursday', '09:00:00', '17:30:00'),
+    (6, 'Friday', '09:00:00', '17:30:00');
+
+-- Office 7
+INSERT INTO office_hours (office_id, day_of_week, start_time, end_time)
+VALUES
+    (7, 'Monday', '10:00:00', '18:00:00'),
+    (7, 'Tuesday', '10:00:00', '18:00:00'),
+    (7, 'Wednesday', '10:00:00', '18:00:00'),
+    (7, 'Thursday', '10:00:00', '18:00:00'),
+    (7, 'Friday', '10:00:00', '18:00:00');
+
+-- Office 8
+INSERT INTO office_hours (office_id, day_of_week, start_time, end_time)
+VALUES
+    (8, 'Monday', '09:30:00', '17:30:00'),
+    (8, 'Tuesday', '09:30:00', '17:30:00'),
+    (8, 'Wednesday', '09:30:00', '17:30:00'),
+    (8, 'Thursday', '09:30:00', '17:30:00'),
+    (8, 'Friday', '09:30:00', '17:30:00');
+
+
+INSERT INTO doctor_office (doctor_id, office_id)
+VALUES
+    (1, 1), -- Dr. James Johnson assigned to Office 1
+    (2, 2), -- Dr. Emily Smith assigned to Office 2
+    (3, 3), -- Dr. Michael Brown assigned to Office 3
+    (4, 4), -- Dr. Sarah Davis assigned to Office 4
+    (5, 5), -- Dr. David Wilson assigned to Office 5
+    (6, 6), -- Dr. Jessica Anderson assigned to Office 6
+    (7, 7), -- Dr. Daniel Miller assigned to Office 7
+    (8, 8), -- Dr. Olivia Taylor assigned to Office 8
+    (9, 1), -- Dr. Andrew Clark assigned to Office 1
+    (10, 2); -- Dr. Emily Johnson assigned to Office 2
+
 COMMIT TRANSACTION;

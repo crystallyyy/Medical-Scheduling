@@ -75,22 +75,20 @@
 
     </div>
   </div>
-
-  <!-- include contact support -->
 </template>
 
 <script>
 import DoctorAvailability from "../components/DoctorAvailability.vue";
-import DoctorQuicklinks from "../components/DoctorQuicklinks.vue";
-import EditOfficeList from "../components/EditOfficeList.vue";
+import DoctorQuicklinks from '../components/DoctorQuicklinks.vue';
+import EditOfficeList from '../components/EditOfficeList.vue';
 
 export default {
   name: "doctor-dash",
   components: { EditOfficeList, DoctorAvailability, DoctorQuicklinks},
   data() {
     return {
-     activeCard: null,
-      methods: {},
+    activeCard: null,
+    methods: {},
     };
   },
 };
