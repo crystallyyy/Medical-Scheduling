@@ -1,26 +1,26 @@
 <template>
   <form @submit.prevent="submitForm">
-    <div>
-      <label for="firstName">First Name:</label>
+    <div id= "firstNameFrame">
+      <label for="firstName">First Name:&nbsp;&nbsp;</label>
       <input type="text" id="firstName" v-model="formData.firstName" required />
     </div>
-    <div>
-      <label for="lastName">Last Name:</label>
+    <div id="lastNameFrame">
+      <label for="lastName">Last Name:&nbsp;&nbsp;</label>
       <input type="text" id="lastName" v-model="formData.lastName" required />
     </div>
-    <div>
-      <label for="dateOfBirth">Date of Birth:</label>
+    <div id="dateOfBirthFrame">
+      <label for="dateOfBirth">Date of Birth:&nbsp;&nbsp;</label>
       <input type="date" id="dateOfBirth" v-model="formData.dateOfBirth" required />
     </div>
-    <div>
-      <label for="address">Address:</label>
+    <div id="addressFrame">
+      <label for="address">Address:&nbsp;&nbsp;</label>
       <textarea id="address" v-model="formData.address" required></textarea>
     </div>
-    <div>
-      <label for="phoneNumber">Phone Number:</label>
+    <div id="phoneNumberFrame">
+      <label for="phoneNumber">Phone Number:&nbsp;&nbsp;</label>
       <input type="tel" id="phoneNumber" v-model="formData.phoneNumber" required />
     </div>
-    <button type="submit">Submit</button>
+    <button id="submitButton" type="submit">Submit</button>
   </form>
 </template>
 
@@ -76,7 +76,7 @@ export default {
  
 
 
-<style>
+<style scoped>
 .container {
   background-color: #fff;
   border-radius: 5px;
@@ -85,11 +85,6 @@ export default {
   width: 400px;
   max-width: 50%;
   margin: 0 auto;
-}
-
-h1 {
-  text-align: center;
-  margin-bottom: 30px;
 }
 
 input[type="text"],
@@ -116,4 +111,54 @@ input[type="submit"] {
 input[type="submit"]:hover {
   background-color: #048eaa;
 }
+
+#userIdFrame {
+  display: flex;
+  margin-left: 200px;
+  margin-bottom: 25px
+
+}
+
+#firstNameFrame {
+  display: flex;
+  margin-left: 176px;
+  margin-bottom: 25px
+
+}
+
+#lastNameFrame {
+  display: flex;
+  margin-left: 177px;
+  margin-bottom: 25px
+}
+
+#dateOfBirthFrame {
+  display: flex;
+  margin-left: 163px;
+  margin-bottom: 25px
+}
+
+#addressFrame {
+  display: flex;
+  margin-left: 196px;
+  margin-bottom: 25px
+}
+
+#phoneNumberFrame {
+  display: flex;
+  margin-left: 145px;
+  margin-bottom: 25px
+}
+
+#submitButton {
+  display: flex;
+  margin-left: 265px;
+  margin-bottom: 25px;
+  background-color: #04abcc
+}
+
+#submitButton:hover {
+  background-color: #048eaa
+}
+
 </style>

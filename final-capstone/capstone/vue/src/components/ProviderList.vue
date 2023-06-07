@@ -22,6 +22,30 @@
     </ul>
            <CalendarWidget @setDate="setDate($event)"/>
     
+      <provider-card :doctor="doctor" :availabity="getAvailabilityByDoctorId(doctor.doctorId)"/>
+    
+
+
+          
+          
+     
+
+      <scheduling-calendar></scheduling-calendar>
+      <!-- v-on:click.prevent="isAvailabilityVisible = true" -->
+      <!-- <button v-b-b-toggle></button> -->
+      <!-- <div> Book A Time
+      <form  action="POST">
+        <label for="appt-date">Date: </label>
+        <input type="date" id="appt-date" v-model="newAppointment.apptDate">
+        <label for="start-time">Time: </label>
+        <input type="time" id="start-time" v-model="newAppointment.startTime">
+        <label for="patient-id">Patient Id: </label>
+        <input type="text" id="patient-id" v-model.number="newAppointment.patientId">
+        <label for="office-id">Office: </label>
+       
+        <button type="submit" >Submit</button>
+      </form>
+      </div> -->
     </div>
   </div>
 </template>
@@ -30,11 +54,13 @@
 import appointmentService from "../services/appointmentService.js";
 import providerService from "../services/providerService.js";
 import CalendarWidget from '../components/CalendarWidget.vue';
+import ProviderCard from './ProviderCard.vue';
 
 export default {
   name: "provider-list",
   components: {
-  CalendarWidget
+  CalendarWidget,
+    ProviderCard
   },
 
   created() {
@@ -42,6 +68,14 @@ export default {
     providerService.getAllProviders().then((response) => {
       this.doctors = response.data;
 
+      // this.doctors.forEach((doctor) => {
+
+      //   officeService.getOfficesByDoctorId(doctor.doctorId).then((response) => {
+      //     this.doctor.offices = response.data
+          
+        
+        
+     
     });
 
     providerService.getAllAvailabilities().then((response) => {
