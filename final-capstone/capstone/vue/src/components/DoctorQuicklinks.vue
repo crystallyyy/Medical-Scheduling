@@ -22,27 +22,6 @@
             <b-button href="#" variant="primary">View All</b-button>
         </b-card>
 
-        <b-card style="max-width: 20rem;" class="dash">
-            <b-card-title>
-                Update Info
-            </b-card-title>
-            <b-card-text>
-                Some quick example text to build on the card title and make up the bulk of the card's content.
-            </b-card-text>
-            <b-button href="#" variant="primary">View All</b-button>
-        </b-card>
-
-        <b-card style="max-width: 20rem;" class="dash">
-            <b-card-title>
-              Not Sure
-            </b-card-title>
-            <b-card-text>
-                Some quick example text to build on the card title and make up the bulk of the card's content.
-            </b-card-text>
-            <b-button href="#" variant="primary">View All</b-button>
-        </b-card>
-
-
     </div>
 </template>
 
@@ -50,18 +29,23 @@
 
 <script>
 export default {
+<<<<<<< HEAD
    
+=======
+  name: "doctorQuicklinks"
+    
+>>>>>>> 5abe4417d10b16fa1143e8302799bba745cf0173
 }
 </script>
 
 
 
-<style>
+<style scoped>
 
 
 .main {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  /* grid-template-columns: repeat(2, minmax(0, 1fr)); */
   gap: 20px;
   justify-items: center;
 }

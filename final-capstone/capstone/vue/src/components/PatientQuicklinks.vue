@@ -58,6 +58,7 @@ export default {};
 }
 #dash1{
   grid-area: d1;
+  
 }
 #dash2{
   grid-area: d2;

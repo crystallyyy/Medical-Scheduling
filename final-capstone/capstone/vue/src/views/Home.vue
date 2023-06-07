@@ -21,8 +21,9 @@
        <p> </p>
     </div>
     <div class="video">
-      <div class="video-container">
-        <video src="../../img/DNA molecule.mp4" autoplay loop playsinline muted></video>
+      <div class="photo-class">
+        <img class="photo" src="../../img/people2.jpg" alt="people">
+        <!-- <video src="../../img/DNA molecule.mp4" autoplay loop playsinline muted></video> -->
         <!-- <div class="callout">
           <h1>Object-Fit </h1>
           <div>The CSS Background-Size: Cover for Inline Images &amp; Videos</div>
@@ -86,13 +87,23 @@ export default {
   margin-bottom: 20px;
   padding-top: 20px;
 }
-.video{
+
+.photo-class {
+  display: flex;
+  justify-content: center;
+}
+
+.photo {
+  height: 90%;
+  width: 90%;
+}
+/* .video{
   grid-area: video;
   margin: 20px;
 }
+ */
 
-
-.video-container {
+/* .video-container {
   position: relative;
   width:100%;
   height: 0;
@@ -104,8 +115,8 @@ export default {
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
   
-}
-.video-container video {
+} */
+/* .video-container video {
   object-fit: cover; 
   position: absolute;
   height: 100%;
@@ -113,7 +124,7 @@ export default {
   top: 0;
   left: 0;
   
-}
+} */
 .nav {
   display:flex;
   justify-content: center;

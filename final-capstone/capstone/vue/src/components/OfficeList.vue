@@ -5,14 +5,14 @@
     <div class='actions'>
       <router-link v-bind:to="{ name: 'patientDash' }">
         Return to Dashboard
-      </router-link> |
+      </router-link>
 
-      <router-link
+      <!-- <router-link
         v-bind:to="{
           name: 'reviewsPD',
           params: { officeId: currentOfficeId },
         }">Read Reviews
-      </router-link>
+      </router-link> -->
     </div>
 
 

@@ -131,8 +131,8 @@
               </div>
             </div>  
 
-            <fieldset>
-              <legend>Providers Available</legend>
+            <div>
+              <h2>Providers Available</h2>
               <div class="doctors" v-for="doctor in doctorsInOffice" v-bind:key="doctor.firstName">
                 <input type="checkbox" id="provider" checked />
                 <label for="provider">{{ doctor.firstName}} {{doctor.lastName }}</label>
@@ -141,7 +141,7 @@
                 <input type="checkbox" id="music" name="interest" value="music" />
                 <label for="music">Music</label>
               </div> -->
-            </fieldset>
+            </div>
 
 
 
@@ -218,6 +218,10 @@ export default {
   officeService.getDoctors(this.officeId).then((response) => {
           this.doctorsInOffice = response.data;
         });
+    },
+
+    updateHours(){
+
     }
   }
 };
@@ -278,9 +282,9 @@ button:hover {
   background-color: #e6e6e6;
 }
 
-.list {
+/* .list {
   padding: 20px;
-}
+} */
 
 .officeinfo,
 .officehours,
@@ -289,6 +293,15 @@ button:hover {
   padding-bottom: 15px;
 }
 
+.updateform{
+  display: flex;
+  flex-direction: column;
+  max-height: 50%;
+  background-color: whitesmoke;
+  margin-top: 30px;
+}
 
-
+.updateform h2 {
+  font-size: 1em;
+}
 </style>
