@@ -1,49 +1,34 @@
 <template>
   <div>
     <h3 class="offices">OFFICES</h3>
-<!-- 
-    <div class="actions">
-      <router-link v-bind:to="{ name: 'patientdash' }">
-        Return to Dashboard
-      </router-link>
-      | -->
-      <!-- <span style="paddingLeft: 8px; paddingRight: 8px;"></span> -->
-<!-- 
-      <router-link
-        v-bind:to="{
-          name: 'reviewsPD',
-          params: { officeId: currentOfficeId },
-        }"
-        >Edit Office Information
-      </router-link>
-    </div> -->
-  <div>
-    <table class="officeTable">
-      <thead>
-        <tr>
-          <th>Office Name</th>
-          <th>Address</th>
-          <th>Phone Number</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="office in offices" v-bind:key="office.officeId">
-          <td>{{ office.officeName }}</td>
-          <td>{{ office.address }}</td>
-          <td>{{ office.phoneNumber }}</td>
-          
-          <td>
-            <button @click="showFormWithData(office)">
-            
-                <strong>Edit Office Information</strong>
-             
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+
+      <div>
+        <table class="officeTable">
+          <thead>
+            <tr>
+              <th>Office Name</th>
+              <th>Address</th>
+              <th>Phone Number</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="office in offices" v-bind:key="office.officeId">
+              <td>{{ office.officeName }}</td>
+              <td>{{ office.address }}</td>
+              <td>{{ office.phoneNumber }}</td>
+              
+              <td>
+                <button @click="showFormWithData(office)">
+                
+                    <strong>Edit Office Information</strong>
+                
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     <!-- <div class="list">
           
             <div class="officeinfo" v-for="office in offices" v-bind:key="office.officeId">
@@ -228,7 +213,7 @@ export default {
 </script>
 
 <style>
-.actions {
+/* .actions {
   margin-left: auto;
   margin-right: auto;
   margin-top: 20px;
@@ -280,13 +265,13 @@ button {
 
 button:hover {
   background-color: #e6e6e6;
-}
+} */
 
 /* .list {
   padding: 20px;
 } */
 
-.officeinfo,
+/* .officeinfo,
 .officehours,
 .doctors {
   padding-top: 15px;
@@ -303,5 +288,5 @@ button:hover {
 
 .updateform h2 {
   font-size: 1em;
-}
+} */
 </style>

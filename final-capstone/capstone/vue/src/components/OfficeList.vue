@@ -57,13 +57,13 @@
         <div class="officeinfo" v-for="office in offices" v-bind:key="office.officeId">
             <div>
               <table>
-                  <tr><td> {{ office.officeName }}</td></tr>
-                  <tr><td>{{ office.address }} </td></tr>
+                  <!-- <tr><td> {{ office.officeName }}</td></tr>
+                  <tr><td>{{ office.address }} </td></tr> -->
                   
                   <!-- NEW -->
-                  <tr><td>{{ office.hours }} </td></tr>
+                  <!-- <tr><td>{{ office.hours }} </td></tr>
 
-                  <tr><td>{{ office.phoneNumber }} </td></tr>
+                  <tr><td>{{ office.phoneNumber }} </td></tr> -->
               </table>
         </div>
         <div class="officehours" v-for="hour in officeHours" v-bind:key="hour.dayOfWeek">
