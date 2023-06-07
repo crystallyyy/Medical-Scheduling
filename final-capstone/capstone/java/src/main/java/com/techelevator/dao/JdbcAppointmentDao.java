@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,6 +64,18 @@ public class JdbcAppointmentDao implements AppointmentDao{
         String sql = "SELECT * FROM appointment WHERE patient_id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, patientId);
         while (results.next()) {
+            Appointment appointment = mapRowToAppointment(results);
+            appointments.add(appointment);
+        }
+        return appointments;
+    }
+
+    @Override
+    public List<Appointment> getAppointmentsByDocDate(int doctorId, LocalDate apptDate) {
+        List<Appointment> appointments = new ArrayList<>();
+        String sql = "SELECT * FROM appointment WHERE doctor_id = ? AND appt_date = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, doctorId, apptDate);
+        while (results.next()){
             Appointment appointment = mapRowToAppointment(results);
             appointments.add(appointment);
         }

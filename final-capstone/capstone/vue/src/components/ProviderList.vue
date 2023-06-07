@@ -7,8 +7,8 @@
     >
       <h2>Dr. {{ doctor.firstName }} {{ doctor.lastName }}</h2>
       <h3>{{ doctor.email }}</h3>
-      <h3><button>View Availability</button></h3>
-      <ul>
+      <!-- <h3><button>View Availability</button></h3> --> -->
+      <!-- <ul>
         <li
           v-for="availability in getAvailabilityByDoctorId(doctor.doctorId)"
           v-bind:key="availability.dayOfWeek"
@@ -19,18 +19,17 @@
             }}
           </p>
         </li>
-    </ul>
-           <CalendarWidget @setDate="setDate($event)"/>
+    </ul> -->
+           <CalendarWidget @passtDate="setDate($event)" />
+
+           <h2>{{date}}</h2>
+       
+           <button v-for="appointment in appointmentsToday" v-bind:key="appointment.appointmentId">
+             {{appointment.startTime}}
+           </button>
+  
+      <provider-card :doctor="doctor" :availabityList="getAvailabilityByDoctorId(doctor.doctorId)"/>
     
-      <provider-card :doctor="doctor" :availabity="getAvailabilityByDoctorId(doctor.doctorId)"/>
-    
-
-
-          
-          
-     
-
-      <scheduling-calendar></scheduling-calendar>
       <!-- v-on:click.prevent="isAvailabilityVisible = true" -->
       <!-- <button v-b-b-toggle></button> -->
       <!-- <div> Book A Time
@@ -87,26 +86,65 @@ export default {
   data() {
     return {
       date: '',
+      dayOfWeek: '',
       isAvailabilityVisible: false,
       booking: false,
-      newAppointment: {
-        doctorId: "",
-        apptDate: "",
-        startTime: "",
-        duration: "",
-        patientId: "",
-        officeId: ""
-      },
+      // newAppointment: {
+      //   doctorId: "",
+      //   apptDate: "",
+      //   startTime: "",
+      //   duration: "",
+      //   patientId: "",
+      //   officeId: ""
+      // },
       availabilities: [],
       doctors: [],
       offices: [],
+      availabilityPerDoc: [],
+      appointmentsToday: []
     };
   },
   methods: {
 
-    setDate(date){
+    setDate(date, day){
       this.date = date;
+      this.dayOfWeek = day;
       console.log(this.date)
+    },
+
+    getTimeSlots(doctor){
+      providerService.getAvailabilityByDoctor(doctor.doctorId).then( (res) =>
+      this.availabilityPerDoc = res.data)
+
+      for(let i = 0; i < this.availabilityPerDoc.length; i++){
+        if(this.dayOfWeek == this.availabilityPerDoc[i].dayOfWeek){
+          let endTime = this.availabilityPerDoc[i].endTime;
+          let startTime = this.availabilityPerDoc[i].startTime;
+          let hoursInDay = endTime - startTime;
+          let slots = hoursInDay / doctor.timeSlotDefault
+
+          for(let j =0; j < slots; j++){
+            let appointment = {
+              doctorId: doctor.doctorId,
+              apptDate: this.date,
+              startTime: startTime.plusMinutes(doctor.timeSlotDefault),
+              duration: doctor.timeSlotDefault,
+              patientId: null,
+              officeId: 0
+            }
+            appointmentService.newAppointment(appointment);
+
+            this.showAppointments(doctor.doctorId, this.date);
+          }
+        }
+      }
+
+    },
+
+    showAppointments(doctorId, apptDate){
+      appointmentService.getAppointmentsbyDoctorDate(doctorId, apptDate).then( (response) => {
+        this.appointmentsToday = response.data;
+      })
     },
  
 

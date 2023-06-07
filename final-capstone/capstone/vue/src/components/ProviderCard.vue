@@ -4,7 +4,7 @@
     <h3>{{ doctor.email }}</h3>
     <ul>
       <li
-        v-for="availability in getAvailabilityByDoctorId(doctor.doctorId)"
+        v-for="availability in availabityList"
         v-bind:key="availability.dayOfWeek"
       >
         <h3><button>View Availability</button></h3>
@@ -22,7 +22,8 @@
 export default {
   props: {
     doctor: Object,
-    availabity: Object,
+    availabityList: Object,
+    
   },
 };
 </script>

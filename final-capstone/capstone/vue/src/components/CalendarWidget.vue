@@ -4,6 +4,8 @@
         <div>
             <h3 class="mb-3 text-center">Select a Day</h3>
         <date-picker v-model="date" :config="options"  @click="passDate"></date-picker>
+        <h2>{{date.getDay()}}</h2>
+        <h2>{{date}}</h2>
         </div>
   </div>
   </div>
@@ -22,6 +24,7 @@ components: {
 data(){
     return{
    date: new Date(),
+   day: '',
    options: {
        format: 'MM/DD/YY',
        useCurrent: false,
@@ -33,8 +36,11 @@ data(){
 
 methods: {
     passDate(){
-        this.$emit('setDate', this.date)
-    }
+        
+        const day = this.date.getDay();
+        this.$emit('passDate', this.date, day)
+    },
+
 }
 
 }
