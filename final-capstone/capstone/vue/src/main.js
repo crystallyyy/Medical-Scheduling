@@ -34,5 +34,13 @@ axios.defaults.baseURL = process.env.VUE_APP_REMOTE_API;
 new Vue({
   router,
   store,
+    // data: {
+    //   startDate: '',
+    // },
+    // mounted() {
+    //   ("#startDate").datepicker().on(
+    //     "changeDate", () => {this.startDate = ('#startDate').val()}
+    //   );
+    // },
   render: h => h(App)
 }).$mount('#app')
