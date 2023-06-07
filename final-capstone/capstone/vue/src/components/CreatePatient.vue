@@ -1,10 +1,6 @@
 <template>
-  <form @submit="submitForm">
-    <div id="userIdFrame">
-      <label for="userId">User ID:&nbsp;&nbsp;</label>
-      <input type="number" id="userId" v-model="formData.userId" required />
-    </div>
-    <div id="firstNameFrame">
+  <form @submit.prevent="submitForm">
+    <div id= "firstNameFrame">
       <label for="firstName">First Name:&nbsp;&nbsp;</label>
       <input type="text" id="firstName" v-model="formData.firstName" required />
     </div>
@@ -25,7 +21,6 @@
       <input type="tel" id="phoneNumber" v-model="formData.phoneNumber" required />
     </div>
     <button id="submitButton" type="submit">Submit</button>
-    <button id="submitButton" @click="showUserId"> Click Me</button>
   </form>
 </template>
 
@@ -44,13 +39,25 @@ export default {
         dateOfBirth: '',
         address: '',
         phoneNumber: ''
-      }
+      },
+      fetchPatient : {},
     };
   },
   methods: {
     async submitForm() {
-     await console.log((await patientService.getPatientUserIdByUsername(this.userName)).data)
-      
+
+
+      try{
+     const res1 = await patientService.getPatientUserIdByUsername(this.userName);
+       this.userId = res1.data;
+      console.log(this.userId);
+       const res2 =  await patientService.getPatientByUserId(this.userId)
+       this.fetchPatient = res2.data
+      console.log(this.fetchPatient);
+      }catch(error) {
+      console.log(error)
+      }
+     
     },
     resetForm() {
       this.formData = {
@@ -62,13 +69,11 @@ export default {
         phoneNumber: ''
       };
     },
-   async showUserId(){
-      console.log(this.userName)
-    }
+
   }
 };
 </script>
-
+ 
 
 
 <style scoped>
