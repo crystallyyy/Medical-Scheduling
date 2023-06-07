@@ -64,7 +64,8 @@
       </div>
 
       <div class="info" v-show="activeCard === 3">
-        <edit-office-list></edit-office-list>
+        <EditOfficeList/>
+        <!-- <edit-office-list></edit-office-list> -->
        </div>
       <div class="visits" v-show="activeCard === 4"></div>
 
@@ -82,9 +83,10 @@
 import DoctorAvailability from "../components/DoctorAvailability.vue";
 import DoctorQuicklinks from "../components/DoctorQuicklinks.vue";
 import EditOfficeList from "../components/EditOfficeList.vue";
+
 export default {
   name: "doctor-dash",
-  components: { EditOfficeList, DoctorAvailability, DoctorQuicklinks },
+  components: { EditOfficeList, DoctorAvailability, DoctorQuicklinks},
   data() {
     return {
      activeCard: null,
@@ -97,10 +99,10 @@ export default {
 
 <style scoped>
 #main {
-  display: grid;
+  display: flex;
   grid-template-columns: 25% 75%;
   grid-template-areas: "nav content";
-  min-height: 100vh;
+  /* min-height: 100vh; */
 }
 
 #nav {
