@@ -25,11 +25,11 @@
           Update Info
         </button>
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <button type="button" class="btn btn-info" @click="activeCard = 4">
           Past Visits
         </button>
-      </li>
+      </li> -->
 
     </div>
     <div id="content">
