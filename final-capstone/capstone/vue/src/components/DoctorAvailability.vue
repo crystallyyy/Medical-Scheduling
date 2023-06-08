@@ -1,18 +1,19 @@
 <template>
   <div>
     <h2>Current Availability</h2>
-    <ul>
-      <li
+    <div id="currentAvailability">
+      <!-- <li
         v-for="availability in availabilities"
         v-bind:key="availability.dayOfWeek"
-      >
-        <p>
+      > -->
+        <p  v-for="availability in availabilities"
+        v-bind:key="availability.dayOfWeek">
           {{ availability.dayOfWeek }}: {{ availability.startTime }}-{{
             availability.endTime
           }}
         </p>
-      </li>
-    </ul>
+      <!-- </li> -->
+    </div>
 
     <div id="availabilityButton">
       <button class="button">Update Availability</button>
@@ -147,6 +148,12 @@ h2 {
   margin-top: 30px;
   margin-bottom: 30px;
   text-align: center;
+}
+
+#currentAvailability {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 30px
 }
 .button {
   background-color: #04abcc;
