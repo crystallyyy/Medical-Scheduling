@@ -60,7 +60,7 @@ export default {
   components: { ScheduleAppointment, PatientQuicklinks, UpdateInfoPD },
   data() {
     return {
-      activeCard: null,
+      activeCard: 1,
       methods: {
         // showProviders(){
         //     this.$router.push("/")
