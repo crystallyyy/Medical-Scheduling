@@ -13,7 +13,7 @@
         <router-link class="links" :to="{name: 'login'}" v-show="false">REGISTER</router-link>
       </ul>
     </div>
-  
+   
     <router-view />
   </div>
 </template>
@@ -22,7 +22,8 @@
 
 export default {
   
-  name: 'app'
+  name: 'app',
+  components: {}
 }
 </script>
 
