@@ -1,6 +1,6 @@
 <template>
-  <form @submit.prevent="submitForm">
-    <div id= "firstNameFrame">
+   <form @submit.prevent="submitForm">
+    <div id="firstNameFrame">
       <label for="firstName">First Name:&nbsp;&nbsp;</label>
       <input type="text" id="firstName" v-model="formData.firstName" required />
     </div>
@@ -12,13 +12,19 @@
       <label for="dateOfBirth">Date of Birth:&nbsp;&nbsp;</label>
       <input type="date" id="dateOfBirth" v-model="formData.dateOfBirth" required />
     </div>
-    <div id="addressFrame">
-      <label for="address">Address:&nbsp;&nbsp;</label>
-      <textarea id="address" v-model="formData.address" required></textarea>
-    </div>
     <div id="phoneNumberFrame">
       <label for="phoneNumber">Phone Number:&nbsp;&nbsp;</label>
       <input type="tel" id="phoneNumber" v-model="formData.phoneNumber" required />
+    </div>
+    <div id="addressFrame">
+      <label for="address">Address:&nbsp;&nbsp;</label>
+      <input type="text" id="address" v-model="formData.address" required />
+      <label for="city">City:&nbsp;&nbsp;</label>
+      <input type="text" id="city" v-model="formData.city" required />
+      <label for="state">State:&nbsp;&nbsp;</label>
+      <input type="text" id="state" v-model="formData.state" required />
+      <label for="zip">ZIP:&nbsp;&nbsp;</label>
+      <input type="text" id="zip" v-model="formData.zip" required />
     </div>
     <button id="submitButton" type="submit">Submit</button>
   </form>
@@ -32,15 +38,18 @@ export default {
     },
   data() {
     return {
-      formData: {
-        userId: null,
-        firstName: '',
-        lastName: '',
-        dateOfBirth: '',
-        address: '',
-        phoneNumber: ''
-      },
-      fetchPatient : {},
+        formData: {
+      userId: null,
+      firstName: "",
+      lastName: "",
+      dateOfBirth: "",
+      phoneNumber: "",
+      address: "",
+      city: "",
+      state: "",
+      zip: ""
+    },
+    fetchPatient: {}
     };
   },
   methods: {
@@ -51,13 +60,23 @@ export default {
      const res1 = await patientService.getPatientUserIdByUsername(this.userName);
        this.userId = res1.data;
       
-      patientService.getPatientByUserId(this.userId).then(resp => {
-
+      await patientService.getPatientByUserId(this.userId).then(resp => {
         this.fetchPatient = resp.data
         console.log(this.fetchPatient.dateOfBirth);
       })
-    
-      console.log(this.fetchPatient);
+
+      this.fetchPatient.firstName = this.formData.firstName;
+      this.fetchPatient.lastName = this.formData.lastName;
+      this.fetchPatient.dateOfBirth = this.formData.dateOfBirth;
+      this.fetchPatient.phoneNumber = this.formData.phoneNumber;
+      this.fetchPatient.address = `${this.formData.address}, ${this.formData.city}, ${this.formData.state} ${this.formData.zip}`;
+      
+      await patientService.updatePatientInformation(this.fetchPatient).then(res=>{
+          if(res.status==200){
+            this.$router.push({name: 'patientdash', params: {patientId: this.fetchPatient.patientId}});
+          }
+      })
+      
       }catch(error) {
       console.log(error)
       }
@@ -65,13 +84,15 @@ export default {
     },
     resetForm() {
       this.formData = {
-        userId: null,
-        firstName: '',
-        lastName: '',
-        dateOfBirth: '',
-        address: '',
-        phoneNumber: ''
-      };
+      userId: null,
+      firstName: "",
+      lastName: "",
+      dateOfBirth: "",
+      address: "",
+      city: "",
+      state: "",
+      zip: ""
+    };
     },
 
   }

@@ -8,8 +8,8 @@
     <date-picker v-model="date" :config="options"></date-picker>
 
  <div id="appt buttons" v-show="showTimeSlotButtons">
-      <button id="timeSlotButtons" v-for="n in NumSlots" :key="n">
-        {{ selectedDate.getHours() }} : {{ selectedDate.getMinutes() }}
+      <button id="timeSlotButtons" v-for="n in NumSlots-1" :key="n">
+       {{ formatTime(selectedDate.getTime() + n * 30 * 60 * 1000) }}
       </button>
     </div>
     <p class="card-text" v-show="showNoAvailability">No Availability Today</p>
@@ -114,6 +114,12 @@ export default {
 
       // this.showAppointments(doctor.doctorId, this.date);
     },
+    formatTime(timestamp) {
+    const date = new Date(timestamp);
+    const hours = date.getHours().toString().padStart(2, "0");
+    const minutes = (date.getMinutes() >= 30 ? "30" : "00");
+    return `${hours}:${minutes}`;
+  },
 
     // for(let i = 0; i < this.availabilityForThisDoc.length; i++){
 

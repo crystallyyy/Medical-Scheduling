@@ -37,8 +37,8 @@ public class JdbcUserDao implements UserDao {
     List<String> roles = new ArrayList<>();
 
     @Override
-    public Map<String, String> getRoleInfoByUsername(String username) {
-        Map<String, String> roleInfo = new HashMap<>();
+    public Map<Integer, String> getRoleInfoByUsername(String username) {
+        Map<Integer, String> roleInfo = new HashMap<>();
         if (username == null) throw new IllegalArgumentException("Username cannot be null");
 
         String sql = "Select role, patient_id, doctor_id  From users " +
@@ -48,17 +48,16 @@ public class JdbcUserDao implements UserDao {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql,username);
 
             while (results.next()) {
-                if (results.getString("role") != null) {
-                    roleInfo.put("role", results.getString("role"));
-                }
 
-                String pid = String.valueOf(results.getInt("patient_id"));
-                String did = String.valueOf(results.getInt("doctor_id"));
-                if (!pid.equals("0") ) {
-                    roleInfo.put("id", pid);
+
+                int pid = results.getInt("patient_id");
+                int did = results.getInt("doctor_id");
+                String role = results.getString("role");
+                if (pid != 0 ) {
+                    roleInfo.put(pid, role);
                     System.out.println(pid);
                 } else {
-                    roleInfo.put("id", did);
+                    roleInfo.put(did, role);
                     System.out.println(did);
                 }
             }

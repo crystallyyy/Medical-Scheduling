@@ -4,6 +4,7 @@ import com.techelevator.dao.JdbcPatientDao;
 import com.techelevator.dao.PatientDAO;
 import com.techelevator.model.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,6 +32,7 @@ public class PatientController {
     }
 
     @PutMapping(path = "/patient/update/{patientId}")
+    @ResponseStatus(HttpStatus.OK)
     public boolean updatePatient(@PathVariable int patientId, @Valid @RequestBody Patient patient){
         return patientDAO.updatePatient(patient);
     }

@@ -8,7 +8,7 @@
         <router-link class="links" v-bind:to="{ name: 'home' }" >HOME</router-link>
         <router-link class="links" v-bind:to="{name: 'login'}" v-show="$store.state.token === ''">LOGIN</router-link>
         <router-link class="links" v-bind:to="{ name: 'doctordash' }" v-show="$store.state.token != ''">DOCTOR</router-link>
-        <router-link class="links" v-bind:to="{ name: 'patientdash' }" v-show="$store.state.token != '' && $store.state.role.role==='ROLE_ADMIN'">PATIENT</router-link>
+        <router-link class="links" v-bind:to="{ name: 'patientdash' }" v-show="$store.state.token != ''">PATIENT</router-link>
         <router-link class="links" :to="{name: 'logout'}" v-show="$store.state.token != ''"> LOGOUT</router-link>
         <router-link class="links" :to="{name: 'login'}" v-show="false">REGISTER</router-link>
       </ul>

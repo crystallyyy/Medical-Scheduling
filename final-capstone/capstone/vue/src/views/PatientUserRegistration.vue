@@ -75,7 +75,11 @@ export default {
                 if (res.status == 200) {
                   this.$store.commit("SET_AUTH_TOKEN", res.data.token);
                   this.$store.commit("SET_USER", res.data.user);
-
+                  authService.getRole(this.user.username).then(res=>{
+                    const roles = res.data;
+                    this.$store.commit("SET_ROLE", roles);
+                     console.log("login" + this.$store.state.role.role);
+                  });
                   this.$router.push({
                     path: "/patient-account-creation",
                     query: {

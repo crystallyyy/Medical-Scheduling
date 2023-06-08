@@ -9,7 +9,7 @@ export default {
     },
 
     getPatientByUserId(id){
-        return axios.get(`/pid/${id}`);
+        return axios.get(`/users/patients/${id}`);
         
     },
     updatePatientInformation(patient){
