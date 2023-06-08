@@ -58,4 +58,9 @@ public class OfficeController {
     public void updateOfficeHours(@RequestBody OfficeHours officeHours){
         officeDAO.updateHours(officeHours);
     }
+
+    @GetMapping(path = "/office/{officeId}")
+    public Office getOfficeById(@PathVariable int officeId){
+        return officeDAO.getOfficeByID(officeId);
+    }
 }
