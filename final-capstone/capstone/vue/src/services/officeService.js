@@ -41,6 +41,10 @@ export default {
 
     addDoctorToOffice(doctorId, officeId){
         return axios.post(`/offices/${doctorId}/${officeId}`)
+    },
+
+    getOfficeByOfficeId(officeId){
+        return axios.get(`/office/${officeId}`)
     }
 }
 

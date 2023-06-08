@@ -28,13 +28,13 @@ public class JdbcOfficeDAO implements OfficeDAO {
 
     @Override
     public Office getOfficeByID(int officeId) {
-        String sql = "SELECT * FROM users WHERE office_id = ?";
+        Office office = null;
+        String sql = "SELECT * FROM office WHERE office_id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, officeId);
         if (results.next()) {
-            return mapRowToOffice(results);
-        } else {
-            return null;
+            office = mapRowToOffice(results);
         }
+        return office;
     }
 
     @Override
