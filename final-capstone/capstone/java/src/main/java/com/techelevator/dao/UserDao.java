@@ -13,7 +13,7 @@ public interface UserDao {
 
     User findByUsername(String username);
 
-    Map<String, String> getRoleInfoByUsername(String username);
+    Map<Integer, String> getRoleInfoByUsername(String username);
 
     int findIdByUsername(String username);
 

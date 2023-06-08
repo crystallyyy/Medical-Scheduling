@@ -1,20 +1,31 @@
 <template>
-  <div>
-    <h2>Dr. {{ doctor.firstName }} {{ doctor.lastName }}</h2>
-    <h3>{{ doctor.email }}</h3>
+  
 
-    <date-picker
-      v-model="date"
-      :config="options"
-      v-on:click="getTimeSlots(doctor)"
-    ></date-picker>
-    <p v-show="showNoAvailability">No Availability Today</p>
-    <div id="appt buttons" v-show="showTimeSlotButtons">
-      <button id="timeSlotButtons" v-for="n in NumSlots" :key="n">{{selectedDate.getHours()}} : {{selectedDate.getMinutes()}}</button>
+    <div class="card">
+ 
+  <div class="card-body">
+    <h5 class="card-title">Dr. {{ doctor.firstName }} {{ doctor.lastName }}</h5>
+    <date-picker v-model="date" :config="options"></date-picker>
+
+ <div id="appt buttons" v-show="showTimeSlotButtons">
+      <button id="timeSlotButtons" v-for="n in NumSlots-1" :key="n">
+       {{ formatTime(selectedDate.getTime() + n * 30 * 60 * 1000) }}
+      </button>
     </div>
-    
-    <button @click="getAvailabilityByDay()">click me!</button>
+    <p class="card-text" v-show="showNoAvailability">No Availability Today</p>
+    <a class="btn btn-primary" @click="getAvailabilityByDay()">View Availability</a>
   </div>
+</div>
+    
+    
+   
+
+   
+  
+   
+
+  
+
 </template>
 
 <script>
@@ -31,7 +42,7 @@ export default {
       date: new Date(),
       dayOfWeek: "",
       options: {
-        format: "MM/DD/YY",
+        format: "MM/DD/YYYY",
         useCurrent: false,
       },
       availabilityForThisDoc: [],
@@ -40,7 +51,6 @@ export default {
       NumSlots: 0,
       docAppointmentsToday: [],
       selectedDate: new Date(),
-
     };
   },
   async created() {
@@ -73,6 +83,7 @@ export default {
     },
 
     getAvailabilityByDay() {
+      console.log(this.date);
       this.getDayOfWeek();
 
       const foundDay = this.availabilityForThisDoc.find((availability) => {
@@ -92,9 +103,8 @@ export default {
         console.log(this.NumSlots);
         this.selectedDate = new Date(this.date);
         this.selectedDate.setMinutes(0);
-        this.selectedDate.setSeconds(0)
+        this.selectedDate.setSeconds(0);
         this.selectedDate.setHours(Number(startHour));
-      
       } else {
         this.showNoAvailability = true;
         this.showTimeSlotButtons = false;
@@ -104,6 +114,12 @@ export default {
 
       // this.showAppointments(doctor.doctorId, this.date);
     },
+    formatTime(timestamp) {
+    const date = new Date(timestamp);
+    const hours = date.getHours().toString().padStart(2, "0");
+    const minutes = (date.getMinutes() >= 30 ? "30" : "00");
+    return `${hours}:${minutes}`;
+  },
 
     // for(let i = 0; i < this.availabilityForThisDoc.length; i++){
 

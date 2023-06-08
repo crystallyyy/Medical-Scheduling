@@ -3,6 +3,7 @@ package com.techelevator.controller;
 import javax.validation.Valid;
 
 import com.techelevator.model.*;
+import org.springframework.data.relational.core.sql.In;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -77,8 +78,8 @@ public class AuthenticationController {
 
 
     @GetMapping(path = "/info/{username}")
-    public Map<String, String> getRole(@PathVariable String username){
-        Map<String, String> roles;
+    public Map<Integer, String> getRole(@PathVariable String username){
+        Map<Integer, String> roles;
 
         try{
            roles = userDao.getRoleInfoByUsername(username);

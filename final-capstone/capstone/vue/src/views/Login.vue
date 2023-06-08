@@ -34,12 +34,12 @@
       <h2><strong>Create Account</strong></h2>
       <br />
       <button type="submit">
-        <router-link class="patientButton" :to="{ name: 'patientRegister' }"
+        <router-link class="patientButton" :to="{ path: '/patientRegistration'}"
           >PATIENT</router-link
         ></button
       ><br />
       <button type="submit">
-        <router-link class="providerButton" :to="{ name: 'doctorRegister' }"
+        <router-link class="providerButton" :to="{ path: '/doctorRegistration'}"
           >PROVIDER</router-link
         >
       </button>
@@ -85,8 +85,8 @@ export default {
               .then(response => {
                 const roles = response.data;
                 this.$store.commit("SET_ROLE", roles);
-                console.log("login" +this.$store.state.role);
-                console.log(this.$store.state.role === 'ROLE_ADMIN');
+                console.log("login" +this.$store.state.role.role);
+                console.log(this.$store.state.role.role === 'ROLE_ADMIN');
               });
 
             
