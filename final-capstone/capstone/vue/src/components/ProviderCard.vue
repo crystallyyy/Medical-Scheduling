@@ -2,9 +2,7 @@
   
 
     <div class="card">
-  <div class="card-header">
-    Book An appointment
-  </div>
+ 
   <div class="card-body">
     <h5 class="card-title">Dr. {{ doctor.firstName }} {{ doctor.lastName }}</h5>
     <date-picker v-model="date" :config="options"></date-picker>
