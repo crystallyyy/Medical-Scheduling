@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mainoffice">
     <h3 class="offices">OFFICES</h3>
 
     <div>
@@ -15,7 +15,7 @@
         <tbody>
           <tr v-for="office in offices" v-bind:key="office.officeId">
             <td>{{ office.officeName }}</td>
-            <td>{{ office.address }}</td>
+            <td><a>{{ office.address }}</a></td>
             <td>{{ office.phoneNumber }}</td>
 
             <td>
@@ -27,28 +27,7 @@
         </tbody>
       </table>
     </div>
-    <!-- <div class="list">
-          
-            <div class="officeinfo" v-for="office in offices" v-bind:key="office.officeId">
-                <div>
-                  <table>
-                      <tr><td> {{ office.officeName }}</td></tr>
-                      <tr><td>{{ office.address }} </td></tr>
-                      <tr><td>{{ office.phoneNumber }} </td></tr>
-                  </table>
-            </div>
-            <div class="officehours" v-for="hour in officeHours" v-bind:key="hour.dayOfWeek">
-                  
-                      <tr><td>{{hour.dayOfWeek}}:</td><td>{{ hour.startTime}} - </td><td>{{hour.endTime}} </td></tr>
-                    
-            </div>
-
-            <div class="doctors" v-for="doctor in doctorsInOffice" v-bind:key="doctor.firstName">
-                    <tr><td>Dr. {{doctor.firstName}} {{ doctor.lastName}} </td></tr>
-            </div>
-          </div>
-          
-      </div> -->
+   
 
     <div class="updateform">
       <form @submit.prevent="submitForm" v-show="showForm">
@@ -70,7 +49,7 @@
 
         <div class="office hours">
           <h2>Office Hours</h2>
-          <div>
+          <div >
             <label for="Mondaystart">Monday:</label>
             <input
               type="time"
@@ -79,7 +58,7 @@
               required
             />
           </div>
-          <div>
+          <div >
             <label for="Mondayend"></label>
             <input
               type="time"
@@ -88,7 +67,7 @@
               required
             />
           </div>
-          <div>
+          <div >
             <label for="Tuesdaystart">Tuesday:</label>
             <input
               type="time"
@@ -97,7 +76,7 @@
               required
             />
           </div>
-          <div>
+          <div >
             <label for="Tuesdayend"></label>
             <input
               type="time"
@@ -166,29 +145,32 @@
         </div>
       </form>
       <div class="providersAvailable" v-show="showForm">
-        <h2>Providers Available</h2>
-        <div class="doctors"
-            v-for="doctor in doctorsInOffice"
-            v-bind:key="doctor.firstName" >
-          <p> {{ doctor.firstName }} {{ doctor.lastName }} </p>
-          <button @click="removeProvider(doctor)"> REMOVE </button>
+        <div>
+          <h2>Providers Available</h2>
+          <div class="doctors"
+              v-for="doctor in doctorsInOffice"
+              v-bind:key="doctor.firstName" >
+            <p> {{ doctor.firstName }} {{ doctor.lastName }} </p>
+            <button @click="removeProvider(doctor)"> REMOVE </button>
+          </div>
         </div>
-        <b-button size="sm" v-b-toggle="'collapse-2'" class="m-1" >Add</b-button>
+        <div>
+          <b-button size="sm" v-b-toggle="'collapse-2'" class="m-1" >Add</b-button>
 
-  <!-- Element to collapse -->
-        <b-collapse id="collapse-2">
-          <b-card>
-            <p>Please select from the list</p>
-            <select  v-model="selectedDoctorId">
-              
-              <option v-for="option in options" :key="option.doctorId" :value="option.doctorId">
-                {{option.firstName}} {{option.lastName}}
-              </option>
-            </select>
-            <button @click="addProvider()"> SUBMIT </button>
-          </b-card>
-        </b-collapse> 
-          
+    <!-- Element to collapse -->
+          <b-collapse id="collapse-2">
+            <b-card>
+              <p>Please select from the list</p>
+              <select  v-model="selectedDoctorId">
+                
+                <option v-for="option in options" :key="option.doctorId" :value="option.doctorId">
+                  {{option.firstName}} {{option.lastName}}
+                </option>
+              </select>
+              <button @click="addProvider()"> SUBMIT </button>
+            </b-card>
+          </b-collapse> 
+        </div> 
       </div>
     </div>
   </div>
@@ -285,6 +267,13 @@ export default {
 </script>
 
 <style>
+
+.mainoffice{
+  display: flex;
+  flex-direction: column;
+  background-color: blueviolet;
+  justify-content: center;
+}
 .actions {
   margin-left: auto;
   margin-right: auto;
@@ -349,19 +338,31 @@ button:hover {
   padding-top: 15px;
   padding-bottom: 15px;
 }
-
+.officeinfo div {
+  padding: 20px;
+}
 .updateform{
   display: flex;
   flex-direction: column;
+  width: 80%;
+
   max-height: 50%;
   background-color: whitesmoke;
   margin-top: 30px;
 }
 
 .updateform h2 {
+  background-color: darkolivegreen;
   font-size: 1em;
 }
+
+.officehours {
+  background-color: crimson;
+  display: flex;
+}
 .providersAvailable{
+  display: flex;
+  justify-content: space-evenly;
   background-color: seagreen;
 }
 
@@ -369,7 +370,19 @@ button:hover {
   background-color: sandybrown;
 }
 
-
-
-
+.doctors {
+  display: flex;
+  flex-basis: 50%;
+  align-content: center;
+  background-color: burlywood;
+  
+}
+.doctors p {
+  background-color: cadetblue;
+  font-size: 20px;
+}
+.doctors button {
+  margin-left: 10px;
+  padding:5px;
+}
 </style>
