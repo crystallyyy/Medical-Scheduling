@@ -65,10 +65,10 @@ export default {
   methods: {
     push() {
               
-            if(this.$store.state.role.role === 'ROLE_ADMIN'){
+            if(this.$store.state.role === 'ROLE_ADMIN'){
                   this.$router.push({name: "doctordash", params: {doctorId : this.$store.state.role.id}}); 
                }
-           if(this.$store.state.role.role === 'ROLE_USER'){    
+           if(this.$store.state.role === 'ROLE_USER'){    
                      this.$router.push({name: "patientdash", params: {patientId : this.$store.state.role.id}}); 
             
            }
@@ -85,8 +85,8 @@ export default {
               .then(response => {
                 const roles = response.data;
                 this.$store.commit("SET_ROLE", roles);
-                console.log("login" +this.$store.state.role.role);
-                console.log(this.$store.state.role.role === 'ROLE_ADMIN');
+                console.log("login" +this.$store.state.role);
+                console.log(this.$store.state.role === 'ROLE_ADMIN');
               });
 
             
