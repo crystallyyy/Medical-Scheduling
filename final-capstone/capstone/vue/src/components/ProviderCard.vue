@@ -42,7 +42,7 @@ export default {
       date: new Date(),
       dayOfWeek: "",
       options: {
-        format: "MM/DD/YY",
+        format: "MM/DD/YYYY",
         useCurrent: false,
       },
       availabilityForThisDoc: [],
@@ -83,6 +83,7 @@ export default {
     },
 
     getAvailabilityByDay() {
+      console.log(this.date);
       this.getDayOfWeek();
 
       const foundDay = this.availabilityForThisDoc.find((availability) => {
