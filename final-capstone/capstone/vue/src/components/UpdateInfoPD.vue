@@ -15,9 +15,9 @@
     <div class="accordion" role="tablist">
       <b-card no-body class="mb-1">
         <b-card-header id="buttonHeader" header-tag="header" class="p-1" role="tab">
-        <b-button id="updateInformationButtonFrame" block v-b-toggle.accordion-1 variant="info">Update Information</b-button>
+        <b-button id="updateInformationButtonFrame" block v-b-toggle.accordion-1 variant="info">Update Information (Click to Open)</b-button>
       </b-card-header>
-      <b-collapse id="accordion-1" visible accordion="my-accordion" role="tabpanel">
+      <b-collapse id="accordion-1" accordion="my-accordion" role="tabpanel">
         <b-card-body>
           <div id="patient-info-update-form">
           <div id="firstNameFrame">
