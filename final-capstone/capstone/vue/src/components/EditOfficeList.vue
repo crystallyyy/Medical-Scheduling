@@ -267,6 +267,32 @@ export default {
 
 } */
 
+
+.officeTable {
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  text-align: center;
+}
+
+.officeTable th,
+.officeTable td {
+  padding: 10px;
+}
+
+.officeTable th {
+  background-color: #f2f2f2;
+}
+
+.officeTable tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.officeTable tbody tr:hover {
+  background-color: #e6e6e6;
+}
+
+
 h2 {
   text-align: center;
 }
