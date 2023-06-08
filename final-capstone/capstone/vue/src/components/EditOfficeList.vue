@@ -171,7 +171,7 @@
             v-for="doctor in doctorsInOffice"
             v-bind:key="doctor.firstName" >
           <p> {{ doctor.firstName }} {{ doctor.lastName }} </p>
-          <button> REMOVE </button>
+          <button @click="removeProvider(doctor)"> REMOVE </button>
         </div>
         <b-button size="sm" v-b-toggle="'collapse-2'" class="m-1" >Add</b-button>
 
@@ -179,13 +179,13 @@
         <b-collapse id="collapse-2">
           <b-card>
             <p>Please select from the list</p>
-            <select  v-model="addDoctor">
+            <select  v-model="selectedDoctorId">
               
-              <option v-for="provider in allProviders" v-bind:key="provider.doctorId" >
-                {{ provider.firstName }} {{provider.lastName}} : {{provider.doctorId}}
+              <option v-for="option in options" :key="option.doctorId" :value="option.doctorId">
+                {{option.firstName}} {{option.lastName}}
               </option>
             </select>
-            <button> SUBMIT </button>
+            <button @click="addProvider()"> SUBMIT </button>
           </b-card>
         </b-collapse> 
           
@@ -208,9 +208,9 @@ export default {
       offices: [],
       officeHours: [],
       doctorsInOffice: [],
-      allProviders:[],
-      addDoctor: null,
-      doctorChecked: false,
+      options:[],
+      removedDocId: null,
+      selectedDoctorId: null,
       showForm: false,
       officeName: "friday",
       address: "satyrday",
@@ -234,7 +234,7 @@ export default {
         });
 
         providerService.getAllProviders().then((response)=> {
-          this.allProviders = response.data;
+          this.options = response.data;
         })
       });
     });
@@ -273,10 +273,12 @@ export default {
     },
 
     addProvider(){
-      officeService.addDoctorToOffice(this.addDoctor.doctorId,this.activeOffice.officeId);
+      
+      officeService.addDoctorToOffice(this.selectedDoctorId,this.activeOffice.officeId);
     },
-    removeProvider(){
-      officeService.removeDoctorFromOffice()
+    removeProvider(provider){
+
+      officeService.removeDoctorFromOffice(provider.doctorId,this.activeOffice.officeId);
     }
   },
 };
