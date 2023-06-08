@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.Role;
 import com.techelevator.model.User;
 
 import java.util.List;
@@ -13,7 +14,7 @@ public interface UserDao {
 
     User findByUsername(String username);
 
-    Map<Integer, String> getRoleInfoByUsername(String username);
+    Role getRoleInfoByUsername(String username);
 
     int findIdByUsername(String username);
 

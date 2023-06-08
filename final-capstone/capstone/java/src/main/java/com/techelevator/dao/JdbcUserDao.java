@@ -2,6 +2,7 @@ package com.techelevator.dao;
 
 import java.util.*;
 
+import com.techelevator.model.Role;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -37,8 +38,8 @@ public class JdbcUserDao implements UserDao {
     List<String> roles = new ArrayList<>();
 
     @Override
-    public Map<Integer, String> getRoleInfoByUsername(String username) {
-        Map<Integer, String> roleInfo = new HashMap<>();
+    public Role getRoleInfoByUsername(String username) {
+        Role userRole = new Role();
         if (username == null) throw new IllegalArgumentException("Username cannot be null");
 
         String sql = "Select role, patient_id, doctor_id  From users " +
@@ -54,18 +55,18 @@ public class JdbcUserDao implements UserDao {
                 int did = results.getInt("doctor_id");
                 String role = results.getString("role");
                 if (pid != 0 ) {
-                    roleInfo.put(pid, role);
-                    System.out.println(pid);
+                    userRole.setRole(role);
+                    userRole.setRoleId(pid);
                 } else {
-                    roleInfo.put(did, role);
-                    System.out.println(did);
+                    userRole.setRole(role);
+                    userRole.setRoleId(did);
                 }
             }
 
         } catch (EmptyResultDataAccessException e) {
             throw new UsernameNotFoundException("User " + username + " was not found.");
         }
-        return roleInfo;
+        return userRole;
     }
 
 	@Override
