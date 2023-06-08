@@ -56,39 +56,37 @@
       <div class="dashboard" v-show="activeCard === 1">
         <h1 id="dashboardMessage">Welcome to your Dashboard</h1>
         <doctor-quicklinks></doctor-quicklinks>
-
       </div>
 
       <div class="myProfile" v-show="activeCard === 2">
-        
+         <provider-card />
+      </div>
+       
+      <div class="manageLocations" v-show="activeCard === 3">
+        <EditOfficeList />
+       
       </div>
 
-      <div class="info" v-show="activeCard === 3">
-        <EditOfficeList/>
-        <!-- <edit-office-list></edit-office-list> -->
-       </div>
-      <div class="visits" v-show="activeCard === 4"></div>
-
-      <div class="card card-body" v-show="activeCard === 4">
-          <doctor-availability></doctor-availability>        
+      <div class="manageAvailability" v-show="activeCard === 4">
+        <doctor-availability></doctor-availability>
       </div>
-
     </div>
   </div>
 </template>
 
 <script>
 import DoctorAvailability from "../components/DoctorAvailability.vue";
-import DoctorQuicklinks from '../components/DoctorQuicklinks.vue';
-import EditOfficeList from '../components/EditOfficeList.vue';
+import DoctorQuicklinks from "../components/DoctorQuicklinks.vue";
+import EditOfficeList from "../components/EditOfficeList.vue";
+import ProviderCard from '../components/ProviderCard.vue';
 
 export default {
   name: "doctor-dash",
-  components: { EditOfficeList, DoctorAvailability, DoctorQuicklinks},
+  components: { EditOfficeList, DoctorAvailability, DoctorQuicklinks, ProviderCard },
   data() {
     return {
-    activeCard: null,
-    methods: {},
+      activeCard: 1,
+      methods: {},
     };
   },
 };

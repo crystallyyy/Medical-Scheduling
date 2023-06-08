@@ -22,6 +22,7 @@ public class AppointmentController {
         return appointmentDao.newAppt(appointment);
     }
     @GetMapping(path = "/appointment/{doctorId}")
+    @CrossOrigin
     public List<Appointment> getApptsByDocDate(@PathVariable int doctorId, LocalDate apptDate){
         return appointmentDao.getAppointmentsByDocDate(doctorId, apptDate);
     }
