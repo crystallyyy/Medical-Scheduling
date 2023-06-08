@@ -1,20 +1,33 @@
 <template>
-  <div>
-    <h2>Dr. {{ doctor.firstName }} {{ doctor.lastName }}</h2>
-    <h3>{{ doctor.email }}</h3>
+  
 
-    <date-picker
-      v-model="date"
-      :config="options"
-      v-on:click="getTimeSlots(doctor)"
-    ></date-picker>
-    <p v-show="showNoAvailability">No Availability Today</p>
-    <div id="appt buttons" v-show="showTimeSlotButtons">
-      <button id="timeSlotButtons" v-for="n in NumSlots" :key="n">{{selectedDate.getHours()}} : {{selectedDate.getMinutes()}}</button>
-    </div>
-    
-    <button @click="getAvailabilityByDay()">click me!</button>
+    <div class="card">
+  <div class="card-header">
+    Book An appointment
   </div>
+  <div class="card-body">
+    <h5 class="card-title">Dr. {{ doctor.firstName }} {{ doctor.lastName }}</h5>
+    <date-picker v-model="date" :config="options"></date-picker>
+
+ <div id="appt buttons" v-show="showTimeSlotButtons">
+      <button id="timeSlotButtons" v-for="n in NumSlots" :key="n">
+        {{ selectedDate.getHours() }} : {{ selectedDate.getMinutes() }}
+      </button>
+    </div>
+    <p class="card-text" v-show="showNoAvailability">No Availability Today</p>
+    <a class="btn btn-primary" @click="getAvailabilityByDay()">View Availability</a>
+  </div>
+</div>
+    
+    
+   
+
+   
+  
+   
+
+  
+
 </template>
 
 <script>
@@ -40,7 +53,6 @@ export default {
       NumSlots: 0,
       docAppointmentsToday: [],
       selectedDate: new Date(),
-
     };
   },
   async created() {
@@ -92,9 +104,8 @@ export default {
         console.log(this.NumSlots);
         this.selectedDate = new Date(this.date);
         this.selectedDate.setMinutes(0);
-        this.selectedDate.setSeconds(0)
+        this.selectedDate.setSeconds(0);
         this.selectedDate.setHours(Number(startHour));
-      
       } else {
         this.showNoAvailability = true;
         this.showTimeSlotButtons = false;
