@@ -25,4 +25,9 @@ public class AppointmentController {
     public List<Appointment> getApptsByDocDate(@PathVariable int doctorId, LocalDate apptDate){
         return appointmentDao.getAppointmentsByDocDate(doctorId, apptDate);
     }
+
+    @GetMapping(path = "/appointments/{patientId}")
+    public List<Appointment> getAppointmentsForPatient(@PathVariable int patientId){
+        return appointmentDao.getAppointmentsByPatient(patientId);
+    }
 }

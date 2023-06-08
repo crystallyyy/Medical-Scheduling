@@ -32,6 +32,10 @@ export default {
 
     createAvailability(availability){
         return axios.post(`/availability`, availability)
+    },
+
+    getDoctorByDoctorId(doctorId){
+        return axios.get(`/providers/${doctorId}`)
     }
 
 }
