@@ -26,6 +26,9 @@ export default {
         console.log(axios.get(`/offices/office-hours/${officeId}`))
         return axios.get(`/offices/office-hours/${officeId}`)
     },
+    updateOfficeHours(officeHours){
+        return axios.put('/office-hours', officeHours);
+    },
 
     getDoctors(officeId){
         console.log(axios.get(`/providers/offices/${officeId}`))
