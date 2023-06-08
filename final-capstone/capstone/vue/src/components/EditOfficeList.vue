@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mainoffice">
     <h3 class="offices">OFFICES</h3>
 
     <div>
@@ -15,7 +15,7 @@
         <tbody>
           <tr v-for="office in offices" v-bind:key="office.officeId">
             <td>{{ office.officeName }}</td>
-            <td>{{ office.address }}</td>
+            <td><a>{{ office.address }}</a></td>
             <td>{{ office.phoneNumber }}</td>
 
             <td>
@@ -27,59 +27,37 @@
         </tbody>
       </table>
     </div>
-    <!-- <div class="list">
-          
-            <div class="officeinfo" v-for="office in offices" v-bind:key="office.officeId">
-                <div>
-                  <table>
-                      <tr><td> {{ office.officeName }}</td></tr>
-                      <tr><td>{{ office.address }} </td></tr>
-                      <tr><td>{{ office.phoneNumber }} </td></tr>
-                  </table>
-            </div>
-            <div class="officehours" v-for="hour in officeHours" v-bind:key="hour.dayOfWeek">
-                  
-                      <tr><td>{{hour.dayOfWeek}}:</td><td>{{ hour.startTime}} - </td><td>{{hour.endTime}} </td></tr>
-                    
-            </div>
-
-            <div class="doctors" v-for="doctor in doctorsInOffice" v-bind:key="doctor.firstName">
-                    <tr><td>Dr. {{doctor.firstName}} {{ doctor.lastName}} </td></tr>
-            </div>
-          </div>
-          
-      </div> -->
+   
 
     <div class="updateform">
       <form @submit.prevent="submitForm" v-show="showForm">
-        <div class="officeinfo">
+        <div id="officeinfoFrame" class="officeinfo">
           <h2>Office Info</h2>
-          <div>
-            <label for="officeName">Office Name:</label>
+          <div id="officeNameFrame">
+            <label for="officeName">Office Name: &nbsp;&nbsp;</label>
             <input type="text" id="officeName" v-model="officeName" required />
           </div>
-          <div>
-            <label for="address">Address:</label>
+          <div id="addressFrame" >
+            <label for="address">Address: &nbsp;&nbsp;</label>
             <input type="text" id="address" v-model="address" required />
           </div>
-          <div>
-            <label for="phoneNumber">Phone Number:</label>
+          <div id="phoneNumberFrame" >
+            <label for="phoneNumber">Phone Number: &nbsp;&nbsp;</label>
             <input type="text" id="phoneNumber" v-model="phoneNumber" />
           </div>
         </div>
+      
 
         <div class="office hours">
           <h2>Office Hours</h2>
-          <div>
-            <label for="Mondaystart">Monday:</label>
+          <div id="mondayFrame">
+            <label for="Mondaystart">Monday: &nbsp;&nbsp;</label>
             <input
               type="time"
               id="Mondaystart"
               v-model="officeHours[0].startTime"
               required
-            />
-          </div>
-          <div>
+            />  &nbsp;&nbsp;
             <label for="Mondayend"></label>
             <input
               type="time"
@@ -88,16 +66,15 @@
               required
             />
           </div>
-          <div>
-            <label for="Tuesdaystart">Tuesday:</label>
+
+          <div id="tuesdayFrame">
+            <label for="Tuesdaystart">Tuesday: &nbsp;&nbsp;</label>
             <input
               type="time"
               id="Tuesdaystart"
               v-model="officeHours[1].startTime"
               required
-            />
-          </div>
-          <div>
+            /> &nbsp;&nbsp;
             <label for="Tuesdayend"></label>
             <input
               type="time"
@@ -106,16 +83,14 @@
               required
             />
           </div>
-          <div>
-            <label for="Wednesdaystart">Wednesday:</label>
+          <div id="wednesdayFrame">
+            <label for="Wednesdaystart">Wednesday: &nbsp;&nbsp;</label>
             <input
               type="time"
               id="Wednesdaystart"
               v-model="officeHours[2].startTime"
               required
-            />
-          </div>
-          <div>
+            /> &nbsp;&nbsp;
             <label for="Wednesdayend"></label>
             <input
               type="time"
@@ -124,16 +99,14 @@
               required
             />
           </div>
-          <div>
-            <label for="Thursdaystart">Thursday:</label>
+          <div id="thursdayFrame">
+            <label for="Thursdaystart">Thursday: &nbsp;&nbsp;</label>
             <input
               type="time"
               id="Thursdaystart"
               v-model="officeHours[3].startTime"
               required
-            />
-          </div>
-          <div>
+            /> &nbsp;&nbsp;
             <label for="Thursdayend"></label>
             <input
               type="time"
@@ -142,16 +115,14 @@
               required
             />
           </div>
-          <div>
-            <label for="Fridaystart">Friday:</label>
+          <div id="fridayFrame">
+            <label for="Fridaystart">Friday: &nbsp;&nbsp;</label>
             <input
               type="time"
               id="Fridaystart"
               v-model="officeHours[4].startTime"
               required
-            />
-          </div>
-          <div>
+            /> &nbsp;&nbsp;
             <label for="Fridayend"></label>
             <input
               type="time"
@@ -161,39 +132,43 @@
             />
           </div>
         </div>
-        <div>
-          <button type="submit" >Update</button>
+        <div id="submitUpdateButtonFrame">
+          <button id="submitUpdateButton" type="submit" >Update</button>
         </div>
       </form>
-      <div class="providersAvailable" v-show="showForm">
-        <h2>Providers Available</h2>
-        <div class="doctors"
-            v-for="doctor in doctorsInOffice"
-            v-bind:key="doctor.firstName" >
-          <p> {{ doctor.firstName }} {{ doctor.lastName }} </p>
-          <button @click="removeProvider(doctor)"> REMOVE </button>
-        </div>
-        <b-button size="sm" v-b-toggle="'collapse-2'" class="m-1" >Add</b-button>
 
-  <!-- Element to collapse -->
-        <b-collapse id="collapse-2">
-          <b-card>
-            <p>Please select from the list</p>
-            <select  v-model="selectedDoctorId">
-              
-              <option v-for="option in options" :key="option.doctorId" :value="option.doctorId">
-                {{option.firstName}} {{option.lastName}}
-              </option>
-            </select>
-            <button @click="addProvider()"> SUBMIT </button>
-          </b-card>
-        </b-collapse> 
-          
+      <!-- <div id="providersAvailableFrame" v-show="showForm">
+        <div class="providersAvailable">
+          <h2>Providers Available</h2>
+          <div class="doctors"
+              v-for="doctor in doctorsInOffice"
+              v-bind:key="doctor.firstName" >
+            <p> {{ doctor.firstName }} {{ doctor.lastName }} </p>
+            <button @click="removeProvider(doctor)"> REMOVE </button>
+          </div>
+        </div>
+      </div> -->
+
+        <div id="addDoctorButtonFrame" >
+          <b-button id="addDoctorButton" size="sm" v-b-toggle="'collapse-2'" class="m-1" >Add</b-button>
+          <div>
+    <!-- Element to collapse -->
+          <b-collapse id="collapse-2">
+            <b-card>
+              <p>Please select from the list</p>
+              <select  v-model="selectedDoctorId">
+                
+                <option v-for="option in options" :key="option.doctorId" :value="option.doctorId">
+                  {{option.firstName}} {{option.lastName}}
+                </option>
+              </select>
+              <button @click="addProvider()"> SUBMIT </button>
+            </b-card>
+          </b-collapse> 
+        </div> 
       </div>
     </div>
   </div>
-
-  <!-- </div> -->
 </template>
 
 <script>
@@ -284,7 +259,24 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+
+/* #officeinfoFrame {
+  display: flex;
+  justify-content: center;
+
+} */
+
+h2 {
+  text-align: center;
+}
+
+.mainoffice{
+  display: flex;
+  flex-direction: column;
+  background-color: blueviolet;
+  justify-content: center;
+}
 .actions {
   margin-left: auto;
   margin-right: auto;
@@ -350,26 +342,131 @@ button:hover {
   padding-bottom: 15px;
 }
 
+.officeinfo div {
+  padding: 20px;
+}
+
 .updateform{
   display: flex;
+  /* justify-content: center; */
   flex-direction: column;
+  width: 100%;
+
   max-height: 50%;
   background-color: whitesmoke;
   margin-top: 30px;
 }
 
 .updateform h2 {
+  background-color: darkolivegreen;
   font-size: 1em;
 }
-.providersAvailable{
+
+.officehours {
+  background-color: crimson;
+  display: flex;
+}
+
+/* #providersAvailable{
+  display: flex;
+  justify-content: center;
+} */
+
+#providersAvailableFrame{
+  display: flex;
+  justify-content: center;
   background-color: seagreen;
 }
 
 .providersAvailable button {
-  background-color: sandybrown;
+  background-color: rgb(233, 24, 24);
 }
 
+.doctors {
+  display: flex;
+  flex-basis: 50%;
+  align-content: center;
+  background-color: burlywood;
+  
+}
+.doctors p {
+  background-color: cadetblue;
+  font-size: 20px;
+}
+.doctors button {
+  margin-left: 10px;
+  padding:5px;
+}
 
+#officeNameFrame {
+  margin-left: 240px;
+}
 
+#addressFrame {
+  margin-left: 272px;
+}
 
+#phoneNumberFrame {
+  margin-left: 221px;
+}
+
+#mondayFrame {
+  margin-left: 288px;
+  margin-bottom: 8px;
+}
+
+#tuesdayFrame {
+  margin-left: 288px;
+  margin-bottom: 8px;
+}
+
+#wednesdayFrame {
+  margin-left: 265px;
+  margin-bottom: 8px;
+}
+
+#thursdayFrame {
+  margin-left: 282px;
+  margin-bottom: 8px;
+}
+
+#fridayFrame {
+  margin-left: 304px;
+  margin-bottom: 8px;
+}
+
+#addDoctorButton {
+  background-color: #04abcc;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#addDoctorButton:hover {
+  background-color: #048eaa;
+}
+
+#addDoctorButtonFrame {
+  display: flex;
+  justify-content: center;
+  
+}
+
+p {
+  text-align: center;
+}
+
+#submitUpdateButton {
+  background-color: #04abcc;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#submitUpdateButton:hover {
+  background-color: #048eaa;
+}
+
+#submitUpdateButtonFrame {
+  display: flex;
+  margin-left: 445px;
+}
 </style>

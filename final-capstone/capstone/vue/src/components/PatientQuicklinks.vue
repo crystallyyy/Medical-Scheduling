@@ -28,14 +28,14 @@
       <b-button id="button" href="#" variant="primary">View All</b-button>
     </b-card>
 
-    <b-card style="max-width: 20rem" class="dash" id="dash4">
+    <!-- <b-card style="max-width: 20rem" class="dash" id="dash4">
       <b-card-title> More </b-card-title>
       <b-card-text>
         Some quick example text to build on the card title and make up the bulk
         of the card's content.
       </b-card-text>
       <b-button id="button" href="#" variant="primary">View All</b-button>
-    </b-card>
+    </b-card> -->
   </div>
 </template>
 

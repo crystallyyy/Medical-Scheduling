@@ -34,12 +34,12 @@
       <h2><strong>Create Account</strong></h2>
       <br />
       <button type="submit">
-        <router-link class="patientButton" :to="{ name: 'patientRegister' }"
+        <router-link class="patientButton" :to="{ path: '/patientRegistration'}"
           >PATIENT</router-link
         ></button
       ><br />
       <button type="submit">
-        <router-link class="providerButton" :to="{ name: 'doctorRegister' }"
+        <router-link class="providerButton" :to="{ path: '/doctorRegistration'}"
           >PROVIDER</router-link
         >
       </button>
