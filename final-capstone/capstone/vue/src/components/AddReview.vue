@@ -19,7 +19,7 @@
    
     <div class="actions">
       <button v-on:click="resetForm" type="button" >Reset Form</button>
-      <button  v-on:click="this.$router.push({name: 'patientdash'})">Cancel</button>
+      <button  v-on:click="this.$router.push({path: '/patientDash', params: {patientId: this.$store.state.role.roleId}})">Cancel</button>
       <button>Submit</button>
     </div>
   </form>

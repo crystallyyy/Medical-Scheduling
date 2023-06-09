@@ -21,14 +21,14 @@
         </button>
       </li>
       <li class="nav-item">
-        <button
+        <!-- <button
           id="nav-item"
           type="button"
           class="btn btn-info"
           @click="activeCard = 2"
         >
           My Profile
-        </button>
+        </button> -->
       </li>
       <li class="nav-item">
         <button
