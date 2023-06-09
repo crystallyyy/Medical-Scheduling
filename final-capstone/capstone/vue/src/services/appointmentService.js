@@ -11,5 +11,9 @@ export default{
 
     getAppointmentsByPatient(patientId){
       return  axios.get(`/appointments/${patientId}`)
+    },
+
+    getAppointmentsByDoctor(doctorId){
+      return axios.get(`/appointmentsByDoc/${doctorId}`)
     }
 }
