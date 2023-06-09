@@ -1,31 +1,59 @@
 <template>
-  
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">
+        Dr. {{ doctor.firstName }} {{ doctor.lastName }}
+      </h5>
+      <date-picker v-model="date" :config="options"></date-picker>
 
-    <div class="card">
- 
-  <div class="card-body">
-    <h5 class="card-title">Dr. {{ doctor.firstName }} {{ doctor.lastName }}</h5>
-    <date-picker v-model="date" :config="options"></date-picker>
-
- <div id="appt buttons" v-show="showTimeSlotButtons">
-      <button id="timeSlotButtons" v-for="n in NumSlots-1" :key="n">
-       {{ formatTime(selectedDate.getTime() + n * 30 * 60 * 1000) }}
-      </button>
+      <div id="appt buttons" v-show="showTimeSlotButtons">
+        <button
+          id="timeSlotButtons"
+          v-for="n in NumSlots"
+          :key="n"
+          @click="handleTimeSlotClick(n)"
+          :class="{ selected: n === selectedSlot }"
+        >
+          {{ formatTime(selectedDate.getTime() + n * 30 * 60 * 1000) }}
+        </button>
+      </div>
+      <div v-show="viewOffices">
+        <select
+          v-model="selectedOffice"
+          v-if="doctorOffices.length > 0"
+          @change="showSubmitButton()"
+        >
+          <option
+            v-for="office in doctorOffices"
+            :value="office.officeId"
+            :key="office.value"
+          >
+            {{ office.officeName }}
+          </option>
+        </select>
+        <p v-else>Loading offices...</p>
+        <p v-if="doctorOffices.length > 0">
+          Selected office: {{ selectedOffice }}
+        </p>
+      </div>
+      <p class="card-text" v-show="showNoAvailability">No Availability Today</p>
+      <p class="card-text" v-show="appointmentCreationError">
+        Problems creating this Appointment
+      </p>
+      <a
+        class="btn btn-primary"
+        @click="getAvailabilityByDay()"
+        v-show="readyToSubmit == false"
+        >View Availability</a
+      >
+      <a
+        class="btn btn-primary"
+        @click="bookAppointMent()"
+        v-show="readyToSubmit"
+        >Book Appointment</a
+      >
     </div>
-    <p class="card-text" v-show="showNoAvailability">No Availability Today</p>
-    <a class="btn btn-primary" @click="getAvailabilityByDay()">View Availability</a>
   </div>
-</div>
-    
-    
-   
-
-   
-  
-   
-
-  
-
 </template>
 
 <script>
@@ -33,8 +61,7 @@ import datePicker from "vue-bootstrap-datetimepicker";
 import "bootstrap/dist/css/bootstrap.css";
 import "pc-bootstrap4-datetimepicker/build/css/bootstrap-datetimepicker.css";
 import providerService from "../services/providerService.js";
-
-//import appointmentService from '../services/appointmentService.js';
+import officeService from "../services/officeService.js";
 
 export default {
   data() {
@@ -50,7 +77,13 @@ export default {
       showTimeSlotButtons: false,
       NumSlots: 0,
       docAppointmentsToday: [],
-      selectedDate: new Date(),
+      selectedDateTime: new Date(),
+      doctorOffices: [],
+      viewOffices: false,
+      selectedOffice: null,
+      selectedSlot: null,
+      readyToSubmit: false,
+      appointmentCreationError: false,
     };
   },
   async created() {
@@ -58,6 +91,9 @@ export default {
       this.doctor.doctorId
     );
     this.availabilityForThisDoc = response.data;
+
+    const res2 = await officeService.getOfficesByDoctorId(this.doctor.doctorId);
+    this.doctorOffices = res2.data;
   },
 
   props: {
@@ -83,7 +119,6 @@ export default {
     },
 
     getAvailabilityByDay() {
-      console.log(this.date);
       this.getDayOfWeek();
 
       const foundDay = this.availabilityForThisDoc.find((availability) => {
@@ -97,40 +132,55 @@ export default {
         this.showTimeSlotButtons = true;
         const [startHour] = foundDay.startTime.split(":");
         const [endHour] = foundDay.endTime.split(":");
-        const minutesInDay = Number(endHour) * 60 - Number(startHour) * 60;
-        this.NumSlots = Math.floor(minutesInDay / this.doctor.timeSlotDefault);
+        const hoursInDay = Number(endHour) - Number(startHour);
+        this.NumSlots = hoursInDay * 2 - 1;
 
-        console.log(this.NumSlots);
         this.selectedDate = new Date(this.date);
+        this.selectedDate.setHours(Number(startHour));
         this.selectedDate.setMinutes(0);
         this.selectedDate.setSeconds(0);
-        this.selectedDate.setHours(Number(startHour));
       } else {
         this.showNoAvailability = true;
         this.showTimeSlotButtons = false;
       }
-
-      // appointmentService.newAppointment(appointment);
-
-      // this.showAppointments(doctor.doctorId, this.date);
     },
     formatTime(timestamp) {
-    const date = new Date(timestamp);
-    const hours = date.getHours().toString().padStart(2, "0");
-    const minutes = (date.getMinutes() >= 30 ? "30" : "00");
-    return `${hours}:${minutes}`;
-  },
+      const date = new Date(timestamp);
+      let hours = date.getHours();
+      let minutes = date.getMinutes();
 
-    // for(let i = 0; i < this.availabilityForThisDoc.length; i++){
+      const period = hours >= 12 ? "PM" : "AM";
+      hours = hours % 12 || 12;
+      minutes = minutes.toString().padStart(2, "0");
 
-    // if(this.dayOfWeek == this.availabilityForThisDoc[i].dayOfWeek){
-    //   let endTime = this.availabilityForThisDoc[i].endTime;
-    //   let startTime = this.availabilityForThisDoc[i].startTime;
-    //   let hoursInDay = endTime - startTime;
-    //   let slots = hoursInDay / this.doctor.timeSlotDefault
-
-    //
-    // }
+      return `${hours}:${minutes} ${period}`;
+    },
+    handleTimeSlotClick(n) {
+      this.viewOffices = true;
+      const selectedTime = this.selectedDate.getTime() + n * 30 * 60 * 1000;
+      this.selectedDateTime = new Date(selectedTime);
+      this.selectedSlot = n;
+      console.log(this.selectedDateTime);
+    },
+    showSubmitButton() {
+      this.readyToSubmit = true;
+    },
+    bookAppointMent() {
+      const appt = {
+        doctorId: this.doctor.doctorId,
+        apptDate: this.selectedDateTime.toISOString().split("T")[0],
+        startTime: this.selectedDateTime
+          .toLocaleTimeString("en-US", {
+            timeZone: "America/New_York",
+            hour12: false,
+          })
+          .slice(0, 8),
+        duration: 30,
+        patientId: this.$store.state.role.roleId,
+        officeId: this.selectedOffice,
+      };
+      console.log(appt.startTime);
+    },
   },
 
   // showAppointments(doctorId, apptDate){
@@ -142,4 +192,8 @@ export default {
 </script>
 
 <style>
+.selected {
+  background-color: #00ccff;
+  color: white;
+}
 </style>
