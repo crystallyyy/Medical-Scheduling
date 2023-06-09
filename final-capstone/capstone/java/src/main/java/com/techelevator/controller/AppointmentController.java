@@ -4,6 +4,7 @@ import com.techelevator.dao.AppointmentDao;
 import com.techelevator.dao.AvailabilityDAO;
 import com.techelevator.model.Appointment;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -18,6 +19,8 @@ public class AppointmentController {
     AppointmentDao appointmentDao;
 
     @PostMapping(path = "/appointment")
+    @CrossOrigin
+    @ResponseStatus(HttpStatus.CREATED)
     public Appointment addAppointment(@Valid @RequestBody Appointment appointment){
         return appointmentDao.newAppt(appointment);
     }
