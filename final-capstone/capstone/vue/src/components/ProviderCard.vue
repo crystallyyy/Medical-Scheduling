@@ -40,6 +40,7 @@
       <p class="card-text" v-show="appointmentCreationError">
         Problems creating this Appointment
       </p>
+      <p>{{date}}</p>
       <a
         class="btn btn-primary"
         @click="getAvailabilityByDay()"
@@ -62,6 +63,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "pc-bootstrap4-datetimepicker/build/css/bootstrap-datetimepicker.css";
 import providerService from "../services/providerService.js";
 import officeService from "../services/officeService.js";
+import appointmentService from "../services/appointmentService.js";
 
 export default {
   data() {
@@ -179,7 +181,15 @@ export default {
         patientId: this.$store.state.role.roleId,
         officeId: this.selectedOffice,
       };
-      console.log(appt.startTime);
+      appointmentService.addAppointment(appt).then((res) => {
+        if (res.status == 200) {
+          alert("Your appointment has been scheduled.");
+          location.reload();
+        }
+      }).catch(error => {
+        alert("Could not book appointment")
+        console.error(error)
+      })
     },
   },
 
