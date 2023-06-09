@@ -18,7 +18,7 @@ import ReviewsOnDD from '../views/ReviewsOnDD.vue'
 import AddReview from '../views/AddReview.vue'
 import PatientAccountRegistration from '../views/PatientAccountRegistration.vue'
 import AppointmentsPatient from '../views/AppointmentsPatient.vue'
-
+import AppointmentsDoctor from '../views/AppointmentsDoctor.vue'
 
 Vue.use(VueRouter);
 
@@ -165,6 +165,14 @@ const router = new VueRouter({
       path: "/patientDash/:patientId/appointments",
       name: "appointments-patient",
       component: AppointmentsPatient,
+      meta: {
+        requiresAuth: false,
+      },
+    },
+    {
+      path: 'doctorDash/:doctorId/appointments',
+      name: 'appointments-doctor',
+      component: AppointmentsDoctor,
       meta: {
         requiresAuth: false,
       },

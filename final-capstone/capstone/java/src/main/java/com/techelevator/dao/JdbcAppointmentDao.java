@@ -49,7 +49,7 @@ public class JdbcAppointmentDao implements AppointmentDao{
     @Override
     public List<Appointment> getAppointmentsByDoctor(int doctorId) {
         List<Appointment> appointments = new ArrayList<>();
-        String sql = "SELECT * FROM appointment WHERE doctor_id = ?";
+        String sql = "SELECT * FROM appointment WHERE doctor_id = ? ORDER BY appt_date ASC";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, doctorId);
         while (results.next()){
             Appointment appointment = mapRowToAppointment(results);
