@@ -9,7 +9,8 @@
             <b-card-text>
                 Some quick example text to build on the card title and make up the bulk of the card's content.
             </b-card-text>
-            <b-button id="button" href="#" variant="primary">View All</b-button>
+            <b-button id="button" href="#" variant="primary">
+              <router-link :to="{name: 'appointments-doctor', params: {doctorId: this.$route.params.doctorId}}">View All</router-link> </b-button>
         </b-card>
 
         <b-card style="max-width: 20rem;" class="dash">

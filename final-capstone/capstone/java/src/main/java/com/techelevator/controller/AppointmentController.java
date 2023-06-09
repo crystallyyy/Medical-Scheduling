@@ -21,14 +21,19 @@ public class AppointmentController {
     public Appointment addAppointment(@Valid @RequestBody Appointment appointment){
         return appointmentDao.newAppt(appointment);
     }
-    @GetMapping(path = "/appointment/{doctorId}")
-    @CrossOrigin
-    public List<Appointment> getApptsByDocDate(@PathVariable int doctorId, LocalDate apptDate){
-        return appointmentDao.getAppointmentsByDocDate(doctorId, apptDate);
-    }
+//    @GetMapping(path = "/appointment/{doctorId}")
+//    @CrossOrigin
+//    public List<Appointment> getApptsByDocDate(@PathVariable int doctorId, LocalDate apptDate){
+//        return appointmentDao.getAppointmentsByDocDate(doctorId, apptDate);
+//    }
 
     @GetMapping(path = "/appointments/{patientId}")
     public List<Appointment> getAppointmentsForPatient(@PathVariable int patientId){
         return appointmentDao.getAppointmentsByPatient(patientId);
+    }
+
+    @GetMapping(path = "/appointmentsByDoc/{doctorId}")
+    public List<Appointment> getAppointmentsForDoctor(@PathVariable int doctorId){
+        return appointmentDao.getAppointmentsByDoctor(doctorId);
     }
 }
