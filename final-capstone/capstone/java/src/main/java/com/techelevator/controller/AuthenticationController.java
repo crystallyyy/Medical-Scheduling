@@ -78,15 +78,15 @@ public class AuthenticationController {
 
 
     @GetMapping(path = "/info/{username}")
-    public Map<Integer, String> getRole(@PathVariable String username){
-        Map<Integer, String> roles;
+    public Role getRole(@PathVariable String username){
+        Role role = null;
 
         try{
-           roles = userDao.getRoleInfoByUsername(username);
+           role = userDao.getRoleInfoByUsername(username);
         } catch (UsernameNotFoundException e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND,"User not found");
         }
-        return roles;
+        return role;
     }
 }
 

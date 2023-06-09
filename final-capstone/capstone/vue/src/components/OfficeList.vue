@@ -99,7 +99,7 @@ h3 {
   text-align: center;
 }
 
-.officeTable {
+/* .officeTable {
   margin-left: auto;
   margin-right: auto;
   width: 80%;
@@ -121,7 +121,7 @@ h3 {
 
 .officeTable tbody tr:hover {
   background-color: #e6e6e6;
-}
+} */
 
 button {
   background-color: #e6e6e6;
