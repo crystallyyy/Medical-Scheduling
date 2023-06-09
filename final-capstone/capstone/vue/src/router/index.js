@@ -170,7 +170,7 @@ const router = new VueRouter({
       },
     },
     {
-      path: 'doctorDash/:doctorId/appointments',
+      path: '/doctorDash/:doctorId/appointments',
       name: 'appointments-doctor',
       component: AppointmentsDoctor,
       meta: {

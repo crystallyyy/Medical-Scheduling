@@ -7,7 +7,7 @@
                 View Appointments
             </b-card-title>
             <b-card-text>
-                Some quick example text to build on the card title and make up the bulk of the card's content.
+              View upcoming appointments and details.
             </b-card-text>
             <b-button id="button" href="#" variant="primary">
               <router-link :to="{name: 'appointments-doctor', params: {doctorId: this.$route.params.doctorId}}">View All</router-link> </b-button>
@@ -18,7 +18,7 @@
                 Notification Center
             </b-card-title>
             <b-card-text>
-                Some quick example text to build on the card title and make up the bulk of the card's content.
+              Under construction...
             </b-card-text>
             <b-button id="button" href="#" variant="primary">View All</b-button>
         </b-card>
@@ -56,6 +56,9 @@ export default {
 }
 #dash4{
   grid-area: d4;
+}
+a{
+  color: #fff;
 }
 
 .dash {

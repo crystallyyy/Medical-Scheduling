@@ -3,7 +3,7 @@
     <h3 class="offices">OFFICES</h3>
 
     <div class="actions">
-      <router-link v-bind:to="{ name: 'patientDash' }">
+      <router-link v-bind:to="{ name: 'patientdash' }">
         Return to Dashboard
       </router-link>
     </div>

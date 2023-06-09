@@ -284,6 +284,7 @@ export default {
         }
       }
       alert("Your availability has been updated");
+      location.reload()
       this.$router.push({name: 'doctordash', params: {doctorId: this.$route.params.doctorId}})
     }
   },

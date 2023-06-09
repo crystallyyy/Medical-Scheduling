@@ -1,18 +1,33 @@
 <template>
   <div>
-      <div>
-           <h2>Upcoming Appointments</h2>
-          <ul>
-              <li v-for="appointment in appointments" v-bind:key="appointment.appointmentId">
-                  <p>Date: {{appointment.apptDate}}</p>
-                  <p>Time: {{appointment.startTime}}</p>
-                  <p>Duration: {{appointment.duration}}</p>
-                  <p>Patient: {{patient.lastName}}, {{patient.firstName}}</p>
-                  <p>Contact: {{patient.phoneNumber}}</p>
-                  <p>Office: {{office.officeName}}</p>
-              </li>
-          </ul>
+      <div >
+           <h2 id="header">Upcoming Appointments</h2>
+
+           <table>
+              <thead>
+                  <th>Date</th>
+                  <th>Time</th>
+                  <th>Duration</th>
+                  <th>Patient</th>
+                  <th>Contact</th>
+                  <th>Office</th>
+              </thead>
+              <tbody>
+                  <tr v-for="appointment in appointments" v-bind:key="appointment.appointmentId"> 
+                      <td>{{appointment.apptDate}}</td>
+                      <td>{{appointment.startTime}}</td>
+                      <td>{{appointment.duration}}</td>
+                      <td>{{patient.lastName}}, {{patient.firstName}}</td>
+                      <td>{{patient.phoneNumber}}</td>
+                      <td>{{office.officeName}}</td>
+                  </tr>
+              </tbody>
+          </table>
+       
       </div>
+      <div id="button"> 
+      <button > <router-link :to="{name: 'doctordash', params: {patientId: this.$route.params.doctorId}}">Back to Dashboard</router-link> </button>
+    </div>
   </div>
 </template>
 
@@ -51,6 +66,25 @@ created(){
 }
 </script>
 
-<style>
-
+<style scoped>
+#header{
+    text-align: center;
+    margin: 30px;
+}
+/* #list{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+   
+}
+#list-item{
+     margin-bottom: 20px;
+} */
+#button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 </style>

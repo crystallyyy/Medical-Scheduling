@@ -1,19 +1,32 @@
 <template>
   <div>
       <div>
-          <h2>Upcoming Appointments</h2>
-          <ul>
-              <li v-for="appointment in appointments" v-bind:key="appointment.appointmentId">
-                  <p>Date: {{appointment.apptDate}}</p>
-                  <p>Time: {{appointment.startTime}}</p>
-                  <p>Duration: {{appointment.duration}}</p>
-                  <p>Dr. {{doctor.lastName}}</p>
-                  <p>Contact: {{doctor.email}}</p>
-                  <p>Office: {{office.officeName}}</p>
-              </li>
-          </ul>
+          <h2 id="header">Upcoming Appointments</h2>
+          <table>
+              <thead>
+                  <th>Date</th>
+                  <th>Time</th>
+                  <th>Duration</th>
+                  <th>Doctor</th>
+                  <th>Contact</th>
+                  <th>Office</th>
+              </thead>
+              <tbody>
+                  <tr v-for="appointment in appointments" v-bind:key="appointment.appointmentId"> 
+                      <td>{{appointment.apptDate}}</td>
+                      <td>{{appointment.startTime}}</td>
+                      <td>{{appointment.duration}}</td>
+                      <td>{{doctor.lastName}}</td>
+                      <td>{{doctor.email}}</td>
+                      <td>{{office.officeName}}</td>
+                  </tr>
+              </tbody>
+          </table>
+          
       </div>
+      <div id="button">
       <button> <router-link :to="{name: 'patientdash', params: {patientId: this.$route.params.patientId}}">Back to Dashboard</router-link> </button>
+      </div>
   </div>
 </template>
 
@@ -58,6 +71,14 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+#header{
+    text-align: center;
+    margin: 30px;
+}
+#button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 </style>

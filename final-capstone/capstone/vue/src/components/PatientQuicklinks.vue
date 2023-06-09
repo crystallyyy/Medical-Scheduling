@@ -3,8 +3,7 @@
     <b-card style="max-width: 20rem" class="dash" id="dash1">
       <b-card-title> View Appointments </b-card-title>
       <b-card-text>
-        Some quick example text to build on the card title and make up the bulk
-        of the card's content.
+        View upcoming appointments and details.
       </b-card-text>
      <b-button id="button" href="#" variant="primary"><router-link :to="{name: 'appointments-patient', params: {patientId : this.$route.params.patientId}}"> 
         View All</router-link></b-button>
@@ -13,20 +12,19 @@
     <b-card style="max-width: 20rem" class="dash" id="dash2">
       <b-card-title> Notification Center </b-card-title>
       <b-card-text>
-        Some quick example text to build on the card title and make up the bulk
-        of the card's content.
+        Under construction...
       </b-card-text>
       <b-button id="button" href="#" variant="primary">View All</b-button>
     </b-card>
 
-    <b-card style="max-width: 20rem" class="dash" id="dash3">
+    <!-- <b-card style="max-width: 20rem" class="dash" id="dash3">
       <b-card-title> Update Info </b-card-title>
       <b-card-text>
         Some quick example text to build on the card title and make up the bulk
         of the card's content.
       </b-card-text>
       <b-button id="button" href="#" variant="primary">View All</b-button>
-    </b-card>
+    </b-card> -->
 
     <!-- <b-card style="max-width: 20rem" class="dash" id="dash4">
       <b-card-title> More </b-card-title>
@@ -65,6 +63,9 @@ export default {};
 }
 #dash4{
   grid-area: d4;
+}
+a{
+  color: #fff;
 }
 
 .dash {
