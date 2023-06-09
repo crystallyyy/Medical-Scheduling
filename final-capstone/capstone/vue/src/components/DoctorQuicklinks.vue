@@ -19,6 +19,7 @@
             </b-card-title>
             <b-card-text>
               Under construction...
+              Doctors would receive push notifications here
             </b-card-text>
             <b-button id="button" href="#" variant="primary">View All</b-button>
         </b-card>

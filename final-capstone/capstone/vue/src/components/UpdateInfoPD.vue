@@ -168,7 +168,7 @@ export default {
   methods: {
     submitForm() {
       this.updatedPatient.address = `${this.address.address_line1}, ${this.address.address_line2}, ${this.address.city}, ${this.address.state} ${this.address.zip_code}`;
-      this.updatedPatient.patientId = this.$store.state.role.id;
+      this.updatedPatient.patientId = this.$store.state.role.roleId;
 
       patientService
         .updatePatientInformation(this.updatedPatient)
