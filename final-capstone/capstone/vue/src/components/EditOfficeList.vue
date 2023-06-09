@@ -244,10 +244,10 @@ export default {
     },
     showFormWithData(office) {
       
-      // trying to re-collapse "Edit Office Inofrmation" from MANAGE LOCATIONS 
-      if (this.activeOffice.officeId === office.officeId) {
-    this.showForm = false;
-  }
+  //     // trying to re-collapse "Edit Office Inofrmation" from MANAGE LOCATIONS 
+  //     if (this.activeOffice.officeId === office.officeId) {
+  //   this.showForm = false;
+  // }
       this.showForm = true;
       this.activeOffice = office;
       this.officeId = office.officeId;
